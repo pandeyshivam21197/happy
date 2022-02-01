@@ -1,0 +1,23 @@
+{
+  "name": "happy",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-dom",
+      "**/react-native",
+      "**/react-native/**"
+    ]
+  },
+  "scripts": {
+    "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock",
+    "mobile:start": "yarn workspace @happy/mobile run start",
+    "web:start": "yarn workspace @happy/web run start",
+    "mobile:ios": "yarn workspace @happy/mobile run ios",
+    "mobile:android": "yarn workspace @happy/mobile run android"
+  },
+  "devDependencies": {}
+}
