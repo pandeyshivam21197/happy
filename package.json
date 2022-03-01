@@ -19,7 +19,8 @@
     "mobile:start": "yarn workspace @happy/mobile run start",
     "web:start": "yarn workspace @happy/web run start",
     "mobile:ios": "yarn workspace @happy/mobile run ios",
-    "mobile:android": "yarn workspace @happy/mobile run android"
+    "mobile:android": "yarn workspace @happy/mobile run android",
+    "ios:pods": "cd packages && cd mobile && cd ios && pod install"
   },
   "devDependencies": {}
 }

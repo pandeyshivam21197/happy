@@ -7,21 +7,16 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StatusBar, useColorScheme, Text} from 'react-native';
-
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {SemiBold1840} from '@happy/common/src/components/atoms/text';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <Text>Mobile page</Text>
+      <SemiBold1840>Mobile page</SemiBold1840>
     </SafeAreaView>
   );
 };
