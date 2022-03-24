@@ -4,7 +4,8 @@
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Language and Environment */
-    "jsx": "react-native" /* Specify what JSX code is generated. */
+    "jsx": "react-native" /* Specify what JSX code is generated. */,
+    "baseUrl": "../"
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

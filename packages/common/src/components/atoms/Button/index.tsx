@@ -1,8 +1,8 @@
-import React from 'react';
-import {StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
+import React from "react";
+import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
 
-export function Button(props) {
-  const {buttonText, onPressButton, id, isSelected} = props;
+export function Button(props: any) {
+  const { buttonText, onPressButton, id, isSelected } = props;
 
   return (
     <TouchableWithoutFeedback onPress={() => onPressButton(id)}>
@@ -10,7 +10,8 @@ export function Button(props) {
         style={[
           styles.buttonContainer,
           isSelected ? styles.selected : styles.unselected,
-        ]}>
+        ]}
+      >
         <Text>{buttonText}</Text>
       </View>
     </TouchableWithoutFeedback>
@@ -23,9 +24,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   selected: {
-    backgroundColor: 'green',
+    backgroundColor: "green",
   },
   unselected: {
-    backgroundColor: 'grey',
+    backgroundColor: "grey",
   },
 });
