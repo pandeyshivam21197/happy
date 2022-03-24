@@ -6,17 +6,17 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {FC} from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import {SemiBold1840} from '@happy/common/src/components/atoms/text';
+import {SemiBold1840} from '@happy/common/src/components/atoms/Text';
+import Carousel from 'react-native-snap-carousel';
 
-const App = () => {
+const App = (): any => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <SafeAreaView>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <SemiBold1840>Mobile page</SemiBold1840>
+      <StatusBar barStyle={'dark-content'} />
     </SafeAreaView>
   );
 };

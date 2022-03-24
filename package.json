@@ -22,5 +22,12 @@
     "mobile:android": "yarn workspace @happy/mobile run android",
     "ios:pods": "cd packages && cd mobile && cd ios && pod install"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/react-native": "^0.67.3",
+    "@typescript-eslint/eslint-plugin": "^5.15.1-alpha.0",
+    "@typescript-eslint/parser": "^5.15.1-alpha.0",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react": "^7.29.4"
+  }
 }
