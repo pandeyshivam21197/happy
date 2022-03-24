@@ -20,6 +20,7 @@
     "web:start": "yarn workspace @happy/web run start",
     "mobile:ios": "yarn workspace @happy/mobile run ios",
     "mobile:android": "yarn workspace @happy/mobile run android",
+    "mobile:link": "yarn workspace @happy/mobile run project:link",
     "ios:pods": "cd packages && cd mobile && cd ios && pod install"
   },
   "devDependencies": {

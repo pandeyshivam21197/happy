@@ -32,19 +32,19 @@ const theme: ITheme = {
   },
   typography: {
     fontFamily: {
-      regular: "SFPro-Regular",
-      medium: "SFPro-Medium",
-      bold: "SFPro-Bold",
+      regular: "Quicksand-Regular",
+      medium: "Quicksand-Medium",
+      bold: "Quicksand-Bold",
     },
     fontWeight: {
       normal: "400",
-      medium: "510",
+      medium: "500",
       bold: "700",
     },
     font: {
       titleFont: {
-        fontSize: 24,
-        lineHeight: 32,
+        fontSize: 20,
+        lineHeight: 26,
       },
       subHeadingFont: {
         fontSize: 16,

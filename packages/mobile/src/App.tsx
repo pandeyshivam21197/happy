@@ -8,8 +8,8 @@
 
 import React, {FC} from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import {SemiBold1840} from '@happy/common/src/components/atoms/Text';
-import Carousel from 'react-native-snap-carousel';
+import {Heading} from '@happy/common/src/components/atoms/Text/heading';
+import {Title} from '@happy/common/src/components/atoms/Text/title';
 
 const App = (): any => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -17,6 +17,20 @@ const App = (): any => {
   return (
     <SafeAreaView>
       <StatusBar barStyle={'dark-content'} />
+      <Heading
+        font="primaryFont"
+        fontWeight="bold"
+        textColor="titleTextColor"
+        fontFamily="regular">
+        This is a Heading
+      </Heading>
+      <Title
+        font="primaryFont"
+        fontWeight="bold"
+        textColor="titleTextColor"
+        fontFamily="regular">
+        This is a Heading
+      </Title>
     </SafeAreaView>
   );
 };
