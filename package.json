@@ -21,7 +21,9 @@
     "mobile:ios": "yarn workspace @happy/mobile run ios",
     "mobile:android": "yarn workspace @happy/mobile run android",
     "mobile:link": "yarn workspace @happy/mobile run project:link",
-    "ios:pods": "cd packages && cd mobile && cd ios && pod install"
+    "ios:pods": "cd packages && cd mobile && cd ios && pod install",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix"
   },
   "devDependencies": {
     "@types/react-native": "^0.67.3",
