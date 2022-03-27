@@ -54,6 +54,7 @@ export interface IFontConfig {
 
 export interface IFont {
   titleFont: IFontConfig;
+  headingFont: IFontConfig;
   subHeadingFont: IFontConfig;
   primaryFont: IFontConfig;
   secondaryFont: IFontConfig;
@@ -80,6 +81,7 @@ export type textColor =
   | "disabledTextColor";
 export type font =
   | "titleFont"
+  | "headingFont"
   | "subHeadingFont"
   | "primaryFont"
   | "secondaryFont";

@@ -20,7 +20,7 @@ export const Heading: FC<IHeadingProps> = (porps): ReactElement => {
   return (
     <Text
       fontFamily={fontFamily}
-      font={"subHeadingFont"}
+      font={"headingFont"}
       fontWeight={fontWeight}
       textColor={textColor}
     >

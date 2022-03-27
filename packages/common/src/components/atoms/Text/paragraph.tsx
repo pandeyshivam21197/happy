@@ -14,13 +14,13 @@ interface ISubHeadingProps {
   textColor: textColor;
 }
 
-export const SubHeading: FC<ISubHeadingProps> = (porps): ReactElement => {
+export const Paragraph: FC<ISubHeadingProps> = (porps): ReactElement => {
   const { children, fontFamily, fontWeight, textColor } = porps;
 
   return (
     <Text
       fontFamily={fontFamily}
-      font={"subHeadingFont"}
+      font={"primaryFont"}
       fontWeight={fontWeight}
       textColor={textColor}
     >

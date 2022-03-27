@@ -43,6 +43,10 @@ const theme: ITheme = {
     },
     font: {
       titleFont: {
+        fontSize: 24,
+        lineHeight: 28,
+      },
+      headingFont: {
         fontSize: 20,
         lineHeight: 26,
       },
