@@ -1,12 +1,30 @@
 import "./App.css";
-import { SemiBold1022 } from "@happy/common/src/components/atoms/text";
+import {
+  Heading,
+  Title,
+  SubHeading,
+  Paragraph,
+  Label,
+} from "@happy/common/src/components";
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <SemiBold1022>Learn React</SemiBold1022>
-      </header>
+      <Title fontWeight="bold" textColor="titleTextColor">
+        This is a Title
+      </Title>
+      <Heading fontWeight="bold" textColor="titleTextColor">
+        This is a Heading
+      </Heading>
+      <SubHeading fontWeight="bold" textColor="titleTextColor">
+        This is a SubHeading
+      </SubHeading>
+      <Paragraph fontWeight="bold" textColor="titleTextColor">
+        This is a Paragraph
+      </Paragraph>
+      <Label fontWeight="bold" textColor="titleTextColor">
+        This is a Label
+      </Label>
     </div>
   );
 }

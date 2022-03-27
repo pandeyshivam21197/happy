@@ -8,8 +8,13 @@
 
 import React, {FC} from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import {Heading} from '@happy/common/src/components/atoms/Text/heading';
-import {Title} from '@happy/common/src/components/atoms/Text/title';
+import {
+  Heading,
+  Title,
+  SubHeading,
+  Paragraph,
+  Label,
+} from '@happy/common/src/components';
 
 const App = (): any => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -17,20 +22,21 @@ const App = (): any => {
   return (
     <SafeAreaView>
       <StatusBar barStyle={'dark-content'} />
-      <Heading
-        font="primaryFont"
-        fontWeight="bold"
-        textColor="titleTextColor"
-        fontFamily="regular">
+      <Title fontWeight="bold" textColor="titleTextColor">
+        This is a Title
+      </Title>
+      <Heading fontWeight="bold" textColor="titleTextColor">
         This is a Heading
       </Heading>
-      <Title
-        font="primaryFont"
-        fontWeight="bold"
-        textColor="titleTextColor"
-        fontFamily="regular">
-        This is a Heading
-      </Title>
+      <SubHeading fontWeight="bold" textColor="titleTextColor">
+        This is a SubHeading
+      </SubHeading>
+      <Paragraph fontWeight="bold" textColor="titleTextColor">
+        This is a Paragraph
+      </Paragraph>
+      <Label fontWeight="bold" textColor="titleTextColor">
+        This is a Label
+      </Label>
     </SafeAreaView>
   );
 };
