@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { useWindowDimensions } from "react-native";
 import { TabView, SceneMap } from "react-native-tab-view";
-import PropTypes from "prop-types";
 
 interface ITabConfig {
   title: string;
