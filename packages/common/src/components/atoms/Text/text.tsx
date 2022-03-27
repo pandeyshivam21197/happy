@@ -18,23 +18,23 @@ interface ITextProps {
 
 export const Text: FC<ITextProps> = (porps): ReactElement => {
   const {
+    typography,
+    palette: { textColors },
+  } = theme;
+
+  const {
     children,
     fontFamily = "regular",
     font,
     fontWeight = "normal",
-    textColor = "primaryTextColor",
+    textColor = textColors.titleTextColor,
   } = porps;
-
-  const {
-    typography,
-    palette: { textColors },
-  } = theme;
 
   const styles = getStyles(
     typography.fontFamily[fontFamily],
     typography.font[font],
     typography.fontWeight[fontWeight],
-    textColor || textColors.titleTextColor
+    textColor
   );
 
   return <RNText style={styles.text}>{children}</RNText>;

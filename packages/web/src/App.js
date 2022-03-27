@@ -10,21 +10,11 @@ import {
 function App() {
   return (
     <div className="App">
-      <Title fontWeight="bold" textColor="titleTextColor">
-        This is a Title
-      </Title>
-      <Heading fontWeight="bold" textColor="titleTextColor">
-        This is a Heading
-      </Heading>
-      <SubHeading fontWeight="bold" textColor="titleTextColor">
-        This is a SubHeading
-      </SubHeading>
-      <Paragraph fontWeight="bold" textColor="titleTextColor">
-        This is a Paragraph
-      </Paragraph>
-      <Label fontWeight="bold" textColor="titleTextColor">
-        This is a Label
-      </Label>
+      <Title fontWeight="bold">This is a Title</Title>
+      <Heading fontWeight="bold">This is a Heading</Heading>
+      <SubHeading fontWeight="bold">This is a SubHeading</SubHeading>
+      <Paragraph fontWeight="bold">This is a Paragraph</Paragraph>
+      <Label fontWeight="bold">This is a Label</Label>
     </div>
   );
 }
