@@ -28,6 +28,7 @@ const theme: ITheme = {
     neutral: {
       // add new colors here
       blackBackground: "#FAFAFA",
+      white: "#FFFFFF",
     },
   },
   typography: {
@@ -64,7 +65,44 @@ const theme: ITheme = {
       },
     },
   },
-  button: {},
+  button: {
+    primary: {
+      text: "#2D3037",
+      background: "#EAF0FF",
+      icon: "#FFFFFF",
+      border: "#337CCE",
+    },
+    secondary: {
+      text: "#2D3037",
+      background: "#FFFFFF",
+      icon: "#337CCE",
+      border: "#EAF0FF",
+    },
+    light: {
+      text: "#74777F",
+      background: "#FFFFFF",
+      icon: "#337CCE",
+      border: "#DFE2EB",
+    },
+    disable: {
+      text: "#8E9199",
+      background: "#FFFFFF",
+      icon: "#337CCE",
+      border: "#DFE2EB",
+    },
+    primaryLight: {
+      text: "#337CCE",
+      background: "#EAF0FF",
+      icon: "#337CCE",
+      border: "#EAF0FF",
+    },
+    secondaryLight: {
+      text: "#337CCE",
+      background: "#FFFFFF",
+      icon: "",
+      border: "#FFFFFF",
+    },
+  },
 };
 
 export default theme;

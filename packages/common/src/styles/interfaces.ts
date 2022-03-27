@@ -22,6 +22,7 @@ export interface IBorderColor {
 
 export interface INeutralColor {
   blackBackground: string;
+  white: string;
 }
 
 export interface IPalette {
@@ -42,9 +43,9 @@ export interface IFontFamily {
 }
 
 export interface IFontWeight {
-  normal: fWeights;
-  medium: fWeights;
-  bold: fWeights;
+  normal: FWeightsTypes;
+  medium: FWeightsTypes;
+  bold: FWeightsTypes;
 }
 
 export interface IFontConfig {
@@ -66,26 +67,49 @@ export interface ITypography {
   font: IFont;
 }
 
+export interface IButtonType {
+  text: string;
+  background: string | string[];
+  icon: string;
+  border: string;
+}
+
+export interface IButton {
+  primary: IButtonType;
+  secondary: IButtonType;
+  disable: IButtonType;
+  light: IButtonType;
+  primaryLight: IButtonType;
+  secondaryLight: IButtonType;
+}
+
 interface ITheme {
   palette: IPalette;
   typography: ITypography;
-  button: any;
+  button: IButton;
 }
 
-export type fontFamily = "regular" | "medium" | "bold";
-export type fontWeight = "normal" | "medium" | "bold";
-export type textColor =
+export type FontFamilyType = "regular" | "medium" | "bold";
+export type FontWeightType = "normal" | "medium" | "bold";
+export type ButtonTypes =
+  | "primary"
+  | "secondary"
+  | "disable"
+  | "light"
+  | "primaryLight"
+  | "secondaryLight";
+export type TextColorTypes =
   | "titleTextColor"
   | "primaryTextColor"
   | "secondaryTextColor"
   | "disabledTextColor";
-export type font =
+export type FontTypes =
   | "titleFont"
   | "headingFont"
   | "subHeadingFont"
   | "primaryFont"
   | "secondaryFont";
-export type fWeights =
+export type FWeightsTypes =
   | "normal"
   | "bold"
   | "100"

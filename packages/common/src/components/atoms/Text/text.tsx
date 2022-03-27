@@ -2,19 +2,18 @@ import React, { ReactElement, FC } from "react";
 import { Text as RNText, StyleSheet } from "react-native";
 import theme from "@happy/common/src/styles/theme";
 import {
-  fontFamily,
-  fontWeight,
-  font,
-  textColor,
+  FontFamilyType,
+  FontWeightType,
+  FontTypes,
   IFontConfig,
-  fWeights,
+  FWeightsTypes,
 } from "@happy/common/src/styles/interfaces";
 
 interface ITextProps {
-  fontFamily: fontFamily;
-  fontWeight: fontWeight;
-  font: font;
-  textColor: textColor;
+  fontFamily?: FontFamilyType;
+  fontWeight: FontWeightType;
+  font: FontTypes;
+  textColor?: string;
 }
 
 export const Text: FC<ITextProps> = (porps): ReactElement => {
@@ -35,7 +34,7 @@ export const Text: FC<ITextProps> = (porps): ReactElement => {
     typography.fontFamily[fontFamily],
     typography.font[font],
     typography.fontWeight[fontWeight],
-    textColors[textColor]
+    textColor || textColors.titleTextColor
   );
 
   return <RNText style={styles.text}>{children}</RNText>;
@@ -44,7 +43,7 @@ export const Text: FC<ITextProps> = (porps): ReactElement => {
 const getStyles = (
   fontFamily: string,
   font: IFontConfig,
-  fontWeight: fWeights,
+  fontWeight: FWeightsTypes,
   textColor: string
 ) =>
   StyleSheet.create({
