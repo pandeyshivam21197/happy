@@ -8,13 +8,7 @@
 
 import React, {FC} from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import {
-  Heading,
-  Title,
-  SubHeading,
-  Paragraph,
-  Label,
-} from '@happy/common/src/components';
+import RootNavigator from '@happy/mobile/src/navigation';
 
 const App = (): any => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -22,11 +16,7 @@ const App = (): any => {
   return (
     <SafeAreaView>
       <StatusBar barStyle={'dark-content'} />
-      <Title fontWeight="bold">This is a Title</Title>
-      <Heading fontWeight="bold">This is a Heading</Heading>
-      <SubHeading fontWeight="bold">This is a SubHeading</SubHeading>
-      <Paragraph fontWeight="bold">This is a Paragraph</Paragraph>
-      <Label fontWeight="bold">This is a Label</Label>
+      <RootNavigator />
     </SafeAreaView>
   );
 };

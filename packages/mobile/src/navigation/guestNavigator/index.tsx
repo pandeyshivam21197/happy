@@ -1,3 +1,4 @@
+import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationKeys} from '../constants';
 import {AuthStackNavigator} from '@happy/mobile/src/navigation/guestNavigator/AuthStackNavigator';

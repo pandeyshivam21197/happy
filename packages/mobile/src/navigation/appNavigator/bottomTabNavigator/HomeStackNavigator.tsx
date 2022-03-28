@@ -1,3 +1,4 @@
+import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
 import {HomeScreen} from '@happy/mobile/src/screens';
