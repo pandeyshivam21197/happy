@@ -5,11 +5,12 @@ import {NavigationKeys} from '../constants';
 
 const AuthStack = createNativeStackNavigator();
 
+//login, signing and sign up
 export const AuthStackNavigator = () => {
   return (
     <AuthStack.Navigator>
       <AuthStack.Screen
-        name={NavigationKeys.screen.onBoardingScreen}
+        name={NavigationKeys.screen.loginScreen}
         component={LoginScreen}
         options={{headerShown: false}}
       />

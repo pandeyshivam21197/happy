@@ -1,19 +1,18 @@
 import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
-import {HomeScreen} from '@happy/mobile/src/screens';
+import {LikeScreen} from '@happy/mobile/src/screens/like/LikeScreen';
 
-const HomeStack = createNativeStackNavigator();
+const LikeStack = createNativeStackNavigator();
 
-// logged in user flow
 export const HomeStackNavigator: FC = () => {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen
-        name={NavigationKeys.screen.homeScreen}
-        component={HomeScreen}
+    <LikeStack.Navigator>
+      <LikeStack.Screen
+        name={NavigationKeys.screen.likeScreen}
+        component={LikeScreen}
         options={{headerShown: false}}
       />
-    </HomeStack.Navigator>
+    </LikeStack.Navigator>
   );
 };

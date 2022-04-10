@@ -12,6 +12,14 @@ export function BottomTabNavigator() {
         name={NavigationKeys.stacks.homeStack}
         component={HomeStackNavigator}
       />
+      <BottomTab.Screen
+        name={NavigationKeys.stacks.homeStack}
+        component={HomeStackNavigator}
+      />
+      <BottomTab.Screen
+        name={NavigationKeys.stacks.homeStack}
+        component={HomeStackNavigator}
+      />
     </BottomTab.Navigator>
   );
 }
