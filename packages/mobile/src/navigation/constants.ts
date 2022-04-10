@@ -2,6 +2,8 @@ export const NavigationKeys = {
   stacks: {
     authStack: 'authStack',
     homeStack: 'homeStack',
+    likeStack: 'likeStack',
+    chatStack: 'chatStack',
   },
   screen: {
     //app

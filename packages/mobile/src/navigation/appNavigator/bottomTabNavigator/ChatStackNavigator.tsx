@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
-import {ChatScreen} from '@happy/mobile/src/screens/chat/ChatScreen';
+import {ChatScreen} from '@happy/mobile/src/screens';
 
 const ChatStack = createNativeStackNavigator();
 
-export const HomeStackNavigator: FC = () => {
+export const ChatStackNavigator: FC = () => {
   return (
     <ChatStack.Navigator>
       <ChatStack.Screen
