@@ -10,7 +10,6 @@ import {
 import {SafeAreaView} from 'react-native';
 
 export const HomeScreen: FC<any> = (): React.ReactElement => {
-  console.log('coming here@@');
   return (
     <ScreenContainer>
       <Title fontWeight="bold">Home Screen</Title>

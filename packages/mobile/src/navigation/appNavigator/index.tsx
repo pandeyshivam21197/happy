@@ -9,15 +9,15 @@ const AppStack = createNativeStackNavigator();
 // logged in user flow
 export const AppStackNavigator = () => {
   return (
-    <AppStack.Navigator initialRouteName={NavigationKeys.screen.signUpScreen}>
-      <AppStack.Screen
-        name={NavigationKeys.screen.signUpScreen}
-        component={SignUpScreen}
-        options={{headerShown: false}}
-      />
+    <AppStack.Navigator>
       <AppStack.Screen
         name={NavigationKeys.tab.bottomTab}
         component={BottomTabNavigator}
+        options={{headerShown: false}}
+      />
+      <AppStack.Screen
+        name={NavigationKeys.screen.signUpScreen}
+        component={SignUpScreen}
         options={{headerShown: false}}
       />
     </AppStack.Navigator>
