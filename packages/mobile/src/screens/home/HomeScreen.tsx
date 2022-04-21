@@ -7,7 +7,6 @@ import {
   Label,
   ScreenContainer,
 } from '@happy/common/src/components';
-import {SafeAreaView} from 'react-native';
 
 export const HomeScreen: FC<any> = (): React.ReactElement => {
   return (

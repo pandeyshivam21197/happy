@@ -7,11 +7,11 @@
       "packages/*"
     ],
     "nohoist": [
+      "**/@react-native-async-storage/async-storage",
       "**/react",
       "**/react-dom",
       "**/react-native",
-      "**/react-native/**",
-      "**/react-native-web"
+      "**/react-native/**"
     ]
   },
   "scripts": {
@@ -21,7 +21,7 @@
     "mobile:ios": "yarn workspace @happy/mobile run ios",
     "mobile:android": "yarn workspace @happy/mobile run android",
     "mobile:link": "yarn workspace @happy/mobile run project:link",
-    "ios:pods": "cd packages && cd mobile && cd ios && pod install",
+    "ios:pods": "cd packages && cd mobile && cd ios && arch -x86_64 pod install",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix"
   },

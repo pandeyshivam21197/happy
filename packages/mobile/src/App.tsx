@@ -13,7 +13,9 @@ import {
   useColorScheme,
   StyleSheet,
 } from 'react-native';
+import {I18nextProvider} from 'react-i18next';
 import RootNavigator from '@happy/mobile/src/navigation';
+import {MultiLingualService} from '@happy/common/src/services/locale/MultiLingualService';
 
 const App = (): any => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -21,7 +23,9 @@ const App = (): any => {
   return (
     <SafeAreaView style={styles.appContainer}>
       <StatusBar barStyle={'dark-content'} />
-      <RootNavigator />
+      <I18nextProvider i18n={MultiLingualService.i18next}>
+        <RootNavigator />
+      </I18nextProvider>
     </SafeAreaView>
   );
 };
