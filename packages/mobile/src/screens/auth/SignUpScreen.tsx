@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
-import {View} from 'react-native';
 import {ScreenContainer, Title} from '@happy/common/src/components';
+import {withTranslation} from 'react-i18next';
 
-export const SignUpScreen: FC = () => {
+const SignUpScreen: FC = () => {
   return (
     <ScreenContainer>
       <Title fontWeight="bold">Sign up Screen</Title>
@@ -10,3 +10,5 @@ export const SignUpScreen: FC = () => {
     </ScreenContainer>
   );
 };
+
+export default withTranslation()(SignUpScreen);

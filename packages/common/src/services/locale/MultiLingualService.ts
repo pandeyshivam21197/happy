@@ -1,6 +1,5 @@
 import i18next, { i18n, InitOptions, Module } from "i18next";
 import { initReactI18next } from "react-i18next";
-import languageDetector from "@happy/common/src/services/locale/LanguageDetector";
 import { resources } from "./constants";
 
 const defaultConfig = {
@@ -16,7 +15,6 @@ function createi18Instance(config: InitOptions): i18n {
   const { resources, fallbackLng } = config;
   i18next
     .use(initReactI18next)
-    .use(languageDetector as Module)
     .init({
       resources,
       fallbackLng: fallbackLng,

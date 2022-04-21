@@ -7,8 +7,9 @@ import {
   Label,
   ScreenContainer,
 } from '@happy/common/src/components';
+import {withTranslation} from 'react-i18next';
 
-export const HomeScreen: FC<any> = (): React.ReactElement => {
+const HomeScreen: FC<any> = (props): React.ReactElement => {
   return (
     <ScreenContainer>
       <Title fontWeight="bold">Home Screen</Title>
@@ -20,3 +21,5 @@ export const HomeScreen: FC<any> = (): React.ReactElement => {
     </ScreenContainer>
   );
 };
+
+export default withTranslation()(HomeScreen);
