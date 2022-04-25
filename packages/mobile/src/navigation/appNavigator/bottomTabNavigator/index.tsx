@@ -6,19 +6,28 @@ import {HomeStackNavigator} from '@happy/mobile/src/navigation/appNavigator/bott
 import {LikeStackNavigator} from '@happy/mobile/src/navigation/appNavigator/bottomTabNavigator/LikeStackNavigator';
 import {ChatStackNavigator} from '@happy/mobile/src/navigation/appNavigator/bottomTabNavigator/ChatStackNavigator';
 import {Icon, icons} from '@happy/common/src/components';
+import {ResponsiveSize} from '@happy/mobile/src/utils/responsiveUtils';
 
 const BottomTab = createBottomTabNavigator();
 
 const tabOptions = (tabLabel: string, iconName: string) => ({
   tabBarLabel: tabLabel,
   tabBarIcon: ({color}: {color: string}) => (
-    <Icon name={iconName} color={color} />
+    <Icon name={iconName} color={color} size={ResponsiveSize(15)} />
   ),
 });
 
 export function BottomTabNavigator() {
   return (
-    <BottomTab.Navigator>
+    <BottomTab.Navigator
+      screenOptions={{
+        headerShown: false,
+        // tabBarActiveTintColor: 'blue',
+        // tabBarInactiveTintColor: 'green',
+        tabBarLabelStyle: {
+          fontSize: ResponsiveSize(15),
+        },
+      }}>
       <BottomTab.Screen
         name={NavigationKeys.stacks.homeStack}
         component={HomeStackNavigator}
