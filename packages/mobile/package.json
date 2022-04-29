@@ -8,7 +8,14 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "project:link": "react-native link"
+    "pod:install": "cd ios && arch -x86_64 pod install",
+    "project:link": "react-native link",
+    "app:dep": "cd android && ./gradlew app:dependencies",
+    "lint:fix": "npm run lint -- --fix",
+    "android:clean": "cd android && ./gradlew clean",
+    "android:bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "android:build": "npm run android:bundle && npm run android:clean && rm -rf android/app/src/main/res/drawable-* && rm -rf android/app/src/main/res/raw/* && cd android && ./gradlew assembleRelease",
+    "android:build:abb": "npm run android:bundle && npm run android:clean && rm -rf android/app/src/main/res/drawable-* && rm -rf android/app/src/main/res/raw/* && cd android && ./gradlew bundleRelease"
   },
   "dependencies": {
     "@happy/common": "*",
