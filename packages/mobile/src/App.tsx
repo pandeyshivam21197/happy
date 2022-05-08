@@ -9,7 +9,7 @@
 import React, {FC} from 'react';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import RootNavigator from '@happy/mobile/src/navigation';
-import '@happy/common/src/services/locale/MultiLingualService';
+// import '@happy/common/src/services/locale/MultiLingualService';
 
 const App = (): any => {
   return (

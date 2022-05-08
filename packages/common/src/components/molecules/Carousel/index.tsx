@@ -1,18 +1,13 @@
 import * as React from "react";
 import RNCarousel from "react-native-reanimated-carousel";
-import {
-  Dimensions,
-  ScaledSize,
-  TouchableOpacity,
-  View,
-  Text,
-} from "react-native";
+import { Dimensions, ScaledSize, View, StyleSheet } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
   useAnimatedStyle,
 } from "react-native-reanimated";
 import { withAnchorPoint } from "./anchor-point";
+import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
 
 import fruit_0 from "./fruit-0.png";
 import fruit_1 from "./fruit-1.png";
@@ -28,45 +23,38 @@ const fruits = [fruit_0, fruit_2, fruit_1];
 
 const colors = ["#fda282", "#fdba4e", "#800015"];
 
-const PAGE_WIDTH = window.width;
-const PAGE_HEIGHT = window.width * 1.2;
-
 function Carousel() {
-  const [isAutoPlay, setIsAutoPlay] = React.useState(false);
-
   const baseOptions = {
     vertical: false,
-    width: PAGE_WIDTH,
-    height: PAGE_HEIGHT,
+    width: DimensionUtils.width,
+    height: DimensionUtils.height,
   } as const;
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <RNCarousel
         {...baseOptions}
-        loop
-        autoPlay={isAutoPlay}
+        loop={false}
+        autoPlay={false}
         withAnimation={{
           type: "spring",
           config: {
             damping: 13,
           },
         }}
-        autoPlayInterval={1500}
+        enabled
         data={colors}
         renderItem={({ index, animationValue }) => (
           <Card animationValue={animationValue} key={index} index={index} />
         )}
-      />
-      <TouchableOpacity
-        onPress={() => {
-          setIsAutoPlay(!isAutoPlay);
+        onSnapToItem={(index) => {
+          console.log(index, "index");
         }}
-      >
-        <Text>
-          {ElementsText.AUTOPLAY}:{`${isAutoPlay}`}
-        </Text>
-      </TouchableOpacity>
+        panGestureHandlerProps={{
+          activeOffsetX: [-10, 10],
+        }}
+        enableSnap
+      />
     </View>
   );
 }
@@ -75,8 +63,8 @@ const Card: React.FC<{
   index: number;
   animationValue: Animated.SharedValue<number>;
 }> = ({ index, animationValue }) => {
-  const WIDTH = PAGE_WIDTH / 1.5;
-  const HEIGHT = PAGE_HEIGHT / 1.5;
+  const WIDTH = DimensionUtils.width;
+  const HEIGHT = DimensionUtils.height;
 
   const cardStyle = useAnimatedStyle(() => {
     const scale = interpolate(
@@ -149,10 +137,6 @@ const Card: React.FC<{
         style={[
           {
             backgroundColor: colors[index],
-            alignSelf: "center",
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: 20,
             width: WIDTH,
             height: HEIGHT,
             shadowColor: "#000",
@@ -162,30 +146,33 @@ const Card: React.FC<{
             },
             shadowOpacity: 0.44,
             shadowRadius: 10.32,
-
             elevation: 16,
           },
           cardStyle,
         ]}
-      />
-
-      <Animated.Image
-        source={fruits[index % 3]}
-        style={[
-          {
-            width: WIDTH * 0.8,
-            borderRadius: 16,
-            justifyContent: "center",
-            alignItems: "center",
-            position: "absolute",
-            zIndex: 999,
-          },
-          blockStyle,
-        ]}
-        resizeMode={"contain"}
-      />
+      >
+        <Animated.Image
+          source={fruits[index % 3]}
+          style={[
+            {
+              width: WIDTH * 0.8,
+              borderRadius: 16,
+              justifyContent: "center",
+              alignItems: "center",
+            },
+            blockStyle,
+          ]}
+          resizeMode={"contain"}
+        />
+      </Animated.View>
     </Animated.View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default Carousel;
