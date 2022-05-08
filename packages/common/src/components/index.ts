@@ -6,3 +6,5 @@ export { Paragraph } from "@happy/common/src/components/atoms/Text/paragraph";
 export { Label } from "@happy/common/src/components/atoms/Text/label";
 export { ScreenContainer } from "@happy/common/src/components/atoms/ScreenContainer";
 export { Icon, icons } from "@happy/common/src/components/atoms/Icon";
+export { Carousel } from "@happy/common/src/components/molecules/Carousel";
+export { Card } from "@happy/common/src/components/molecules/Card";
