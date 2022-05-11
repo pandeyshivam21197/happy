@@ -8,15 +8,24 @@ import {
   IFontConfig,
   FWeightsTypes,
 } from "@happy/common/src/styles/interfaces";
+import Animated from "react-native-reanimated";
 
 interface ITextProps {
+  isAnimated?: boolean;
   fontFamily?: FontFamilyType;
   fontWeight: FontWeightType;
   font: FontTypes;
   textColor?: string;
 }
 
-export const Text: FC<ITextProps> = (porps): ReactElement => {
+export type TextTypes =
+  | "heading"
+  | "label"
+  | "paragraph"
+  | "subHeading"
+  | "title";
+
+export const Text: FC<ITextProps> = (porps) => {
   const {
     typography,
     palette: { textColors },
@@ -28,6 +37,7 @@ export const Text: FC<ITextProps> = (porps): ReactElement => {
     font,
     fontWeight = "normal",
     textColor = textColors.titleTextColor,
+    isAnimated = true,
   } = porps;
 
   const styles = getStyles(
@@ -37,7 +47,9 @@ export const Text: FC<ITextProps> = (porps): ReactElement => {
     textColor
   );
 
-  return <RNText style={styles.text}>{children}</RNText>;
+  const Container = isAnimated ? Animated.Text : RNText;
+
+  return <Container style={styles.text}>{children}</Container>;
 };
 
 const getStyles = (
