@@ -1,8 +1,7 @@
-import React, { ReactElement, FC } from "react";
+import React, { FC } from "react";
 import { Text as RNText, StyleSheet } from "react-native";
 import theme from "@happy/common/src/styles/theme";
 import {
-  FontFamilyType,
   FontWeightType,
   FontTypes,
   IFontConfig,
@@ -12,7 +11,6 @@ import Animated from "react-native-reanimated";
 
 interface ITextProps {
   isAnimated?: boolean;
-  fontFamily?: FontFamilyType;
   fontWeight: FontWeightType;
   font: FontTypes;
   textColor?: string;
@@ -33,7 +31,6 @@ export const Text: FC<ITextProps> = (porps) => {
 
   const {
     children,
-    fontFamily = "regular",
     font,
     fontWeight = "normal",
     textColor = textColors.titleTextColor,
@@ -41,7 +38,7 @@ export const Text: FC<ITextProps> = (porps) => {
   } = porps;
 
   const styles = getStyles(
-    typography.fontFamily[fontFamily],
+    typography.fontFamily[fontWeight],
     typography.font[font],
     typography.fontWeight[fontWeight],
     textColor

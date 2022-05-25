@@ -22,8 +22,6 @@ export function BottomTabNavigator() {
     <BottomTab.Navigator
       screenOptions={{
         headerShown: false,
-        // tabBarActiveTintColor: 'blue',
-        // tabBarInactiveTintColor: 'green',
         tabBarLabelStyle: {
           fontSize: ResponsiveSize(15),
         },

@@ -29,17 +29,20 @@ const theme: ITheme = {
       // add new colors here
       blackBackground: "#FAFAFA",
       white: "#FFFFFF",
+      black: "#000000",
     },
   },
   typography: {
     fontFamily: {
-      regular: "Quicksand-Regular",
+      normal: "Quicksand-Regular",
       medium: "Quicksand-Medium",
+      semiBold: "Quicksand-SemiBold",
       bold: "Quicksand-Bold",
     },
     fontWeight: {
       normal: "400",
       medium: "500",
+      semiBold: "600",
       bold: "700",
     },
     font: {

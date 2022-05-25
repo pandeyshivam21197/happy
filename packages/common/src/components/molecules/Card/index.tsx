@@ -4,14 +4,15 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from "react-native-reanimated";
+import { Image, View, TextWithIcon } from "@happy/common/src/components/index";
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
 
 import fruit_0 from "./fruit-0.png";
 import fruit_1 from "./fruit-1.png";
 import fruit_2 from "./fruit-2.png";
+import { icons } from "../../atoms/Icon";
 
 const fruits = [fruit_0, fruit_2, fruit_1];
-const colors = ["#fda282", "#fdba4e", "#800015"];
 
 interface IProps {
   index: number;
@@ -42,20 +43,37 @@ const Card: React.FC<IProps> = ({ index, animationValue }) => {
   const styles = getStyles(index);
 
   return (
-    <Animated.View style={styles.container}>
-      <Animated.Image
+    <Animated.View>
+      <Image
         source={fruits[index % 3]}
         style={[
           {
-            width: DimensionUtils.width * 0.8,
+            width: 200,
             borderRadius: 16,
+            height: 200,
             justifyContent: "center",
             alignItems: "center",
+            backgroundColor: "blue",
           },
           blockStyle,
         ]}
         resizeMode={"contain"}
+        showShadow
       />
+      <View>
+        <TextWithIcon
+          fontWeight="bold"
+          text={"User Name, 24"}
+          textType="heading"
+          iconName={icons.heart}
+        />
+        <TextWithIcon
+          fontWeight="bold"
+          text={"User Name, 24"}
+          textType="paragraph"
+          iconName={icons.heart}
+        />
+      </View>
     </Animated.View>
   );
 };
@@ -63,7 +81,6 @@ const Card: React.FC<IProps> = ({ index, animationValue }) => {
 const getStyles = (index: number) =>
   StyleSheet.create({
     container: {
-      backgroundColor: colors[index],
       width: DimensionUtils.width,
       height: DimensionUtils.height,
       shadowColor: "#000",

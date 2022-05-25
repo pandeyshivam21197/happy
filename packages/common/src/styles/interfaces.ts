@@ -23,6 +23,7 @@ export interface IBorderColor {
 export interface INeutralColor {
   blackBackground: string;
   white: string;
+  black: string;
 }
 
 export interface IPalette {
@@ -37,15 +38,17 @@ export interface IPalette {
 }
 
 export interface IFontFamily {
-  regular: string;
+  normal: string;
   medium: string;
   bold: string;
+  semiBold: string;
 }
 
 export interface IFontWeight {
   normal: FWeightsTypes;
   medium: FWeightsTypes;
   bold: FWeightsTypes;
+  semiBold: FWeightsTypes;
 }
 
 export interface IFontConfig {
@@ -90,7 +93,7 @@ interface ITheme {
 }
 
 export type FontFamilyType = "regular" | "medium" | "bold";
-export type FontWeightType = "normal" | "medium" | "bold";
+export type FontWeightType = "normal" | "medium" | "semiBold" | "bold";
 export type ButtonTypes =
   | "primary"
   | "secondary"

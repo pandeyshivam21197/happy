@@ -7,12 +7,14 @@ import {
   StyleProp,
 } from "react-native";
 import Animated from "react-native-reanimated";
+import { ShadowCard } from "../ShadowCard";
 
 interface IProps {
   isAnimated?: boolean;
   source: ImageSourcePropType;
   resizeMode?: ImageResizeMode;
   style?: StyleProp<ImageStyle>;
+  showShadow?: boolean;
 }
 
 const Image: FC<IProps> = (props) => {
@@ -21,11 +23,19 @@ const Image: FC<IProps> = (props) => {
     source,
     resizeMode = "contain",
     style = {},
+    showShadow = false,
   } = props;
 
-  const Container = isAnimated ? Animated.Image : RNImage;
+  const Content: React.ReactNode = isAnimated ? Animated.Image : RNImage;
+  const Container = showShadow ? (
+    <ShadowCard>
+      <Content style={style} source={source} resizeMode={resizeMode} />
+    </ShadowCard>
+  ) : (
+    <Content style={style} source={source} resizeMode={resizeMode} />
+  );
 
-  return <Container style={style} source={source} resizeMode={resizeMode} />;
+  return Container;
 };
 
 const image = React.memo(Image);
