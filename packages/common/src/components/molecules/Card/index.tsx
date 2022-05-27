@@ -50,17 +50,16 @@ const Card: React.FC<IProps> = ({ index, animationValue }) => {
           {
             width: 200,
             borderRadius: 16,
-            height: 200,
+            height: 400,
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "blue",
+            backgroundColor: "red",
           },
           blockStyle,
         ]}
         resizeMode={"contain"}
-        showShadow
       />
-      <View>
+      <View style={{ backgroundColor: "blue" }}>
         <TextWithIcon
           fontWeight="bold"
           text={"User Name, 24"}

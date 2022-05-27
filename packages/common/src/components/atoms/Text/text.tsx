@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Text as RNText, StyleSheet } from "react-native";
+import { Text as RNText, StyleSheet, StyleProp, TextStyle } from "react-native";
 import theme from "@happy/common/src/styles/theme";
 import {
   FontWeightType,
@@ -11,9 +11,12 @@ import Animated from "react-native-reanimated";
 
 interface ITextProps {
   isAnimated?: boolean;
-  fontWeight: FontWeightType;
+  fontWeight?: FontWeightType;
   font: FontTypes;
+  customFont?: IFontConfig;
   textColor?: string;
+  numberOfLines?: number;
+  style?: StyleProp<TextStyle>;
 }
 
 export type TextTypes =
@@ -26,27 +29,42 @@ export type TextTypes =
 export const Text: FC<ITextProps> = (porps) => {
   const {
     typography,
-    palette: { textColors },
+    palette: {
+      textColors: { titleTextColor },
+    },
   } = theme;
 
   const {
+    isAnimated = true,
     children,
     font,
+    customFont,
     fontWeight = "normal",
-    textColor = textColors.titleTextColor,
-    isAnimated = true,
+    numberOfLines,
+    textColor = titleTextColor,
+    style,
+    ...rest
   } = porps;
 
   const styles = getStyles(
     typography.fontFamily[fontWeight],
-    typography.font[font],
+    customFont || typography.font[font],
     typography.fontWeight[fontWeight],
     textColor
   );
 
   const Container = isAnimated ? Animated.Text : RNText;
 
-  return <Container style={styles.text}>{children}</Container>;
+  return (
+    <Container
+      ellipsizeMode="tail"
+      style={[styles.text, style]}
+      numberOfLines={numberOfLines}
+      {...rest}
+    >
+      {children}
+    </Container>
+  );
 };
 
 const getStyles = (

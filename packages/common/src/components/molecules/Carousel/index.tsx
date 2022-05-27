@@ -41,6 +41,7 @@ function Carousel() {
         //TODO: Shivam write api logic
       }}
       enableSnap
+      scrollAnimationDuration={200}
     />
   );
 }

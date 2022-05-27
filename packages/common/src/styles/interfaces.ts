@@ -27,9 +27,8 @@ export interface INeutralColor {
 }
 
 export interface IPalette {
-  background: string;
-  pageBackground: string;
-  danger: string;
+  statusBar: string;
+  screenBackground: string;
   primary: IPrimaryColor;
   secondary: ISecondaryColor;
   textColors: ITextColor;
