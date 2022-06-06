@@ -16,35 +16,35 @@ import {
 import theme from "../../../styles/theme";
 
 interface IFonts<T> {
-  fontFamily: IFontFamily;
-  font: T;
-  fontWeight: FontWeightType;
+  fontFamily?: IFontFamily;
+  font?: T;
+  fontWeight?: FontWeightType;
 }
 
 interface IStyles {
-  borderRadius: number;
-  borderColor: string;
-  borderWidth: number;
-  multiline: boolean;
-  height: number;
-  paddingHorizontal: number;
-  paddingVertical: number;
-  textColor: string;
+  borderRadius?: number;
+  borderColor?: string;
+  borderWidth?: number;
+  multiline?: boolean;
+  height?: number;
+  paddingHorizontal?: number;
+  paddingVertical?: number;
+  textColor?: string;
 }
 
 interface IProps extends IStyles, IFonts<FontTypes> {
   onChangeText: (value: string) => {};
-  onSubmitEditing: () => {};
+  onSubmitEditing?: () => {};
   value: string;
-  style: StyleProp<TextStyle>;
-  secureTextEntry: boolean;
-  centerAligned: boolean;
-  isShadow: boolean;
-  onTextBlur: () => {};
-  placeholder: string;
-  placeholderTextColor: string;
-  keyboardType: KeyboardType;
-  customFont: IFontConfig;
+  style?: StyleProp<TextStyle>;
+  secureTextEntry?: boolean;
+  centerAligned?: boolean;
+  isShadow?: boolean;
+  onTextBlur?: () => {};
+  placeholder?: string;
+  placeholderTextColor?: string;
+  keyboardType?: KeyboardType;
+  customFont?: IFontConfig;
 }
 
 export const TextInput = (props: IProps) => {
@@ -68,8 +68,8 @@ export const TextInput = (props: IProps) => {
     fontWeight = "normal",
     font = "primaryFont",
     height,
-    paddingHorizontal,
-    paddingVertical,
+    paddingHorizontal = 4,
+    paddingVertical = 4,
     textColor,
   } = props;
 
