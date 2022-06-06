@@ -4,7 +4,7 @@ import {
   FontWeightType,
   IFontConfig,
   IFontFamily,
-} from "common/src/styles/interfaces";
+} from "@happy/common/src/styles/interfaces";
 import React, { useState } from "react";
 import {
   KeyboardType,
