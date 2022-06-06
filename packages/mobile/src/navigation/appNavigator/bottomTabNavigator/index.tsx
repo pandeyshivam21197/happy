@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
 import lang from '@happy/common/src/assets/languages/en.json';
@@ -7,14 +7,16 @@ import {LikeStackNavigator} from '@happy/mobile/src/navigation/appNavigator/bott
 import {ChatStackNavigator} from '@happy/mobile/src/navigation/appNavigator/bottomTabNavigator/ChatStackNavigator';
 import {Icon, icons} from '@happy/common/src/components';
 import {ResponsiveSize} from '@happy/mobile/src/utils/responsiveUtils';
+import {StyleSheet} from 'react-native';
+import theme from '@happy/common/src/styles/theme';
 
 const BottomTab = createBottomTabNavigator();
 
 const tabOptions = (tabLabel: string, iconName: string) => ({
-  tabBarLabel: tabLabel,
   tabBarIcon: ({color}: {color: string}) => (
-    <Icon name={iconName} color={color} size={ResponsiveSize(15)} />
+    <Icon name={iconName} color={color} size={ResponsiveSize(25)} />
   ),
+  tabBarShowLabel: false,
 });
 
 export function BottomTabNavigator() {
@@ -22,9 +24,7 @@ export function BottomTabNavigator() {
     <BottomTab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarLabelStyle: {
-          fontSize: ResponsiveSize(15),
-        },
+        tabBarStyle: styles.tabBar,
       }}>
       <BottomTab.Screen
         name={NavigationKeys.stacks.homeStack}
@@ -44,3 +44,9 @@ export function BottomTabNavigator() {
     </BottomTab.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  tabBar: {
+    backgroundColor: theme.palette.statusBar,
+  },
+});

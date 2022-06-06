@@ -11,13 +11,13 @@ export const GuestStackNavigator = () => {
   return (
     <GuestStack.Navigator>
       <GuestStack.Screen
-        name={NavigationKeys.screen.onBoardingScreen}
-        component={OnBoardingScreen}
+        name={NavigationKeys.stacks.authStack}
+        component={AuthStackNavigator}
         options={{headerShown: false}}
       />
       <GuestStack.Screen
-        name={NavigationKeys.stacks.authStack}
-        component={AuthStackNavigator}
+        name={NavigationKeys.screen.onBoardingScreen}
+        component={OnBoardingScreen}
         options={{headerShown: false}}
       />
     </GuestStack.Navigator>

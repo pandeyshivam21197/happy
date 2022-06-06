@@ -4,7 +4,7 @@ import {withTranslation} from 'react-i18next';
 
 const LoginScreen: FC = () => {
   return (
-    <ScreenContainer>
+    <ScreenContainer enableBack={false}>
       <Title fontWeight="bold">Login Screen</Title>
     </ScreenContainer>
   );

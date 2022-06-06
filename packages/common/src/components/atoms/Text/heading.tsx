@@ -1,6 +1,9 @@
 import React, { ReactElement, FC } from "react";
 import { Text } from "@happy/common/src/components/atoms/Text/text";
-import { FontWeightType } from "@happy/common/src/styles/interfaces";
+import {
+  FontWeightType,
+  IFontConfig,
+} from "@happy/common/src/styles/interfaces";
 import { StyleProp, TextStyle } from "react-native";
 
 interface IHeadingProps {
@@ -8,10 +11,12 @@ interface IHeadingProps {
   textColor?: string;
   numberOfLines?: number;
   style?: StyleProp<TextStyle>;
+  customFont?: IFontConfig;
 }
 
 export const Heading: FC<IHeadingProps> = (porps): ReactElement => {
-  const { children, fontWeight, textColor, style, numberOfLines } = porps;
+  const { children, fontWeight, textColor, style, numberOfLines, customFont } =
+    porps;
 
   return (
     <Text
@@ -20,6 +25,7 @@ export const Heading: FC<IHeadingProps> = (porps): ReactElement => {
       style={style}
       textColor={textColor}
       numberOfLines={numberOfLines}
+      customFont={customFont}
     >
       {children}
     </Text>

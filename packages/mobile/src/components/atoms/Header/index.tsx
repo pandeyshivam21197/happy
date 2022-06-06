@@ -39,7 +39,7 @@ export const Header: FC<IProps> = ({
           style={styles.backButtonContainer}
           onPress={onBackPress}>
           {showBackIcon && (
-            <Icon name={icons.heart} size={20} style={styles.backIcon} />
+            <Icon name={icons.back} size={20} style={styles.backIcon} />
           )}
           {!!backText && (
             <SubHeading
@@ -79,7 +79,7 @@ export const Header: FC<IProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: ResponsiveSize(10),
+    paddingVertical: ResponsiveSize(12),
     paddingHorizontal: ResponsiveSize(9),
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -113,19 +113,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  titleText: {
-    fontWeight: '600',
-    fontSize: ResponsiveSize(17),
-  },
   backIcon: {
-    width: ResponsiveSize(11),
-    height: ResponsiveSize(21),
-  },
-  imageStyle: {
-    height: ResponsiveSize(36),
-    width: ResponsiveSize(36),
-  },
-  userInfo: {
-    alignItems: 'center',
+    resizeMode: 'contain',
   },
 });

@@ -43,7 +43,19 @@ const Card: React.FC<IProps> = ({ index, animationValue }) => {
   const styles = getStyles(index);
 
   return (
-    <Animated.View>
+    <View>
+      <TextWithIcon
+        fontWeight="bold"
+        text={"User Name, 24"}
+        textType="heading"
+        iconName={icons.heart}
+      />
+      <TextWithIcon
+        fontWeight="bold"
+        text={"User Name, 24"}
+        textType="paragraph"
+        iconName={icons.heart}
+      />
       <Image
         source={fruits[index % 3]}
         style={[
@@ -55,25 +67,11 @@ const Card: React.FC<IProps> = ({ index, animationValue }) => {
             alignItems: "center",
             backgroundColor: "red",
           },
-          blockStyle,
+          // blockStyle,
         ]}
         resizeMode={"contain"}
       />
-      <View style={{ backgroundColor: "blue" }}>
-        <TextWithIcon
-          fontWeight="bold"
-          text={"User Name, 24"}
-          textType="heading"
-          iconName={icons.heart}
-        />
-        <TextWithIcon
-          fontWeight="bold"
-          text={"User Name, 24"}
-          textType="paragraph"
-          iconName={icons.heart}
-        />
-      </View>
-    </Animated.View>
+    </View>
   );
 };
 
