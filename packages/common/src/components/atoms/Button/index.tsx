@@ -6,18 +6,50 @@ import {
   View,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import { ButtonTypes } from "@happy/common/src/styles/interfaces";
+import {
+  ButtonTypes,
+  FontWeightType,
+} from "@happy/common/src/styles/interfaces";
 import theme from "@happy/common/src/styles/theme";
-import { Paragraph } from "@happy/common/src/components";
+import {
+  Paragraph,
+  Label,
+  Title,
+  Heading,
+  SubHeading,
+} from "@happy/common/src/components";
+
+type ButtonTextTypes =
+  | "paragraph"
+  | "label"
+  | "title"
+  | "heading"
+  | "subHeading";
 
 interface IButtonProps {
   buttonText: string;
   buttonType: ButtonTypes;
-  onPress: () => {};
+  onPress: () => void;
+  fontWeight?: FontWeightType;
+  textType?: ButtonTextTypes;
 }
 
+const buttonTypeText = {
+  paragraph: Paragraph,
+  label: Label,
+  title: Title,
+  heading: Heading,
+  subHeading: SubHeading,
+};
+
 export const Button: FC<IButtonProps> = (props) => {
-  const { buttonText, buttonType, onPress } = props;
+  const {
+    buttonText,
+    buttonType,
+    onPress,
+    fontWeight = "medium",
+    textType = "paragraph",
+  } = props;
   const [loading, setLoading] = useState(false);
 
   const { text, background } = theme.button[buttonType];
@@ -37,15 +69,17 @@ export const Button: FC<IButtonProps> = (props) => {
     setLoading(false);
   };
 
+  const TextContainer = buttonTypeText[textType];
+
   return (
     <TouchableOpacity onPress={onButtonPress} disabled={loading}>
       <Container style={styles.container} {...containerProps}>
         {loading ? (
           <ActivityIndicator color={theme.palette.neutral.white} />
         ) : (
-          <Paragraph fontWeight="medium" textColor={text}>
+          <TextContainer fontWeight={fontWeight} textColor={text}>
             {buttonText}
-          </Paragraph>
+          </TextContainer>
         )}
       </Container>
     </TouchableOpacity>
@@ -58,9 +92,9 @@ const getStyles = (isLinearGradient: boolean, buttonType: ButtonTypes) =>
       ...(isLinearGradient
         ? {}
         : { backgroundColor: theme.button[buttonType].background as string }),
-      height: 40,
+      paddingVertical: 16,
       alignItems: "center",
       justifyContent: "center",
-      borderRadius: 20,
+      borderRadius: 24,
     },
   });

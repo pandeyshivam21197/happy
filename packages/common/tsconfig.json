@@ -7,6 +7,6 @@
     "jsx": "react-native" /* Specify what JSX code is generated. */,
     "baseUrl": "../"
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "src/assets/languages/index.ts"],
   "exclude": ["node_modules"]
 }

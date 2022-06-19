@@ -1,5 +1,11 @@
 import React, { FC } from "react";
-import { Text as RNText, StyleSheet, StyleProp, TextStyle } from "react-native";
+import {
+  Text as RNText,
+  StyleSheet,
+  StyleProp,
+  TextStyle,
+  TextProps,
+} from "react-native";
 import theme from "@happy/common/src/styles/theme";
 import {
   FontWeightType,
@@ -9,10 +15,10 @@ import {
 } from "@happy/common/src/styles/interfaces";
 import Animated from "react-native-reanimated";
 
-interface ITextProps {
+interface ITextProps extends TextProps {
   isAnimated?: boolean;
   fontWeight?: FontWeightType;
-  font: FontTypes;
+  font?: FontTypes;
   customFont?: IFontConfig;
   textColor?: string;
   numberOfLines?: number;
@@ -48,7 +54,7 @@ export const Text: FC<ITextProps> = (porps) => {
 
   const styles = getStyles(
     typography.fontFamily[fontWeight],
-    customFont || typography.font[font],
+    customFont || typography.font[font as FontTypes],
     typography.fontWeight[fontWeight],
     textColor
   );

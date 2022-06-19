@@ -4,8 +4,8 @@ import ITheme from "@happy/common/src/styles/interfaces";
 
 const theme: ITheme = {
   palette: {
-    statusBar: "#F6F6F6",
-    screenBackground: "#FFFFFF",
+    statusBar: "#c7d7f2",
+    screenBackground: "#c7d7f2",
     primary: {
       primary01: "#23AFD7", //primary blue
       primary02: "#00A591", //primary green
@@ -70,7 +70,7 @@ const theme: ITheme = {
   button: {
     primary: {
       text: "#2D3037",
-      background: "#EAF0FF",
+      background: "#FFFFFF",
       icon: "#FFFFFF",
       border: "#337CCE",
     },

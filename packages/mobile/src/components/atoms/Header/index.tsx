@@ -12,20 +12,20 @@ import {Icon, icons, SubHeading} from '@happy/common/src/components';
 import theme from '@happy/common/src/styles/theme';
 
 interface IProps {
-  onBackPress: () => {};
-  enableBack: boolean;
-  title: string;
-  rightText: string;
-  style: StyleProp<ViewStyle>;
-  backText: string;
-  showBackIcon: boolean;
-  onRightTextPress: () => {};
+  onBackPress?: () => void;
+  enableBack?: boolean;
+  title?: string;
+  rightText?: string;
+  style?: StyleProp<ViewStyle>;
+  backText?: string;
+  showBackIcon?: boolean;
+  onRightTextPress?: () => void;
 }
 
 export const Header: FC<IProps> = ({
-  onBackPress,
+  onBackPress = () => {},
   enableBack = true,
-  title,
+  title = '',
   rightText,
   style = {},
   backText,
@@ -38,9 +38,7 @@ export const Header: FC<IProps> = ({
         <TouchableOpacity
           style={styles.backButtonContainer}
           onPress={onBackPress}>
-          {showBackIcon && (
-            <Icon name={icons.back} size={20} style={styles.backIcon} />
-          )}
+          {showBackIcon && <Icon name={icons.back} size={20} />}
           {!!backText && (
             <SubHeading
               numberOfLines={1}
@@ -112,8 +110,5 @@ const styles = StyleSheet.create({
     flex: 3,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  backIcon: {
-    resizeMode: 'contain',
   },
 });

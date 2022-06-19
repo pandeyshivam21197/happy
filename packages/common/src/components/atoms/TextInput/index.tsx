@@ -1,9 +1,9 @@
 import { isAndroid } from "@happy/common/src/utils/PlatformUtils";
 import {
+  FontFamilyType,
   FontTypes,
   FontWeightType,
   IFontConfig,
-  IFontFamily,
 } from "@happy/common/src/styles/interfaces";
 import React, { useState } from "react";
 import {
@@ -16,7 +16,7 @@ import {
 import theme from "../../../styles/theme";
 
 interface IFonts<T> {
-  fontFamily?: IFontFamily;
+  fontFamily?: FontFamilyType;
   font?: T;
   fontWeight?: FontWeightType;
 }
@@ -33,14 +33,14 @@ interface IStyles {
 }
 
 interface IProps extends IStyles, IFonts<FontTypes> {
-  onChangeText: (value: string) => {};
-  onSubmitEditing?: () => {};
+  onChangeText: (value: string) => void;
+  onSubmitEditing?: () => void;
   value: string;
   style?: StyleProp<TextStyle>;
   secureTextEntry?: boolean;
   centerAligned?: boolean;
   isShadow?: boolean;
-  onTextBlur?: () => {};
+  onTextBlur?: () => void;
   placeholder?: string;
   placeholderTextColor?: string;
   keyboardType?: KeyboardType;
@@ -79,9 +79,9 @@ export const TextInput = (props: IProps) => {
     borderRadius,
     borderColor,
     borderWidth,
-    fontFamily: theme.typography.fontFamily[fontWeight],
+    fontFamily: theme.typography.fontFamily[fontWeight] as FontFamilyType,
     font: customFont || theme.typography.font[font],
-    fontWeight: theme.typography.fontWeight[fontWeight],
+    fontWeight: theme.typography.fontWeight[fontWeight] as FontWeightType,
     multiline,
     height,
     paddingHorizontal,
@@ -129,7 +129,9 @@ export const TextInput = (props: IProps) => {
   );
 };
 
-const getStyles = (config: IStyles extends IFonts<IFontConfig>) => {
+interface IStyleConfig extends IStyles, IFonts<IFontConfig> {}
+
+const getStyles = (config: IStyleConfig) => {
   const {
     borderRadius,
     borderColor,
@@ -152,8 +154,10 @@ const getStyles = (config: IStyles extends IFonts<IFontConfig>) => {
       borderColor: borderColor || theme.palette.borderColors.border01,
       textAlign: "center",
       color: textColor || theme.palette.textColors.titleTextColor,
-      fontSize: font.fontSize,
-      ...(isAndroid() || multiline ? { lineHeight: font.lineHeight } : {}),
+      fontSize: (font as IFontConfig).fontSize,
+      ...(isAndroid() || multiline
+        ? { lineHeight: (font as IFontConfig).lineHeight }
+        : {}),
       fontWeight: fontWeight,
       fontFamily,
       paddingTop: 32,

@@ -14,25 +14,25 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import theme from '@happy/common/src/styles/theme';
 
 interface IProps {
-  scrollable: boolean;
+  scrollable?: boolean;
   children: React.ReactElement;
-  style: StyleProp<ViewStyle>;
-  goBack: () => {};
-  title: string;
-  enableBack: boolean;
-  showHeader: boolean;
-  backText: string;
-  headerStyle: StyleProp<ViewStyle>;
-  showBackIcon: boolean;
-  headerRightText: string;
-  onHeaderRightPress: () => {};
+  style?: StyleProp<ViewStyle>;
+  goBack?: () => void;
+  title?: string;
+  enableBack?: boolean;
+  showHeader?: boolean;
+  backText?: string;
+  headerStyle?: StyleProp<ViewStyle>;
+  showBackIcon?: boolean;
+  headerRightText?: string;
+  onHeaderRightPress?: () => void;
 }
 
 export const ScreenContainer: FC<IProps> = ({
   scrollable = false,
   children,
   style,
-  goBack,
+  goBack = () => {},
   title,
   enableBack = true,
   showHeader = true,

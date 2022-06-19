@@ -14,7 +14,7 @@ export default function RootNavigator() {
           <AppStackNavigator />
         </StatusAndKeyBoardLayout>
       ) : (
-        <StatusAndKeyBoardLayout backgroundColor="red">
+        <StatusAndKeyBoardLayout>
           <GuestStackNavigator />
         </StatusAndKeyBoardLayout>
       )}
