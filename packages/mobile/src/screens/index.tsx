@@ -7,7 +7,7 @@ import OnBoardingScreen from '@happy/mobile/src/screens/onBoarding/OnBoardingScr
 
 export {
   HomeScreen,
-  LoginOptionsScreen as LoginScreen,
+  LoginOptionsScreen,
   ChatScreen,
   LikeScreen,
   SignUpScreen,

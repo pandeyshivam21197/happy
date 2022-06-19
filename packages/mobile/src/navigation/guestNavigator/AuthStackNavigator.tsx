@@ -1,7 +1,8 @@
 import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {LoginScreen} from '@happy/mobile/src/screens';
+import {LoginOptionsScreen} from '@happy/mobile/src/screens';
 import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
+import MobileNumberScreen from '../../screens/auth/MobileNumberScreen';
 
 export type AuthNavigatorParamList = {
   [NavigationKeys.loginOptionsScreen]: undefined;
@@ -16,12 +17,12 @@ export const AuthStackNavigator = () => {
     <AuthStack.Navigator>
       <AuthStack.Screen
         name={NavigationKeys.loginOptionsScreen}
-        component={LoginScreen}
+        component={LoginOptionsScreen}
         options={{headerShown: false}}
       />
       <AuthStack.Screen
         name={NavigationKeys.mobileNumberScreen}
-        component={LoginScreen}
+        component={MobileNumberScreen}
         options={{headerShown: false}}
       />
     </AuthStack.Navigator>

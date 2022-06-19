@@ -1,5 +1,5 @@
 import React, {FC, ReactElement} from 'react';
-import {ScreenContainer, Title} from '@happy/common/src/components';
+import {Heading, ScreenContainer, Title} from '@happy/common/src/components';
 import {withTranslation} from 'react-i18next';
 import lang from '@happy/common/src/assets/languages';
 import {NavigationScreenProps} from '@happy/mobile/src//navigation/interfaces';
@@ -13,9 +13,9 @@ type Props = NavigationScreenProps<
 
 const SignUpScreen: FC<Props> = ({navigation, route}) => {
   return (
-    <ScreenContainer
-      showHeader={false}
-      goBack={navigation.goBack}></ScreenContainer>
+    <ScreenContainer showHeader={false} goBack={navigation.goBack}>
+      <Heading>"Sing up!!!!"</Heading>
+    </ScreenContainer>
   );
 };
 
