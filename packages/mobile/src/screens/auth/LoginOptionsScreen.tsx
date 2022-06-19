@@ -11,8 +11,20 @@ import {
 import {withTranslation} from 'react-i18next';
 import lang from '@happy/common/src/assets/languages';
 import {Text} from '@happy/common/src/components/atoms/Text/text';
+import {NavigationScreenProps} from '../../navigation/interfaces';
+import {AuthNavigatorParamList} from '../../navigation/guestNavigator/AuthStackNavigator';
+import {NavigationKeys} from '../../navigation/constants';
 
-const LoginScreen: FC = () => {
+type Props = NavigationScreenProps<
+  AuthNavigatorParamList,
+  NavigationKeys.loginOptionsScreen
+>;
+
+const LoginOptionsScreen: FC<Props> = ({navigation, route}) => {
+  const onUseMobileNumber = () => {
+    navigation.navigate(NavigationKeys.mobileNumberScreen);
+  };
+
   return (
     <ScreenContainer
       enableBack={false}
@@ -37,7 +49,7 @@ const LoginScreen: FC = () => {
             buttonType="primary"
             fontWeight="bold"
             textType="subHeading"
-            onPress={() => {}}
+            onPress={onUseMobileNumber}
           />
           <Paragraph style={styles.termsCondition} fontWeight="semiBold">
             {lang.termsAndCondition}
@@ -72,4 +84,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTranslation()(LoginScreen);
+export default withTranslation()(LoginOptionsScreen);

@@ -9,8 +9,8 @@ export enum NavigationKeys {
   likeScreen = 'likeScreen',
   chatScreen = 'chatScreen',
   //guest
-  mobileNumber = 'mobileNumberNumber',
-  loginScreen = 'loginScreen',
+  mobileNumberScreen = 'mobileNumberNumberScreen',
+  loginOptionsScreen = 'loginOptionsScreen',
   // tab
   bottomTab = 'bottomTab',
 }

@@ -10,7 +10,13 @@ import {ResponsiveSize} from '@happy/mobile/src/utils/responsiveUtils';
 import {StyleSheet} from 'react-native';
 import theme from '@happy/common/src/styles/theme';
 
-const BottomTab = createBottomTabNavigator();
+export type BottomTabNavigatorParamList = {
+  [NavigationKeys.homeStack]: undefined;
+  [NavigationKeys.likeStack]: undefined;
+  [NavigationKeys.chatStack]: undefined;
+};
+
+const BottomTab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
 const tabOptions = (tabLabel: string, iconName: string) => ({
   tabBarIcon: ({color}: {color: string}) => (
@@ -27,17 +33,17 @@ export function BottomTabNavigator() {
         tabBarStyle: styles.tabBar,
       }}>
       <BottomTab.Screen
-        name={NavigationKeys.stacks.homeStack}
+        name={NavigationKeys.homeStack}
         component={HomeStackNavigator}
         options={tabOptions(lang.tab.home, icons.lightning)}
       />
       <BottomTab.Screen
-        name={NavigationKeys.stacks.likeStack}
+        name={NavigationKeys.likeStack}
         component={LikeStackNavigator}
         options={tabOptions(lang.tab.like, icons.heart)}
       />
       <BottomTab.Screen
-        name={NavigationKeys.stacks.chatStack}
+        name={NavigationKeys.chatStack}
         component={ChatStackNavigator}
         options={tabOptions(lang.tab.chat, icons.chat)}
       />

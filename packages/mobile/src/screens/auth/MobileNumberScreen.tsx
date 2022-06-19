@@ -8,10 +8,10 @@ import {NavigationKeys} from '../../navigation/constants';
 
 type Props = NavigationScreenProps<
   AuthNavigatorParamList,
-  NavigationKeys.mobileNumber
+  NavigationKeys.mobileNumberScreen
 >;
 
-const SignUpScreen = ({navigation, route}: Props): ReactElement => {
+const SignUpScreen: FC<Props> = ({navigation, route}) => {
   return (
     <ScreenContainer
       showHeader={false}

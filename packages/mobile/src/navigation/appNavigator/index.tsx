@@ -2,22 +2,20 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {BottomTabNavigator} from '@happy/mobile/src/navigation/appNavigator/bottomTabNavigator';
 import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
-import {SignUpScreen} from '../../screens';
 
-const AppStack = createNativeStackNavigator();
+export type AppNavigatorParamList = {
+  [NavigationKeys.bottomTab]: undefined;
+};
+
+const AppStack = createNativeStackNavigator<AppNavigatorParamList>();
 
 // logged in user flow
 export const AppStackNavigator = () => {
   return (
     <AppStack.Navigator>
       <AppStack.Screen
-        name={NavigationKeys.tab.bottomTab}
+        name={NavigationKeys.bottomTab}
         component={BottomTabNavigator}
-        options={{headerShown: false}}
-      />
-      <AppStack.Screen
-        name={NavigationKeys.screen.signUpScreen}
-        component={SignUpScreen}
         options={{headerShown: false}}
       />
     </AppStack.Navigator>

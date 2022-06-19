@@ -3,14 +3,18 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
 import {HomeScreen} from '@happy/mobile/src/screens';
 
-const HomeStack = createNativeStackNavigator();
+export type HomeStackNavigatorParamList = {
+  [NavigationKeys.homeScreen]: undefined;
+};
+
+const HomeStack = createNativeStackNavigator<HomeStackNavigatorParamList>();
 
 // logged in user flow
 export const HomeStackNavigator: FC = () => {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
-        name={NavigationKeys.screen.homeScreen}
+        name={NavigationKeys.homeScreen}
         component={HomeScreen}
         options={{headerShown: false}}
       />

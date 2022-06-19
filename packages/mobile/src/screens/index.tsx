@@ -1,5 +1,5 @@
 import HomeScreen from '@happy/mobile/src/screens/home/HomeScreen';
-import LoginScreen from '@happy/mobile/src/screens/auth/LoginOptionsScreen';
+import LoginOptionsScreen from '@happy/mobile/src/screens/auth/LoginOptionsScreen';
 import ChatScreen from '@happy/mobile/src/screens/chat/ChatScreen';
 import LikeScreen from '@happy/mobile/src/screens/like/LikeScreen';
 import SignUpScreen from '@happy/mobile/src/screens/auth/MobileNumberScreen';
@@ -7,7 +7,7 @@ import OnBoardingScreen from '@happy/mobile/src/screens/onBoarding/OnBoardingScr
 
 export {
   HomeScreen,
-  LoginScreen,
+  LoginOptionsScreen as LoginScreen,
   ChatScreen,
   LikeScreen,
   SignUpScreen,
