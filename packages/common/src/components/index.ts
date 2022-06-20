@@ -9,6 +9,7 @@ export { Image } from "@happy/common/src/components/atoms/Image";
 export { View } from "@happy/common/src/components/atoms/View";
 export { ScreenContainer } from "@happy/mobile/src/components/atoms/ScreenContainer";
 export { Button } from "@happy/common/src/components/atoms/Button";
+export { TextInput } from "@happy/common/src/components/atoms/TextInput";
 
 export { Carousel } from "@happy/common/src/components/molecules/Carousel";
 export { Card } from "@happy/common/src/components/molecules/Card";

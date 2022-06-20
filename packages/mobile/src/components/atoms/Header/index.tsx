@@ -78,7 +78,7 @@ export const Header: FC<IProps> = ({
 const styles = StyleSheet.create({
   container: {
     paddingVertical: ResponsiveSize(12),
-    paddingHorizontal: ResponsiveSize(9),
+    paddingHorizontal: ResponsiveSize(16),
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: theme.palette.statusBar,

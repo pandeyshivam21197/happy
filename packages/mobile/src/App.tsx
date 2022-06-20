@@ -6,18 +6,21 @@
  * @flow strict-local
  */
 
-import React, {FC} from 'react';
-import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
+import React from 'react';
+import {I18nextProvider} from 'react-i18next';
+import {StatusBar, StyleSheet} from 'react-native';
 import RootNavigator from '@happy/mobile/src/navigation';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import theme from '@happy/common/src/styles/theme';
-import {StatusAndKeyBoardLayout} from './components/atoms/StatusAndKeyboardLayout';
+import {MultiLingualService} from '@happy/common/src/services/locale/MultiLingualService';
 
 const App = (): any => {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
-      <StatusBar barStyle={'dark-content'} />
-      <RootNavigator />
+      <I18nextProvider i18n={MultiLingualService.i18next}>
+        <StatusBar barStyle={'dark-content'} />
+        <RootNavigator />
+      </I18nextProvider>
     </GestureHandlerRootView>
   );
 };

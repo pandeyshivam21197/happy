@@ -3,9 +3,9 @@ import {
   View,
   StyleSheet,
   Keyboard,
-  TouchableWithoutFeedback,
   StyleProp,
   ViewStyle,
+  TouchableOpacity,
 } from 'react-native';
 import React, {FC} from 'react';
 import {ResponsiveSize} from '@happy/mobile/src/utils/responsiveUtils';
@@ -67,24 +67,29 @@ export const ScreenContainer: FC<IProps> = ({
   );
 
   const Container = scrollable ? (
-    <TouchableWithoutFeedback
+    <TouchableOpacity
+      activeOpacity={1}
       style={styles.container}
       onPress={() => Keyboard.dismiss()}>
       <KeyboardAwareScrollView keyboardShouldPersistTaps={'handled'}>
         {showHeader && HeaderContent}
         <Content {...containerProps}>{children}</Content>
       </KeyboardAwareScrollView>
-    </TouchableWithoutFeedback>
+    </TouchableOpacity>
   ) : (
     <Content {...containerProps}>
-      <TouchableWithoutFeedback
+      <TouchableOpacity
+        activeOpacity={1}
         style={styles.container}
-        onPress={() => Keyboard.dismiss()}>
+        onPress={() => {
+          console.log('coming here$$$$$');
+          Keyboard.dismiss();
+        }}>
         <>
           {showHeader && HeaderContent}
           {children}
         </>
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
     </Content>
   );
 

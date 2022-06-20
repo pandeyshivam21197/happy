@@ -4,9 +4,18 @@
     "like": "Like",
     "chat": "Chat"
   },
-  "happy": "Happy",
-  "datingBecomesEasy": "Dating Becomes Easy!",
-  "termsAndCondition": "By singing up, you agree to our Terms. See how we use use your data in our Privacy Policy. We never post on Facebook.",
-  "whatsYourNumber": "What's your number?",
-  "protectCommunity": "We protect our community by making sure everyone on Happy is real."
+  "common": {
+    "happy": "Happy"
+  },
+  "loginOptionScreen": {
+    "datingBecomesEasy": "Dating Becomes Easy!",
+    "termsAndCondition": "By singing up, you agree to our Terms. See how we use use your data in our Privacy Policy. We never post on Facebook.",
+    "useMobileNumber": "Use mobile number"
+  },
+  "mobileNumberScreen": {
+    "protectCommunity": "We protect our community by making sure everyone on Happy is real.",
+    "whatsYourNumber": "What's your number?",
+    "weNeverShareWithAnyone": "We never share this with anyone and it won't be on your profile",
+    "phoneNumber": "Phone number"
+  }
 }

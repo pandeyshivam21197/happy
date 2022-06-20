@@ -8,12 +8,12 @@ import {
   Button,
   Paragraph,
 } from '@happy/common/src/components';
-import {withTranslation} from 'react-i18next';
-import lang from '@happy/common/src/assets/languages';
+import {useTranslation} from 'react-i18next';
 import {Text} from '@happy/common/src/components/atoms/Text/text';
 import {NavigationScreenProps} from '../../navigation/interfaces';
 import {AuthNavigatorParamList} from '../../navigation/guestNavigator/AuthStackNavigator';
-import {NavigationKeys} from '../../navigation/constants';
+import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
+import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 
 type Props = NavigationScreenProps<
   AuthNavigatorParamList,
@@ -25,6 +25,8 @@ const LoginOptionsScreen: FC<Props> = ({navigation, route}) => {
     navigation.navigate(NavigationKeys.mobileNumberScreen);
   };
 
+  const {t} = useTranslation(NamespacesKeys.loginOptionScreen);
+
   return (
     <ScreenContainer
       enableBack={false}
@@ -34,25 +36,25 @@ const LoginOptionsScreen: FC<Props> = ({navigation, route}) => {
         <View style={styles.headingContainer}>
           <View style={styles.logoContainer}>
             <Icon name={icons.chat} size={30} style={styles.logo} />
-            <Title fontWeight="bold">{lang.happy}</Title>
+            <Title fontWeight="bold">{t('common:happy')}</Title>
           </View>
           <Text
             style={styles.datingBecomeEasy}
             customFont={{fontSize: 30, lineHeight: 34}}
             fontWeight="bold">
-            {lang.datingBecomesEasy}
+            {t('datingBecomesEasy')}
           </Text>
         </View>
         <View>
           <Button
-            buttonText="Use mobile number"
+            buttonText={t('useMobileNumber')}
             buttonType="primary"
             fontWeight="bold"
             textType="subHeading"
             onPress={onUseMobileNumber}
           />
           <Paragraph style={styles.termsCondition} fontWeight="semiBold">
-            {lang.termsAndCondition}
+            {t('termsAndCondition')}
           </Paragraph>
         </View>
       </View>
@@ -84,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withTranslation()(LoginOptionsScreen);
+export default LoginOptionsScreen;
