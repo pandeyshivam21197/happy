@@ -82,7 +82,6 @@ export const ScreenContainer: FC<IProps> = ({
         activeOpacity={1}
         style={styles.container}
         onPress={() => {
-          console.log('coming here$$$$$');
           Keyboard.dismiss();
         }}>
         <>
