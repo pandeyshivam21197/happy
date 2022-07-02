@@ -11,6 +11,9 @@ export enum NavigationKeys {
   //guest
   mobileNumberScreen = 'mobileNumberNumberScreen',
   loginOptionsScreen = 'loginOptionsScreen',
+  otpScreen = 'otpScreen',
+  privacyPolicyScreen = 'privacyPolicyScreen',
+  userInfoWalkthroughScreen = 'userInfoWalkthroughScreen',
   // tab
   bottomTab = 'bottomTab',
 }

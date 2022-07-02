@@ -5,7 +5,8 @@
     "chat": "Chat"
   },
   "common": {
-    "happy": "Happy"
+    "happy": "Happy",
+    "accept": "accept"
   },
   "loginOptionScreen": {
     "datingBecomesEasy": "Dating Becomes Easy!",
@@ -17,5 +18,15 @@
     "whatsYourNumber": "What's your number?",
     "weNeverShareWithAnyone": "We never share this with anyone and it won't be on your profile",
     "phoneNumber": "Phone number"
+  },
+  "otpScreen": {
+    "verifyYourNumber": "Verify your number",
+    "enterCodeSent": "Enter the code we've sent by text to {{number}}.",
+    "resendCode": "Resend code again."
+  },
+  "privacyPolicyScreen": {
+    "careAboutPrivacy": "We care about your privacy",
+    "infoFromDevice": "Along with our partners we store and process info from your device to provide feature in the app and improve marketing campaigns.",
+    "changePrivacySetting": "You can always make changes or opt out in your privacy settings. Find out more in our privacy policy"
   }
 }

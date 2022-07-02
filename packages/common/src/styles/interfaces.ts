@@ -83,6 +83,7 @@ export interface IButton {
   light: IButtonType;
   primaryLight: IButtonType;
   secondaryLight: IButtonType;
+  transparent: IButtonType;
 }
 
 interface ITheme {
@@ -99,6 +100,7 @@ export type ButtonTypes =
   | "disable"
   | "light"
   | "primaryLight"
+  | "transparent"
   | "secondaryLight";
 export type TextColorTypes =
   | "titleTextColor"

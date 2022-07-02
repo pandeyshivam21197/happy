@@ -15,7 +15,8 @@
       "**/react-native-reanimated-carousel",
       "**/react-native-reanimated",
       "**/react-native-gesture-handler",
-      "**/react-native-keyboard-aware-scroll-view"
+      "**/react-native-keyboard-aware-scroll-view",
+      "**/react-native-pager-view"
     ]
   },
   "scripts": {

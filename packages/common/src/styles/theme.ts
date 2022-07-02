@@ -92,6 +92,12 @@ const theme: ITheme = {
       icon: "#337CCE",
       border: "#DFE2EB",
     },
+    transparent: {
+      text: "#1978C8",
+      background: "transparent",
+      icon: "#337CCE",
+      border: "#EAF0FF",
+    },
     primaryLight: {
       text: "#337CCE",
       background: "#EAF0FF",

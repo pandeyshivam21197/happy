@@ -5,6 +5,8 @@ import {
   Title,
   TextInput,
   Paragraph,
+  Icon,
+  icons,
 } from '@happy/common/src/components';
 import CountryPicker, {
   CountryCode,
@@ -34,6 +36,10 @@ const SignUpScreen: FC<Props> = ({navigation, route}) => {
   const onSelect = (country: Country) => {
     setCountryCode(country.cca2);
     setCountry(country);
+  };
+
+  const onMobileSubmit = () => {
+    navigation.navigate(NavigationKeys.otpScreen);
   };
 
   return (
@@ -70,10 +76,11 @@ const SignUpScreen: FC<Props> = ({navigation, route}) => {
             />
           </View>
         </View>
-        <View>
-          <Paragraph fontWeight="semiBold">
+        <View style={styles.shareWithContainer}>
+          <Paragraph style={styles.shareWithText} fontWeight="semiBold">
             {t('weNeverShareWithAnyone')}
           </Paragraph>
+          <Icon onPress={onMobileSubmit} name={icons.rightArrow} size={40} />
         </View>
       </View>
     </ScreenContainer>
@@ -107,6 +114,14 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginRight: 8,
   },
+  shareWithContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  shareWithText: {
+    flex: 1,
+  },
 });
 
-export default withTranslation()(SignUpScreen);
+export default React.memo(SignUpScreen);

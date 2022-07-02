@@ -4,6 +4,8 @@ import {
   ActivityIndicator,
   StyleSheet,
   View,
+  StyleProp,
+  ViewStyle,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import {
@@ -32,6 +34,7 @@ interface IButtonProps {
   onPress: () => void;
   fontWeight?: FontWeightType;
   textType?: ButtonTextTypes;
+  style?: StyleProp<ViewStyle>;
 }
 
 const buttonTypeText = {
@@ -49,6 +52,7 @@ export const Button: FC<IButtonProps> = (props) => {
     onPress,
     fontWeight = "medium",
     textType = "paragraph",
+    style = {},
   } = props;
   const [loading, setLoading] = useState(false);
 
@@ -73,7 +77,7 @@ export const Button: FC<IButtonProps> = (props) => {
 
   return (
     <TouchableOpacity onPress={onButtonPress} disabled={loading}>
-      <Container style={styles.container} {...containerProps}>
+      <Container style={[styles.container, style]} {...containerProps}>
         {loading ? (
           <ActivityIndicator color={theme.palette.neutral.white} />
         ) : (

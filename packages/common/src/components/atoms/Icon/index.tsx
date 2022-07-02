@@ -11,6 +11,9 @@ export const icons = {
   location: "location",
   folder: "folder",
   search: "search",
+  rightArrow: "right-arrow",
+  lock: "lock",
+  eye: "eye",
 };
 
 export const Icon = createIconSetFromIcoMoon(icoMoonConfig);

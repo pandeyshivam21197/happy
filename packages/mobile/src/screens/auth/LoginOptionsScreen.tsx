@@ -65,6 +65,7 @@ const LoginOptionsScreen: FC<Props> = ({navigation, route}) => {
 const styles = StyleSheet.create({
   logoContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   logo: {
     marginRight: 8,
