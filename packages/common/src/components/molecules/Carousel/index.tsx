@@ -1,50 +1,71 @@
-import * as React from "react";
-import RNCarousel from "react-native-reanimated-carousel";
+import React, { FC } from "react";
+import RNCarousel, {
+  ICarouselInstance,
+} from "react-native-reanimated-carousel";
 import { StyleSheet } from "react-native";
-import Animated from "react-native-reanimated";
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
-import { Card } from "@happy/common/src/components/molecules/Card";
+import { CarouselRenderItem } from "react-native-reanimated-carousel/lib/typescript/types";
 
-function Carousel() {
-  const baseOptions = {
-    vertical: false,
-    width: DimensionUtils.width,
-    height: DimensionUtils.height,
-  } as const;
+interface IBaseOption {
+  vertical: boolean;
+  width: number;
+  height: number;
+}
 
-  const renderCard = ({
-    index,
-    animationValue,
-  }: {
-    index: number;
-    animationValue: Animated.SharedValue<number>;
-  }) => {
-    return <Card animationValue={animationValue} key={index} index={index} />;
-  };
+const defaultBaseOption = {
+  vertical: false,
+  width: DimensionUtils.width,
+  height: DimensionUtils.height,
+};
+
+interface IProps {
+  baseOption?: IBaseOption;
+  enableSnap?: boolean;
+  enableAnimation?: boolean;
+  onSnapToItem?: (index: number) => void;
+  data: any[];
+  renderItem: CarouselRenderItem<any>;
+}
+
+const Carousel = React.forwardRef(function carousel(props: IProps, ref) {
+  const {
+    baseOption = defaultBaseOption,
+    enableSnap = true,
+    onSnapToItem,
+    enableAnimation = true,
+    data,
+    renderItem,
+  } = props;
+
+  const animationProp = enableAnimation
+    ? {
+        withAnimation: {
+          type: "spring",
+          config: {
+            damping: 15,
+          },
+        },
+      }
+    : {};
+
+  const refProps = ref ? { ref: ref } : {};
 
   return (
     <RNCarousel
-      {...baseOptions}
+      {...baseOption}
+      {...animationProp}
+      {...refProps}
       loop={false}
       autoPlay={false}
       style={styles.container}
-      withAnimation={{
-        type: "spring",
-        config: {
-          damping: 15,
-        },
-      }}
-      enabled
-      data={[1, 2, 3]}
-      renderItem={renderCard}
-      onSnapToItem={() => {
-        //TODO: Shivam write api logic
-      }}
-      enableSnap
+      enabled={enableSnap}
+      data={data}
+      renderItem={renderItem}
+      onSnapToItem={onSnapToItem}
       scrollAnimationDuration={200}
     />
   );
-}
+});
 
 const styles = StyleSheet.create({
   container: {

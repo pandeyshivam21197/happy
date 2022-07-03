@@ -28,5 +28,10 @@
     "careAboutPrivacy": "We care about your privacy",
     "infoFromDevice": "Along with our partners we store and process info from your device to provide feature in the app and improve marketing campaigns.",
     "changePrivacySetting": "You can always make changes or opt out in your privacy settings. Find out more in our privacy policy"
+  },
+  "userInfoWalkthrough": {
+    "whatsFirstName": "What's your first name ?",
+    "wontAbleToChangeLater": "You won't be able to change this later.",
+    "addFirstName": "Add your first name"
   }
 }

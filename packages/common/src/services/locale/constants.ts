@@ -11,6 +11,7 @@ export enum NamespacesKeys {
   mobileNumberScreen = "mobileNumberScreen",
   otpScreen = "otpScreen",
   privacyPolicyScreen = "privacyPolicyScreen",
+  userInfoWalkthroughScreen = "userInfoWalkthrough",
 }
 
 export const namespaces = Object.values(NamespacesKeys);
