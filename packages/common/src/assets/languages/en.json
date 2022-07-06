@@ -32,6 +32,12 @@
   "userInfoWalkthrough": {
     "whatsFirstName": "What's your first name ?",
     "wontAbleToChangeLater": "You won't be able to change this later.",
-    "addFirstName": "Add your first name"
+    "addFirstName": "Add your first name",
+    "shownOnProfile": "This will be shown on your profile.",
+    "addFirst2Photos": "Add your first 2 photos",
+    "2PhotoBetterThan1": "2 photos are better than 1, it's dating science. You can change these later.",
+    "whensYourBirthday": "When's your birthday ?",
+    "showAgeToPotentialMatches": "We show your age to potential matches, not your birthday.",
+    "dd/mm/yyyy": "DD/MM/YYYY"
   }
 }

@@ -46,7 +46,9 @@ const SignUpScreen: FC<Props> = ({navigation, route}) => {
     <ScreenContainer showHeader={true} goBack={navigation.goBack}>
       <View style={styles.screen}>
         <View>
-          <Title fontWeight="bold">{t('whatsYourNumber')}</Title>
+          <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
+            {t('whatsYourNumber')}
+          </Title>
           <SubHeading style={styles.protectCommunity} fontWeight="semiBold">
             {t('protectCommunity')}
           </SubHeading>
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   screen: {
-    padding: 16,
+    padding: 24,
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -121,6 +123,7 @@ const styles = StyleSheet.create({
   },
   shareWithText: {
     flex: 1,
+    marginRight: 8,
   },
 });
 

@@ -1,25 +1,73 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {ScreenContainer} from '@happy/common/src/components';
+import {useTranslation} from 'react-i18next';
+import {
+  Icon,
+  icons,
+  Paragraph,
+  SubHeading,
+  Title,
+} from '@happy/common/src/components';
 import {IUserTabProps} from './constants';
+import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 
 const UserImageTab: FC<IUserTabProps> = props => {
+  const {onNext} = props;
+
+  const {t} = useTranslation(NamespacesKeys.userInfoWalkthroughScreen);
+
+  const [userImages, setUserImages] = useState([]);
+
+  const showNextButton = !!userImages;
+
+  const styles = getStyles(showNextButton);
+
   return (
-    <ScreenContainer
-      enableBack={false}
-      showHeader={false}
-      style={styles.screen}>
-      <View style={styles.container}></View>
-    </ScreenContainer>
+    <View style={styles.content}>
+      <View>
+        <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
+          {t('addFirst2Photos')}
+        </Title>
+        <SubHeading style={styles.wontChangeLater} fontWeight="semiBold">
+          {t('2PhotoBetterThan1')}
+        </SubHeading>
+      </View>
+      <View style={[styles.shownContainer]}>
+        <View style={styles.shownContainer}>
+          <Icon style={styles.eyeIcon} name={icons.eye} size={20} />
+          <Paragraph>{t('shownOnProfile')}</Paragraph>
+        </View>
+        <Icon
+          {...(showNextButton ? {onPress: () => onNext({userImages})} : {})}
+          style={styles.nextIcon}
+          name={icons.rightArrow}
+          size={40}
+        />
+      </View>
+    </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {flex: 1, justifyContent: 'space-between', alignItems: 'center'},
-  screen: {
-    paddingVertical: 100,
-    paddingHorizontal: 16,
-  },
-});
+const getStyles = (showNextButton: boolean) =>
+  StyleSheet.create({
+    shownContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    eyeIcon: {
+      marginRight: 8,
+    },
+    nextIcon: {
+      opacity: showNextButton ? 1 : 0.5,
+    },
+    content: {
+      flex: 1,
+      padding: 24,
+    },
+    wontChangeLater: {
+      marginTop: 12,
+    },
+  });
 
 export default UserImageTab;

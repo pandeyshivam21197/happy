@@ -41,27 +41,16 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
     return <Tab onNext={snapToNextTab} />;
   };
 
-  console.log(userInfoData, 'userInfoData$$$');
-
   return (
     <ScreenContainer showHeader={true} goBack={navigation.goBack}>
-      <View style={styles.screen}>
-        <Carousel
-          data={userInfoTabOrder}
-          renderItem={renderUserInfoTab}
-          enableSnap={false}
-          ref={carouselRef}
-        />
-      </View>
+      <Carousel
+        data={userInfoTabOrder}
+        renderItem={renderUserInfoTab}
+        enableSnap={false}
+        ref={carouselRef}
+      />
     </ScreenContainer>
   );
-};
-
-const styles = {
-  screen: {
-    padding: 24,
-    flex: 1,
-  },
 };
 
 export default React.memo(UserInfoWalkthroughScreen);

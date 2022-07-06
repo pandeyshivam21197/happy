@@ -37,7 +37,7 @@ const OtpScreen: FC<Props> = ({navigation}) => {
     <ScreenContainer showHeader={true} goBack={navigation.goBack}>
       <View style={styles.screen}>
         <View>
-          <Title customFont={{fontSize: 32, lineHeight: 32}} fontWeight="bold">
+          <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
             {t('verifyYourNumber')}
           </Title>
           <Heading style={styles.codeSent} fontWeight="semiBold">
@@ -70,7 +70,7 @@ const OtpScreen: FC<Props> = ({navigation}) => {
           {...(showNextButton ? {onPress: onNext} : {})}
           style={styles.arrowIcon}
           name={icons.rightArrow}
-          size={40}
+          size={45}
         />
       </View>
     </ScreenContainer>
@@ -80,7 +80,7 @@ const OtpScreen: FC<Props> = ({navigation}) => {
 const getStyles = (showNextButton: boolean) =>
   StyleSheet.create({
     screen: {
-      padding: 16,
+      padding: 24,
       flex: 1,
       flexDirection: 'column',
       justifyContent: 'space-between',
