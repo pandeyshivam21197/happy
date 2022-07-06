@@ -16,7 +16,10 @@
       "**/react-native-reanimated",
       "**/react-native-gesture-handler",
       "**/react-native-keyboard-aware-scroll-view",
-      "**/react-native-pager-view"
+      "**/react-native-pager-view",
+      "**/@react-native-community/**",
+      "**/react-native-otp-input",
+      "**/react-native-country-picker-modal"
     ]
   },
   "scripts": {

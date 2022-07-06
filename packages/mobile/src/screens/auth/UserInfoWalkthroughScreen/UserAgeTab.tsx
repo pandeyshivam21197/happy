@@ -19,7 +19,7 @@ const UserAgeTab: FC<IUserTabProps> = props => {
 
   const {t} = useTranslation(NamespacesKeys.userInfoWalkthroughScreen);
 
-  const [userDOB, setUserDOB] = useState('');
+  const [userDOB, setUserDOB] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const showNextButton = userDOB.length > 0;

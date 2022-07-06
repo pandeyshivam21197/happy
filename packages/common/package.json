@@ -12,7 +12,6 @@
     "axios": "^0.26.1",
     "i18next": "^21.6.16",
     "react-i18next": "^11.16.6",
-    "react-native-country-picker-modal": "^2.0.0",
     "react-native-gesture-handler": "^2.4.1",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-pager-view": "^5.4.15",
