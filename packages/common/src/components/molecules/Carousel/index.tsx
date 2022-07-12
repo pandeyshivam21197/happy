@@ -25,6 +25,7 @@ interface IProps {
   onSnapToItem?: (index: number) => void;
   data: any[];
   renderItem: CarouselRenderItem<any>;
+  animationType: "spring" | "timing";
 }
 
 const Carousel = React.forwardRef(function carousel(props: IProps, ref) {
@@ -35,12 +36,13 @@ const Carousel = React.forwardRef(function carousel(props: IProps, ref) {
     enableAnimation = true,
     data,
     renderItem,
+    animationType = "spring",
   } = props;
 
   const animationProp = enableAnimation
     ? {
         withAnimation: {
-          type: "spring",
+          type: animationType,
           config: {
             damping: 15,
           },

@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Modal, StyleSheet, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {
   Button,
@@ -13,16 +13,17 @@ import {IUserTabProps} from './constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 import {TextInput} from '@happy/common/src/components/index';
 import {DateTimePicker} from '@happy/mobile/src/components';
+import moment from 'moment';
 
 const UserAgeTab: FC<IUserTabProps> = props => {
   const {onNext} = props;
 
   const {t} = useTranslation(NamespacesKeys.userInfoWalkthroughScreen);
 
-  const [userDOB, setUserDOB] = useState(new Date());
+  const [userDOB, setUserDOB] = useState<Date | null>(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
 
-  const showNextButton = userDOB.length > 0;
+  const showNextButton = !!userDOB;
 
   const styles = getStyles(showNextButton);
 
@@ -33,9 +34,12 @@ const UserAgeTab: FC<IUserTabProps> = props => {
           {t('whensYourBirthday')}
         </Title>
         <Button
-          style={{padding: 10}}
-          buttonText={t('dd/mm/yyyy')}
+          style={styles.dobInput}
+          buttonText={
+            userDOB ? moment(userDOB).format('DD/MM/YYYY') : t('dd/mm/yyyy')
+          }
           buttonType="primary"
+          textType="subHeading"
           onPress={() => setShowDatePicker(true)}
         />
       </View>
@@ -48,7 +52,7 @@ const UserAgeTab: FC<IUserTabProps> = props => {
         </View>
         <Icon
           {...(showNextButton
-            ? {onPress: () => onNext({userAge: userDOB})}
+            ? {onPress: () => onNext({userAge: userDOB.getTime()})}
             : {})}
           style={styles.nextIcon}
           name={icons.rightArrow}
@@ -58,7 +62,10 @@ const UserAgeTab: FC<IUserTabProps> = props => {
       <DateTimePicker
         value={userDOB}
         visible={showDatePicker}
-        onChange={DOB => setUserDOB(DOB)}
+        onChange={DOB => {
+          setUserDOB(DOB);
+          setShowDatePicker(false);
+        }}
         onClose={() => setShowDatePicker(false)}
         mode="date"
       />
@@ -89,6 +96,10 @@ const getStyles = (showNextButton: boolean) =>
     },
     flex: {
       flex: 1,
+    },
+    dobInput: {
+      borderRadius: 4,
+      marginVertical: 24,
     },
   });
 

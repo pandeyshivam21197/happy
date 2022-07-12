@@ -19,6 +19,7 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
   const {t} = useTranslation(NamespacesKeys.privacyPolicyScreen);
 
   const [userInfoData, setUserInfoData] = useState({});
+  const [carouselIndex, setCarouselIndex] = useState(0);
 
   let carouselRef = React.createRef<ICarouselInstance>();
 
@@ -41,13 +42,27 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
     return <Tab onNext={snapToNextTab} />;
   };
 
+  const onGoBack = () => {
+    if (carouselIndex > 0) {
+      if (carouselRef) {
+        carouselRef?.current?.prev();
+      }
+    } else {
+      navigation.goBack();
+    }
+  };
+
   return (
-    <ScreenContainer showHeader={true} goBack={navigation.goBack}>
+    <ScreenContainer showHeader={true} goBack={onGoBack}>
       <Carousel
         data={userInfoTabOrder}
         renderItem={renderUserInfoTab}
         enableSnap={false}
         ref={carouselRef}
+        animationType="timing"
+        onSnapToItem={index => {
+          setCarouselIndex(index);
+        }}
       />
     </ScreenContainer>
   );
