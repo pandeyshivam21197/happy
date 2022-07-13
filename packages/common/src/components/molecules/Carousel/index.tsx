@@ -1,7 +1,5 @@
-import React, { FC } from "react";
-import RNCarousel, {
-  ICarouselInstance,
-} from "react-native-reanimated-carousel";
+import React from "react";
+import RNCarousel from "react-native-reanimated-carousel";
 import { StyleSheet } from "react-native";
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
 import { CarouselRenderItem } from "react-native-reanimated-carousel/lib/typescript/types";

@@ -5,7 +5,6 @@ import {NavigationScreenProps} from '@happy/mobile/src//navigation/interfaces';
 import {AuthNavigatorParamList} from '../../../navigation/guestNavigator/AuthStackNavigator';
 import {NavigationKeys} from '../../../navigation/constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
-import {View} from 'react-native';
 import {CarouselRenderItemInfo} from 'react-native-reanimated-carousel/lib/typescript/types';
 import {IUserTabInfo, userInfoTabOrder} from './constants';
 import {ICarouselInstance} from 'react-native-reanimated-carousel';

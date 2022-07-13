@@ -11,7 +11,6 @@ import {
 } from '@happy/common/src/components';
 import {IUserTabProps} from './constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
-import {TextInput} from '@happy/common/src/components/index';
 import {DateTimePicker} from '@happy/mobile/src/components';
 import moment from 'moment';
 
