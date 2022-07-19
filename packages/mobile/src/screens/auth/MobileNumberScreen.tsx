@@ -12,7 +12,6 @@ import CountryPicker, {
   CountryCode,
   Country,
 } from 'react-native-country-picker-modal';
-import {withTranslation} from 'react-i18next';
 import {useTranslation} from 'react-i18next';
 import {NavigationScreenProps} from '@happy/mobile/src//navigation/interfaces';
 import {AuthNavigatorParamList} from '../../navigation/guestNavigator/AuthStackNavigator';
@@ -82,7 +81,12 @@ const SignUpScreen: FC<Props> = ({navigation, route}) => {
           <Paragraph style={styles.shareWithText} fontWeight="semiBold">
             {t('weNeverShareWithAnyone')}
           </Paragraph>
-          <Icon onPress={onMobileSubmit} name={icons.rightArrow} size={40} />
+          <Icon
+            onPress={onMobileSubmit}
+            color={theme.palette.neutral.black}
+            name={icons.rightArrow}
+            size={40}
+          />
         </View>
       </View>
     </ScreenContainer>
