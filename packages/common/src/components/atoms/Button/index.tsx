@@ -1,4 +1,4 @@
-import React, { useState, FC } from "react";
+import React, { useState, FC, Children } from "react";
 import {
   TouchableOpacity,
   ActivityIndicator,
@@ -29,7 +29,7 @@ type ButtonTextTypes =
   | "subHeading";
 
 interface IButtonProps {
-  buttonText: string;
+  buttonText?: string;
   buttonType: ButtonTypes;
   onPress: () => void;
   fontWeight?: FontWeightType;
@@ -53,6 +53,7 @@ export const Button: FC<IButtonProps> = (props) => {
     fontWeight = "medium",
     textType = "paragraph",
     style = {},
+    children,
   } = props;
   const [loading, setLoading] = useState(false);
 
@@ -77,13 +78,18 @@ export const Button: FC<IButtonProps> = (props) => {
 
   return (
     <TouchableOpacity onPress={onButtonPress} disabled={loading}>
-      <Container style={[styles.container, style]} {...containerProps}>
+      <Container
+        style={children ? style : [styles.container, style]}
+        {...containerProps}
+      >
         {loading ? (
           <ActivityIndicator color={theme.palette.neutral.white} />
         ) : (
-          <TextContainer fontWeight={fontWeight} textColor={text}>
-            {buttonText}
-          </TextContainer>
+          children || (
+            <TextContainer fontWeight={fontWeight} textColor={text}>
+              {buttonText}
+            </TextContainer>
+          )
         )}
       </Container>
     </TouchableOpacity>

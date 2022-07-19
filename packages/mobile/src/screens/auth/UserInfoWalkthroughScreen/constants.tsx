@@ -1,5 +1,4 @@
 import UserAgeTab from './UserAgeTab';
-import UserDatingModeTab from './UserDatingModeTab';
 import UserGenderTab from './UserGenderTab';
 import UserImageTab from './UserImageTab';
 import UserInterestTab from './UserInterestTab';
@@ -12,7 +11,6 @@ export enum UserInfoTabs {
   userImagesTab = 'userImagesTab',
   userAgeTab = 'userAgeTab',
   userGenderTab = 'userGenderTab',
-  userDatingModeTab = 'userDatingModeTab',
   userOppositGenderTab = 'userOppositGenderTab',
   userLookingForTab = 'userLookingForTab',
   userInteresetTab = 'userInteresetTab',
@@ -32,7 +30,6 @@ export const userInfoTabOrder: IUserTabInfo[] = [
   {tabName: UserInfoTabs.userImagesTab, tab: UserImageTab},
   {tabName: UserInfoTabs.userAgeTab, tab: UserAgeTab},
   {tabName: UserInfoTabs.userGenderTab, tab: UserGenderTab},
-  {tabName: UserInfoTabs.userDatingModeTab, tab: UserDatingModeTab},
   {tabName: UserInfoTabs.userOppositGenderTab, tab: UserOppositeGenderTab},
   {tabName: UserInfoTabs.userLookingForTab, tab: UserLookingForTab},
   {tabName: UserInfoTabs.userInteresetTab, tab: UserInterestTab},

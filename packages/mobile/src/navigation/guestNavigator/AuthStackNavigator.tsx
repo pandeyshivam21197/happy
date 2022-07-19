@@ -20,7 +20,9 @@ const AuthStack = createNativeStackNavigator<AuthNavigatorParamList>();
 //login, signing and sign up
 export const AuthStackNavigator = () => {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator
+    // initialRouteName={NavigationKeys.userInfoWalkthroughScreen}
+    >
       <AuthStack.Screen
         name={NavigationKeys.loginOptionsScreen}
         component={LoginOptionsScreen}

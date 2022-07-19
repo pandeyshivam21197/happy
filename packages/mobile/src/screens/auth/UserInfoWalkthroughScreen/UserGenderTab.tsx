@@ -1,42 +1,66 @@
 import React, {FC, useState} from 'react';
-import {Modal, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {
   Button,
   Icon,
   icons,
   Paragraph,
+  SubHeading,
   Title,
 } from '@happy/common/src/components';
 import {IUserTabProps} from './constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
+import theme from '@happy/common/src/styles/theme';
+
+interface IGenderItem {
+  gender: string;
+}
+
+const genders: IGenderItem[] = [
+  {gender: 'Man'},
+  {gender: 'Women'},
+  {gender: 'NonBinary'},
+];
 
 const UserGenderTab: FC<IUserTabProps> = props => {
   const {onNext} = props;
 
   const {t} = useTranslation(NamespacesKeys.userInfoWalkthroughScreen);
 
-  const [gender, setGender] = useState('');
+  const [gender, setGender] = useState<IGenderItem | null>(null);
 
   const showNextButton = !!gender;
 
   const styles = getStyles(showNextButton);
 
-  return (
-    <View style={styles.content}>
-      <View>
-        <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
-          {t('whatsYourGender')}
-        </Title>
-        <Paragraph style={styles.flex}>{t('updateThisLater')}</Paragraph>
-      </View>
+  const renderGender = (item: IGenderItem) => {
+    const isSelected = gender === item;
+
+    return (
       <Button
         style={styles.dobInput}
-        buttonText={''}
-        buttonType="primary"
-        textType="subHeading"
-        onPress={() => setGender('male')}
-      />
+        onPress={() => setGender(item)}
+        buttonType="primary">
+        <SubHeading>{item.gender}</SubHeading>
+        {isSelected ? (
+          <Icon name={icons.circleTickFilled} size={24} />
+        ) : (
+          <View style={styles.unselectedGender} />
+        )}
+      </Button>
+    );
+  };
+
+  return (
+    <View style={styles.content}>
+      <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
+        {t('whatsYourGender')}
+      </Title>
+      <Paragraph>{t('pickWhichDescribeYou')}</Paragraph>
+      {genders.map(gender => {
+        return renderGender(gender);
+      })}
       <View style={[styles.shownContainer]}>
         <View style={[styles.shownContainer, styles.flex]}>
           <Icon style={styles.eyeIcon} name={icons.eye} size={20} />
@@ -81,7 +105,18 @@ const getStyles = (showNextButton: boolean) =>
     },
     dobInput: {
       borderRadius: 4,
-      marginVertical: 24,
+      marginVertical: 8,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      backgroundColor: theme.palette.neutral.white,
+      padding: 16,
+    },
+    unselectedGender: {
+      width: 24,
+      height: 24,
+      borderRadius: 12,
+      borderWidth: 2,
+      borderColor: theme.palette.neutral.black,
     },
   });
 

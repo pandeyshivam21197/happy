@@ -14,6 +14,8 @@ export const icons = {
   rightArrow: "right-arrow",
   lock: "lock",
   eye: "eye",
+  circleTickFilled: "circle-tick-filled",
+  squareTickFilled: "square-tick-filled",
 };
 
 export const Icon = createIconSetFromIcoMoon(icoMoonConfig);

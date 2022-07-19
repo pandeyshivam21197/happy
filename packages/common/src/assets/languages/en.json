@@ -41,6 +41,12 @@
     "dd/mm/yyyy": "DD/MM/YYYY",
     "whatsYourGender": "What's your gender?",
     "pickBestGender": "Pick which best describe you. Then add more about your gender.",
-    "updateThisLater": "You can always update this later. We got you."
+    "updateThisLater": "You can always update this later. We got you.",
+    "whoWouldYouLikeToDate": "Who Would you like to date ?",
+    "chooseMoreThanOneAnswer": "You can choose more than one answer and and change any time.",
+    "pickWhichDescribeYou": "Pick which describe you best.",
+    "hopingToFind": "What are you hoping to find?",
+    "honestyHelpsYourAndEveryone": "Honesty helps you and everyone on Happy to find what you are looking for.",
+    "shownOnProfileUnlessUnsure": "This will be shown on your profile unless you're unsure"
   }
 }
