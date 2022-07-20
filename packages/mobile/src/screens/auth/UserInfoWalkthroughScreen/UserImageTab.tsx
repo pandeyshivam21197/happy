@@ -10,6 +10,7 @@ import {
 } from '@happy/common/src/components';
 import {IUserTabProps} from './constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
+import theme from '@happy/common/src/styles/theme';
 
 const UserImageTab: FC<IUserTabProps> = props => {
   const {onNext} = props;
@@ -41,6 +42,7 @@ const UserImageTab: FC<IUserTabProps> = props => {
           {...(showNextButton ? {onPress: () => onNext({userImages})} : {})}
           style={styles.nextIcon}
           name={icons.rightArrow}
+          color={theme.palette.neutral.black}
           size={40}
         />
       </View>

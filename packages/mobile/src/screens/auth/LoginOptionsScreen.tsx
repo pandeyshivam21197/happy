@@ -14,6 +14,7 @@ import {NavigationScreenProps} from '../../navigation/interfaces';
 import {AuthNavigatorParamList} from '../../navigation/guestNavigator/AuthStackNavigator';
 import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
+import theme from '@happy/common/src/styles/theme';
 
 type Props = NavigationScreenProps<
   AuthNavigatorParamList,
@@ -35,7 +36,12 @@ const LoginOptionsScreen: FC<Props> = ({navigation, route}) => {
       <View style={styles.container}>
         <View style={styles.headingContainer}>
           <View style={styles.logoContainer}>
-            <Icon name={icons.chat} size={30} style={styles.logo} />
+            <Icon
+              name={icons.chat}
+              size={30}
+              style={styles.logo}
+              color={theme.palette.neutral.black}
+            />
             <Title fontWeight="bold">{t('common:happy')}</Title>
           </View>
           <Text

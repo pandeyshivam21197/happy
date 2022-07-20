@@ -44,7 +44,11 @@ const UserGenderTab: FC<IUserTabProps> = props => {
         buttonType="primary">
         <SubHeading>{item.gender}</SubHeading>
         {isSelected ? (
-          <Icon name={icons.circleTickFilled} size={24} />
+          <Icon
+            name={icons.circleTickFilled}
+            size={24}
+            color={theme.palette.neutral.black}
+          />
         ) : (
           <View style={styles.unselectedGender} />
         )}
@@ -72,6 +76,7 @@ const UserGenderTab: FC<IUserTabProps> = props => {
           {...(showNextButton ? {onPress: () => onNext({gender})} : {})}
           style={styles.nextIcon}
           name={icons.rightArrow}
+          color={theme.palette.neutral.black}
           size={40}
         />
       </View>

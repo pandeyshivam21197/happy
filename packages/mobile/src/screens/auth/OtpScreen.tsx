@@ -70,6 +70,7 @@ const OtpScreen: FC<Props> = ({navigation}) => {
           {...(showNextButton ? {onPress: onNext} : {})}
           style={styles.arrowIcon}
           name={icons.rightArrow}
+          color={theme.palette.neutral.black}
           size={45}
         />
       </View>

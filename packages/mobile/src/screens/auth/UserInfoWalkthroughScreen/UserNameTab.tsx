@@ -11,6 +11,7 @@ import {
 import {IUserTabProps} from './constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 import {TextInput} from '@happy/common/src/components/index';
+import theme from '@happy/common/src/styles/theme';
 
 const UserNameTab: FC<IUserTabProps> = props => {
   const {onNext} = props;
@@ -52,6 +53,7 @@ const UserNameTab: FC<IUserTabProps> = props => {
           {...(showNextButton ? {onPress: () => onNext({userName})} : {})}
           style={styles.nextIcon}
           name={icons.rightArrow}
+          color={theme.palette.neutral.black}
           size={40}
         />
       </View>

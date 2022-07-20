@@ -4,6 +4,7 @@ import RNDatetimePicker from '@react-native-community/datetimepicker';
 import {Button} from '@happy/common/src/components';
 import Modal from '@happy/mobile/src/components/atoms/Modal';
 import theme from '@happy/common/src/styles/theme';
+import {isAndroid, isIOS} from '@happy/common/src/utils/PlatformUtils';
 
 interface IProps {
   value: Date | null;
@@ -33,42 +34,60 @@ export const DateTimePicker: FC<IProps> = props => {
   const [pickerValue, setPickerValue] = useState(value || new Date());
 
   return (
-    <Modal visible={visible} onClose={onClose}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
-        <Button
-          buttonText="Done"
-          buttonType="transparent"
-          onPress={() => onChange(pickerValue)}
-          fontWeight="semiBold"
-          textType="subHeading"
+    <>
+      {isAndroid() && visible ? (
+        <RNDatetimePicker
+          testID="dateTimePicker"
+          value={pickerValue}
+          mode={mode}
+          is24Hour={is24Hour}
+          display={isIOS() ? 'spinner' : 'default'}
+          onChange={(e, date) => {
+            date && onChange(date);
+          }}
+          minimumDate={minimumDate}
+          maximumDate={maximumDate}
+          textColor={theme.palette.textColors.titleTextColor}
         />
-        <Button
-          buttonText="Cancel"
-          buttonType="transparent"
-          onPress={onClose}
-          fontWeight="semiBold"
-          textType="subHeading"
-        />
-      </View>
-      <RNDatetimePicker
-        testID="dateTimePicker"
-        value={pickerValue}
-        mode={mode}
-        is24Hour={is24Hour}
-        display={'spinner'}
-        onChange={(e, date) => {
-          console.log(date, 'date%%%%%');
-          date && setPickerValue(date);
-        }}
-        minimumDate={minimumDate}
-        maximumDate={maximumDate}
-        textColor={theme.palette.textColors.titleTextColor}
-      />
-    </Modal>
+      ) : (
+        <Modal visible={visible} onClose={onClose}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <Button
+              buttonText="Done"
+              buttonType="transparent"
+              onPress={() => onChange(pickerValue)}
+              fontWeight="semiBold"
+              textType="subHeading"
+            />
+            <Button
+              buttonText="Cancel"
+              buttonType="transparent"
+              onPress={onClose}
+              fontWeight="semiBold"
+              textType="subHeading"
+            />
+          </View>
+          <RNDatetimePicker
+            testID="dateTimePicker"
+            value={pickerValue}
+            mode={mode}
+            is24Hour={is24Hour}
+            display={isIOS() ? 'spinner' : 'default'}
+            onChange={(e, date) => {
+              console.log(date, 'date%%%%%');
+              date && setPickerValue(date);
+            }}
+            minimumDate={minimumDate}
+            maximumDate={maximumDate}
+            textColor={theme.palette.textColors.titleTextColor}
+          />
+        </Modal>
+      )}
+    </>
   );
 };
 

@@ -50,7 +50,11 @@ const UserOppositeGenderTab: FC<IUserTabProps> = props => {
         buttonType="primary">
         <SubHeading>{item.gender}</SubHeading>
         {selected ? (
-          <Icon name={icons.circleTickFilled} size={24} />
+          <Icon
+            name={icons.squareTickFilled}
+            size={24}
+            color={theme.palette.neutral.black}
+          />
         ) : (
           <View style={styles.unselectedGender} />
         )}
@@ -77,6 +81,7 @@ const UserOppositeGenderTab: FC<IUserTabProps> = props => {
             ? {onPress: () => onNext({oppositeGender: selectedOppositeGender})}
             : {})}
           style={styles.nextIcon}
+          color={theme.palette.neutral.black}
           name={icons.rightArrow}
           size={40}
         />
@@ -120,7 +125,7 @@ const getStyles = (showNextButton: boolean) =>
     unselectedGender: {
       width: 24,
       height: 24,
-      borderRadius: 12,
+      borderRadius: 4,
       borderWidth: 2,
       borderColor: theme.palette.neutral.black,
     },

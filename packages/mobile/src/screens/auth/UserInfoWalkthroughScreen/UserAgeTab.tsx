@@ -13,6 +13,7 @@ import {IUserTabProps} from './constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 import {DateTimePicker} from '@happy/mobile/src/components';
 import moment from 'moment';
+import theme from '@happy/common/src/styles/theme';
 
 const UserAgeTab: FC<IUserTabProps> = props => {
   const {onNext} = props;
@@ -55,6 +56,7 @@ const UserAgeTab: FC<IUserTabProps> = props => {
             : {})}
           style={styles.nextIcon}
           name={icons.rightArrow}
+          color={theme.palette.neutral.black}
           size={40}
         />
       </View>
@@ -66,6 +68,7 @@ const UserAgeTab: FC<IUserTabProps> = props => {
           setShowDatePicker(false);
         }}
         onClose={() => setShowDatePicker(false)}
+        maximumDate={new Date()}
         mode="date"
       />
     </View>

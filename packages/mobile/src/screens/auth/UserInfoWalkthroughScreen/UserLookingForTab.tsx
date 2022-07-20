@@ -46,7 +46,11 @@ const UserLookingForTab: FC<IUserTabProps> = props => {
         buttonType="primary">
         <SubHeading>{item.value}</SubHeading>
         {isSelected ? (
-          <Icon name={icons.circleTickFilled} size={24} />
+          <Icon
+            name={icons.circleTickFilled}
+            size={24}
+            color={theme.palette.neutral.black}
+          />
         ) : (
           <View style={styles.unselectedGender} />
         )}
@@ -74,6 +78,7 @@ const UserLookingForTab: FC<IUserTabProps> = props => {
           {...(showNextButton ? {onPress: () => onNext({connection})} : {})}
           style={styles.nextIcon}
           name={icons.rightArrow}
+          color={theme.palette.neutral.black}
           size={40}
         />
       </View>

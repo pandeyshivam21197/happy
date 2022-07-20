@@ -14,6 +14,7 @@ import {NavigationKeys} from '../../navigation/constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 import {StyleSheet, View} from 'react-native';
 import {toTitleCase} from '@happy/common/src/utils/stringUtils';
+import theme from '@happy/common/src/styles/theme';
 
 type Props = NavigationScreenProps<
   AuthNavigatorParamList,
@@ -30,7 +31,11 @@ const PrivacyPolicyScreen: FC<Props> = ({navigation}) => {
     <ScreenContainer showHeader={true} goBack={navigation.goBack}>
       <View style={styles.screen}>
         <View style={styles.lockContainer}>
-          <Icon name={icons.lock} size={40} />
+          <Icon
+            name={icons.lock}
+            size={40}
+            color={theme.palette.neutral.black}
+          />
         </View>
         <Title
           style={styles.careAboutPrivacy}
@@ -61,7 +66,6 @@ const getStyles = (showNextButton: boolean) =>
       padding: 24,
       flex: 1,
       flexDirection: 'column',
-      justifyContent: 'flex-end',
     },
     careAboutPrivacy: {
       marginTop: 32,
@@ -77,7 +81,6 @@ const getStyles = (showNextButton: boolean) =>
       width: 80,
       height: 80,
       borderRadius: 40,
-      backgroundColor: 'red',
       alignItems: 'center',
       justifyContent: 'center',
     },
