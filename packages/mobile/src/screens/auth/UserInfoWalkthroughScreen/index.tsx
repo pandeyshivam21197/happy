@@ -30,7 +30,7 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
     const snapToNextTab = (tabData: any) => {
       setUserInfoData(prevState => ({
         ...prevState,
-        [tabName]: tabData,
+        ...tabData,
       }));
 
       if (carouselRef) {
