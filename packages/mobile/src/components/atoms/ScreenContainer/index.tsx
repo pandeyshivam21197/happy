@@ -26,6 +26,7 @@ interface IProps {
   showBackIcon?: boolean;
   headerRightText?: string;
   onHeaderRightPress?: () => void;
+  enableKeyboardDismiss?: boolean;
 }
 
 export const ScreenContainer: FC<IProps> = ({
@@ -41,6 +42,7 @@ export const ScreenContainer: FC<IProps> = ({
   showBackIcon = true,
   headerRightText,
   onHeaderRightPress,
+  enableKeyboardDismiss = true,
 }) => {
   const Content = scrollable ? ScrollView : View;
 
@@ -78,17 +80,25 @@ export const ScreenContainer: FC<IProps> = ({
     </TouchableOpacity>
   ) : (
     <Content {...containerProps}>
-      <TouchableOpacity
-        activeOpacity={1}
-        style={styles.container}
-        onPress={() => {
-          Keyboard.dismiss();
-        }}>
+      {enableKeyboardDismiss ? (
+        <TouchableOpacity
+          activeOpacity={1}
+          style={styles.container}
+          onPress={() => {
+            Keyboard.dismiss();
+            console.log('coming here$$$$$');
+          }}>
+          <>
+            {showHeader && HeaderContent}
+            {children}
+          </>
+        </TouchableOpacity>
+      ) : (
         <>
           {showHeader && HeaderContent}
           {children}
         </>
-      </TouchableOpacity>
+      )}
     </Content>
   );
 

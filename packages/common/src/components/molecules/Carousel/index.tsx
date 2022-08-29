@@ -3,6 +3,7 @@ import RNCarousel from "react-native-reanimated-carousel";
 import { StyleSheet } from "react-native";
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
 import { CarouselRenderItem } from "react-native-reanimated-carousel/lib/typescript/types";
+import { PanGestureHandlerProps } from "react-native-gesture-handler";
 
 interface IBaseOption {
   vertical: boolean;
@@ -24,6 +25,7 @@ interface IProps {
   data: any[];
   renderItem: CarouselRenderItem<any>;
   animationType: "spring" | "timing";
+  panGestureHandlerProps?: PanGestureHandlerProps;
 }
 
 const Carousel = React.forwardRef(function carousel(props: IProps, ref) {
@@ -35,6 +37,7 @@ const Carousel = React.forwardRef(function carousel(props: IProps, ref) {
     data,
     renderItem,
     animationType = "spring",
+    panGestureHandlerProps,
   } = props;
 
   const animationProp = enableAnimation
@@ -63,6 +66,7 @@ const Carousel = React.forwardRef(function carousel(props: IProps, ref) {
       renderItem={renderItem}
       onSnapToItem={onSnapToItem}
       scrollAnimationDuration={200}
+      panGestureHandlerProps={panGestureHandlerProps}
     />
   );
 });

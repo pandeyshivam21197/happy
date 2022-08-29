@@ -1,4 +1,5 @@
 import {icons} from '@happy/common/src/components';
+import {IUserIntrestSection} from './interfaces';
 import UserAgeTab from './UserAgeTab';
 import UserGenderTab from './UserGenderTab';
 import UserImageTab from './UserImageTab';
@@ -36,7 +37,7 @@ export const userInfoTabOrder: IUserTabInfo[] = [
   {tabName: UserInfoTabs.userInteresetTab, tab: UserInterestTab},
 ];
 
-export const userInterests = [
+export const userInterests: IUserIntrestSection[] = [
   {
     title: 'creativity',
     data: [
@@ -65,19 +66,19 @@ export const userInterests = [
       {interest: 'making videos', icon: icons.clapperBoard},
     ],
   },
-  // {
-  //   title: 'going out',
-  //   data: [
-  //     {interest: 'stand up', icon: icons.compassSolid},
-  //     {interest: 'festivals', icon: icons.paintbrushSolid},
-  //     {interest: 'museums & gallery', icon: icons.camera},
-  //     {interest: 'theatre', icon: icons.penSolid},
-  //     {interest: 'nightclubs', icon: icons.microphoneSolid},
-  //     {interest: 'bars', icon: icons.dancingSolid},
-  //     {interest: 'karaoke', icon: icons.rulerSolid},
-  //     {interest: 'cafe-hoping', icon: icons.videoPlayer},
-  //   ],
-  // },
+  {
+    title: 'going out',
+    data: [
+      {interest: 'stand up', icon: icons.compassSolid},
+      {interest: 'festivals', icon: icons.paintbrushSolid},
+      {interest: 'museums & gallery', icon: icons.camera},
+      {interest: 'theatre', icon: icons.penSolid},
+      {interest: 'nightclubs', icon: icons.microphoneSolid},
+      {interest: 'bars', icon: icons.dancingSolid},
+      {interest: 'karaoke', icon: icons.rulerSolid},
+      {interest: 'cafe-hoping', icon: icons.videoPlayer},
+    ],
+  },
   // {
   //   title: 'staying in',
   //   data: [

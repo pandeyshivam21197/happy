@@ -51,10 +51,11 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
     }
   };
 
-  console.log(userInfoData, 'userInfoData$$$');
-
   return (
-    <ScreenContainer showHeader={true} goBack={onGoBack}>
+    <ScreenContainer
+      enableKeyboardDismiss={false}
+      showHeader={true}
+      goBack={onGoBack}>
       <Carousel
         data={userInfoTabOrder}
         renderItem={renderUserInfoTab}
@@ -63,6 +64,9 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
         animationType="timing"
         onSnapToItem={index => {
           setCarouselIndex(index);
+        }}
+        panGestureHandlerProps={{
+          activeOffsetX: [-100, 100],
         }}
       />
     </ScreenContainer>

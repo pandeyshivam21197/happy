@@ -10512,6 +10512,11 @@ react-native-reanimated-carousel@2.3.4:
   resolved "https://registry.yarnpkg.com/react-native-reanimated-carousel/-/react-native-reanimated-carousel-2.3.4.tgz#36a4f0e073e6cc21747c1e784a53cd65ca29f923"
   integrity sha512-dm47NoUNJN4V3pzkToqvZ3SyI54TZpesdxAq5mAbUpASJnMxlHI9WcL5jUHef+MgMHJliDoYkY8xT+t7wD/OzA==
 
+react-native-reanimated-carousel@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated-carousel/-/react-native-reanimated-carousel-3.0.4.tgz#eee407c7370547fa3f47cf0ddc27555d99f00c63"
+  integrity sha512-y8Mg8v5wdcm9WdA0ze9jIJ0/zfo37269Irce5RlAIFr3xwkZU+6TqdsaygST0C9ZQKQsMvg9L327NZcuSDakCw==
+
 react-native-reanimated@2.8.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.8.0.tgz#93c06ca84d91fb3865110b0857c49a24e316130e"
