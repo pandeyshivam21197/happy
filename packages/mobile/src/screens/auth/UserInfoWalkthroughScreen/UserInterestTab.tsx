@@ -23,6 +23,8 @@ import theme from '@happy/common/src/styles/theme';
 import {IUserInterestData, IUserIntrestSection} from './interfaces';
 import {DimensionUtils} from '@happy/common/src/utils/DimensionUtils';
 
+const numColumns = 3;
+
 interface ISection {}
 
 const UserInterestTab: FC<IUserTabProps> = props => {
@@ -30,16 +32,69 @@ const UserInterestTab: FC<IUserTabProps> = props => {
 
   const {t} = useTranslation(NamespacesKeys.userInfoWalkthroughScreen);
 
+  const [userSelectedInterests, setUserSelectedInterests] = useState<any>({});
+
   const showNextButton = false;
 
   const styles = getStyles(showNextButton);
 
-  const renderItem = ({item}: {item: IUserInterestData}) => {
-    const {icon, interest} = item;
+  const setUserInterests = (parentId: number, childId: number) => {
+    if (
+      !userSelectedInterests[parentId] ||
+      userSelectedInterests[parentId]?.length === 0
+    ) {
+      setUserSelectedInterests({
+        ...userSelectedInterests,
+        [parentId]: [childId],
+      });
+
+      return;
+    }
+
+    const selectedElements = [
+      ...new Set(userSelectedInterests[parentId]),
+    ] as Array<number>;
+
+    const foundIndex = selectedElements.findIndex((e: number) => e === childId);
+
+    const wasSelected = foundIndex >= 0;
+
+    if (wasSelected) {
+      selectedElements.splice(foundIndex, 1);
+      setUserSelectedInterests({
+        ...userSelectedInterests,
+        [parentId]: selectedElements,
+      });
+    } else {
+      setUserSelectedInterests({
+        ...userSelectedInterests,
+        [parentId]: [...selectedElements, childId],
+      });
+    }
+  };
+
+  const renderItem = (
+    prop: {item: IUserInterestData; index: number},
+    parentId: number,
+  ) => {
+    const {item, index} = prop;
+    const {icon, interest, id} = item;
+
+    const isMidElement = index ? (index - 1) % numColumns === 0 : false;
+    const isSelected =
+      userSelectedInterests[parentId]?.findIndex((e: number) => e === id) >= 0;
+
     return (
-      <View style={styles.interestContainer}>
+      <Button
+        style={[
+          styles.interestContainer,
+          isMidElement ? styles.interestMidContainer : {},
+          isSelected ? {backgroundColor: 'red'} : {},
+        ]}
+        onPress={() => setUserInterests(parentId, id)}
+        buttonType="transparent">
         <SubHeading>{interest}</SubHeading>
-      </View>
+      </Button>
     );
   };
 
@@ -52,17 +107,19 @@ const UserInterestTab: FC<IUserTabProps> = props => {
   };
 
   const renderListItem = ({item}: {item: IUserIntrestSection}) => {
-    const {title, data} = item;
+    const {title, data, id} = item;
 
     return (
       <>
         {renderSectionHeader(title)}
         <FlatList
+          columnWrapperStyle={styles.interestRowContainer}
           data={data}
           keyExtractor={(item, index) => `${item.interest} + ${index}`}
-          renderItem={renderItem}
+          renderItem={props => renderItem(props, id)}
           showsVerticalScrollIndicator={false}
-          numColumns={3}
+          ItemSeparatorComponent={() => <View style={styles.separator} />}
+          numColumns={numColumns}
         />
       </>
     );
@@ -131,10 +188,18 @@ const getStyles = (showNextButton: boolean) =>
     interestContainer: {
       padding: 8,
       backgroundColor: theme.palette.neutral.white,
-      // flex: 1,
     },
     sectionListHeader: {
-      marginVertical: 8,
+      marginVertical: 16,
+    },
+    separator: {
+      height: 12,
+    },
+    interestRowContainer: {
+      justifyContent: 'flex-start',
+    },
+    interestMidContainer: {
+      marginHorizontal: 12,
     },
   });
 
