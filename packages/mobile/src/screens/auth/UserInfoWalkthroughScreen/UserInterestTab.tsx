@@ -93,7 +93,10 @@ const UserInterestTab: FC<IUserTabProps> = props => {
         ]}
         onPress={() => setUserInterests(parentId, id)}
         buttonType="transparent">
-        <SubHeading>{interest}</SubHeading>
+        <View style={styles.interestButton}>
+          <Icon name={icon} size={20} style={styles.interestIcon} />
+          <SubHeading>{interest}</SubHeading>
+        </View>
       </Button>
     );
   };
@@ -139,6 +142,7 @@ const UserInterestTab: FC<IUserTabProps> = props => {
           keyExtractor={(item, index) => `${item.title} + ${index}`}
           renderItem={renderListItem}
           showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.userInterests}
         />
       </View>
       <View style={[styles.shownContainer]}>
@@ -188,6 +192,7 @@ const getStyles = (showNextButton: boolean) =>
     interestContainer: {
       padding: 8,
       backgroundColor: theme.palette.neutral.white,
+      borderRadius: 8,
     },
     sectionListHeader: {
       marginVertical: 16,
@@ -200,6 +205,17 @@ const getStyles = (showNextButton: boolean) =>
     },
     interestMidContainer: {
       marginHorizontal: 12,
+    },
+    userInterests: {
+      paddingBottom: 16,
+    },
+    interestButton: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    interestIcon: {
+      marginRight: 8,
     },
   });
 
