@@ -23,26 +23,26 @@ import theme from '@happy/common/src/styles/theme';
 import {IUserInterestData, IUserIntrestSection} from './interfaces';
 import {DimensionUtils} from '@happy/common/src/utils/DimensionUtils';
 
-const numColumns = 3;
-
-interface ISection {}
-
 const UserInterestTab: FC<IUserTabProps> = props => {
   const {onNext} = props;
 
   const {t} = useTranslation(NamespacesKeys.userInfoWalkthroughScreen);
 
   const [userSelectedInterests, setUserSelectedInterests] = useState<any>({});
+  const [selectedInterestCount, setSelectedInterestCount] = useState(0);
 
-  const showNextButton = false;
+  const showNextButton = selectedInterestCount === 5;
 
   const styles = getStyles(showNextButton);
 
   const setUserInterests = (parentId: number, childId: number) => {
     if (
-      !userSelectedInterests[parentId] ||
-      userSelectedInterests[parentId]?.length === 0
+      !showNextButton &&
+      (!userSelectedInterests[parentId] ||
+        userSelectedInterests[parentId]?.length === 0)
     ) {
+      setSelectedInterestCount(prev => prev + 1);
+
       setUserSelectedInterests({
         ...userSelectedInterests,
         [parentId]: [childId],
@@ -61,11 +61,14 @@ const UserInterestTab: FC<IUserTabProps> = props => {
 
     if (wasSelected) {
       selectedElements.splice(foundIndex, 1);
+
+      setSelectedInterestCount(prev => (prev ? prev - 1 : prev));
       setUserSelectedInterests({
         ...userSelectedInterests,
         [parentId]: selectedElements,
       });
-    } else {
+    } else if (!showNextButton) {
+      setSelectedInterestCount(prev => prev + 1);
       setUserSelectedInterests({
         ...userSelectedInterests,
         [parentId]: [...selectedElements, childId],
@@ -77,10 +80,9 @@ const UserInterestTab: FC<IUserTabProps> = props => {
     prop: {item: IUserInterestData; index: number},
     parentId: number,
   ) => {
-    const {item, index} = prop;
+    const {item} = prop;
     const {icon, interest, id} = item;
 
-    const isMidElement = index ? (index - 1) % numColumns === 0 : false;
     const isSelected =
       userSelectedInterests[parentId]?.findIndex((e: number) => e === id) >= 0;
 
@@ -88,7 +90,6 @@ const UserInterestTab: FC<IUserTabProps> = props => {
       <Button
         style={[
           styles.interestContainer,
-          isMidElement ? styles.interestMidContainer : {},
           isSelected ? {backgroundColor: 'red'} : {},
         ]}
         onPress={() => setUserInterests(parentId, id)}
@@ -115,15 +116,11 @@ const UserInterestTab: FC<IUserTabProps> = props => {
     return (
       <>
         {renderSectionHeader(title)}
-        <FlatList
-          columnWrapperStyle={styles.interestRowContainer}
-          data={data}
-          keyExtractor={(item, index) => `${item.interest} + ${index}`}
-          renderItem={props => renderItem(props, id)}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <View style={styles.separator} />}
-          numColumns={numColumns}
-        />
+        <View style={styles.interestList}>
+          {data.map((userInterest, index) => {
+            return renderItem({item: userInterest, index}, id);
+          })}
+        </View>
       </>
     );
   };
@@ -153,7 +150,9 @@ const UserInterestTab: FC<IUserTabProps> = props => {
           </Paragraph>
         </View>
         <Icon
-          {...(showNextButton ? {onPress: () => onNext({connection})} : {})}
+          {...(showNextButton
+            ? {onPress: () => onNext({userSelectedInterests})}
+            : {})}
           style={styles.nextIcon}
           name={icons.rightArrow}
           color={theme.palette.neutral.black}
@@ -193,6 +192,8 @@ const getStyles = (showNextButton: boolean) =>
       padding: 8,
       backgroundColor: theme.palette.neutral.white,
       borderRadius: 8,
+      marginLeft: 8,
+      marginTop: 8,
     },
     sectionListHeader: {
       marginVertical: 16,
@@ -202,9 +203,6 @@ const getStyles = (showNextButton: boolean) =>
     },
     interestRowContainer: {
       justifyContent: 'flex-start',
-    },
-    interestMidContainer: {
-      marginHorizontal: 12,
     },
     userInterests: {
       paddingBottom: 16,
@@ -216,6 +214,10 @@ const getStyles = (showNextButton: boolean) =>
     },
     interestIcon: {
       marginRight: 8,
+    },
+    interestList: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
     },
   });
 

@@ -39,6 +39,7 @@ const UserGenderTab: FC<IUserTabProps> = props => {
 
     return (
       <Button
+        key={item.gender}
         style={styles.dobInput}
         onPress={() => setGender(item)}
         buttonType="primary">
