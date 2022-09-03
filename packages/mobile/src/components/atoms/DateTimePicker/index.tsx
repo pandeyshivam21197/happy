@@ -78,7 +78,6 @@ export const DateTimePicker: FC<IProps> = props => {
             is24Hour={is24Hour}
             display={isIOS() ? 'spinner' : 'default'}
             onChange={(e, date) => {
-              console.log(date, 'date%%%%%');
               date && setPickerValue(date);
             }}
             minimumDate={minimumDate}

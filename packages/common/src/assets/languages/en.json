@@ -6,7 +6,8 @@
   },
   "common": {
     "happy": "Happy",
-    "accept": "accept"
+    "accept": "accept",
+    "cancel": "cancel"
   },
   "loginOptionScreen": {
     "datingBecomesEasy": "Dating Becomes Easy!",

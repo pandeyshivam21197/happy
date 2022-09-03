@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import {Modal, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {
   Button,
