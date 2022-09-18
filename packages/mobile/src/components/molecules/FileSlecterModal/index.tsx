@@ -1,12 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  FlatList,
-  Image,
-} from 'react-native';
-import RNImageCropPicker from 'react-native-image-crop-picker';
+import {View, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
+import RNImageCropPicker, {Image} from 'react-native-image-crop-picker';
 import Modal from '@happy/mobile/src/components/atoms/Modal';
 import theme from '@happy/common/src/styles/theme';
 import {Heading, Icon} from '@happy/common/src/components';
@@ -34,7 +28,7 @@ const fileOptions: IFileOptions[] = [
   {id: 1, icon: icons.image, heading: 'Photo & Video Library'},
 ];
 
-async function openCamera(setImage) {
+async function openCamera(setImage: (image: Image) => void) {
   try {
     const images = await RNImageCropPicker.openCamera({
       multiple: false,
@@ -45,7 +39,6 @@ async function openCamera(setImage) {
 
     let newImage = {
       ...images,
-      uri: images.path,
       filename: images.path.split('/').pop(),
     };
 
@@ -55,7 +48,7 @@ async function openCamera(setImage) {
   }
 }
 
-async function openGallery(setImage) {
+async function openGallery(setImage: (image: Image) => void) {
   try {
     const images = await RNImageCropPicker.openPicker({
       multiple: false,
@@ -64,9 +57,8 @@ async function openGallery(setImage) {
 
     Logger.info(images, 'image from gallery picker');
 
-    let newImage = {
+    let newImage: Image = {
       ...images,
-      uri: images.path,
       filename: images.path.split('/').pop(),
     };
 
@@ -76,7 +68,11 @@ async function openGallery(setImage) {
   }
 }
 
-function setSelectedOption(id, setImage, closeModal) {
+function setSelectedOption(
+  id: number,
+  setImage: (image: Image) => void,
+  closeModal: () => void,
+) {
   closeModal();
 
   setTimeout(() => {
@@ -92,7 +88,7 @@ function setSelectedOption(id, setImage, closeModal) {
 const renderFileOptions = (
   option: IFileOptions,
   closeModal: () => void,
-  setImage: (image: Image) => {},
+  setImage: (image: Image) => void,
 ) => {
   const {id, icon, heading} = option;
 
@@ -112,7 +108,7 @@ const renderFileOptions = (
 
 export const FileSelecterModal: React.FC<IProps> = props => {
   const {isModalVisible, closeModal, getSelectedImage = () => {}} = props;
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<null | Image>(null);
 
   useEffect(() => {
     if (image && getSelectedImage) {
@@ -136,7 +132,7 @@ export const FileSelecterModal: React.FC<IProps> = props => {
         </View>
         {closeModal && (
           <TouchableOpacity style={styles.cancel} onPress={closeModal}>
-            <Heading textColor={theme.palette.neutral.azureRadiance}>
+            <Heading textColor={theme.palette.neutral.black}>
               {lang.common}
             </Heading>
           </TouchableOpacity>
@@ -148,7 +144,7 @@ export const FileSelecterModal: React.FC<IProps> = props => {
 
 const styles = StyleSheet.create({
   modalContent: {
-    backgroundColor: theme.palette.neutral.athensGray,
+    backgroundColor: theme.palette.neutral.white,
     borderRadius: 15,
   },
   container: {
@@ -172,7 +168,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   separator: {
-    borderBottomColor: theme.palette.neutral.manatee,
+    borderBottomColor: theme.palette.neutral.black,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   heading: {
