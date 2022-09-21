@@ -6,6 +6,7 @@ import {
   StyleSheet,
   ViewStyle,
   StyleProp,
+  TouchableOpacity,
 } from 'react-native';
 
 interface IProps {

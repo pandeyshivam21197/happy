@@ -4,7 +4,6 @@ import RNImageCropPicker, {Image} from 'react-native-image-crop-picker';
 import Modal from '@happy/mobile/src/components/atoms/Modal';
 import theme from '@happy/common/src/styles/theme';
 import {Heading, Icon} from '@happy/common/src/components';
-import {isIOS} from '@happy/common/src/utils/PlatformUtils';
 import {Logger} from '@happy/common/src/utils/logger';
 import lang from '@happy/common/src/assets/languages';
 import {Button} from '@happy/common/src/components/atoms/Button';
@@ -130,10 +129,10 @@ export const FileSelecterModal: React.FC<IProps> = props => {
             ItemSeparatorComponent={() => <View style={styles.separator} />}
           />
         </View>
-        {closeModal && (
+        {!!closeModal && (
           <TouchableOpacity style={styles.cancel} onPress={closeModal}>
             <Heading textColor={theme.palette.neutral.black}>
-              {lang.common}
+              {lang.common.cancel}
             </Heading>
           </TouchableOpacity>
         )}
