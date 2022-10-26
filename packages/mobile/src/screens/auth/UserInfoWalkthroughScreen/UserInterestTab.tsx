@@ -88,6 +88,7 @@ const UserInterestTab: FC<IUserTabProps> = props => {
 
     return (
       <Button
+        key={item.id}
         style={[
           styles.interestContainer,
           isSelected ? {backgroundColor: 'red'} : {},
@@ -116,7 +117,7 @@ const UserInterestTab: FC<IUserTabProps> = props => {
     return (
       <>
         {renderSectionHeader(title)}
-        <View style={styles.interestList}>
+        <View style={styles.interestList} key={id}>
           {data.map((userInterest, index) => {
             return renderItem({item: userInterest, index}, id);
           })}

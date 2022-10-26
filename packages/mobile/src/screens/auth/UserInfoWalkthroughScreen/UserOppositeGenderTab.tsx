@@ -42,6 +42,7 @@ const UserOppositeGenderTab: FC<IUserTabProps> = props => {
 
     return (
       <Button
+        key={item.gender}
         style={styles.dobInput}
         onPress={() => {
           item.selected = !item.selected;

@@ -41,6 +41,7 @@ const UserLookingForTab: FC<IUserTabProps> = props => {
 
     return (
       <Button
+        key={item.key}
         style={styles.dobInput}
         onPress={() => setConnection(item)}
         buttonType="primary">
