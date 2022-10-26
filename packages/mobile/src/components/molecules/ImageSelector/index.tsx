@@ -1,58 +1,71 @@
 import {Icon, icons, Image as RNImage} from '@happy/common/src/components';
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {Image} from 'react-native-image-crop-picker';
 import {StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
 import {FileSelecterModal} from '@happy/mobile/src/components/molecules/FileSlecterModal';
 
-interface IImageSelector {}
+interface IImageSelector {
+  onImageSelected: (images: IImage[]) => void;
+}
 
-interface IImage {
+export interface IImage {
   image: Image | null;
 }
 
-const imageConfig = {image: null};
+let imageConfig: IImage = {image: null};
 
-const ImageSelector: FC<IImageSelector> = () => {
+const ImageSelector: FC<IImageSelector> = props => {
+  const {onImageSelected} = props;
+
   const [selectedImages, setSelectedImages] = useState(
-    Array(2).fill(imageConfig),
+    new Array(6).fill('').map(() => ({...imageConfig})),
   );
   const [showFileModal, setShowFileModal] = useState(false);
+  const [clickedImageIndex, setClickedImageIndex] = useState(0);
 
-  const totalImages = selectedImages.length;
-  const styles = getStyles(totalImages);
+  useEffect(() => {
+    onImageSelected(selectedImages);
+  }, [selectedImages]);
 
-  const renderImageBox = ({item}: {item: IImage}) => {
+  const renderImageBox = ({item, index}: {item: IImage; index: number}) => {
     const {image} = item;
 
     const hasImage = !!image;
 
+    if (hasImage) {
+      return (
+        <RNImage
+          source={{uri: image.path}}
+          resizeMode="cover"
+          style={styles.imageContainer}
+        />
+      );
+    }
+
     return (
-      <>
-        {hasImage ? (
-          <RNImage source={{uri: image.path}} style={styles.imageContainer} />
-        ) : (
-          <TouchableOpacity onPress={() => setShowFileModal(true)}>
-            <View style={styles.imageContainer}>
-              <Icon name={icons.rightArrow} size={20} />
-            </View>
-          </TouchableOpacity>
-        )}
-      </>
+      <TouchableOpacity
+        onPress={() => {
+          setShowFileModal(true);
+          setClickedImageIndex(index);
+        }}>
+        <View style={styles.imageContainer}>
+          <Icon name={icons.rightArrow} size={20} />
+        </View>
+      </TouchableOpacity>
     );
   };
 
-  console.log(selectedImages, 'selectedImages$$$');
-
   return (
-    <>
+    <View>
       <FlatList
+        extraData={selectedImages}
         style={styles.flatList}
         data={selectedImages}
         renderItem={renderImageBox}
         keyExtractor={(item, index) => `${index}`}
         columnWrapperStyle={styles.columnContainer}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
-        numColumns={totalImages > 2 ? 3 : 2}
+        numColumns={3}
       />
       <FileSelecterModal
         isModalVisible={showFileModal}
@@ -61,38 +74,33 @@ const ImageSelector: FC<IImageSelector> = () => {
           setSelectedImages(prevState => {
             const newSelectedImages = [...prevState];
 
-            const emptyImage: IImage = newSelectedImages.find(
-              (image: IImage) => image.image === null,
-            );
-
-            emptyImage.image = selectedImage;
+            newSelectedImages[clickedImageIndex].image = selectedImage;
 
             return newSelectedImages;
           });
         }}
       />
-    </>
+    </View>
   );
 };
 
-const getStyles = (totalImages: number) =>
-  StyleSheet.create({
-    imageContainer: {
-      width: totalImages > 2 ? 200 : 100,
-      height: totalImages > 2 ? 200 : 100,
-      backgroundColor: 'red',
-    },
-    separator: {
-      width: 20,
-    },
-    columnContainer: {
-      flex: 1,
-      justifyContent: 'space-around',
-    },
-    flatList: {
-      marginTop: 20,
-    },
-  });
+const styles = StyleSheet.create({
+  imageContainer: {
+    width: 100,
+    height: 100,
+  },
+  separator: {
+    width: 24,
+  },
+  columnContainer: {
+    flex: 1,
+    justifyContent: 'space-around',
+    marginTop: 24,
+  },
+  flatList: {
+    marginTop: 20,
+  },
+});
 
 const imageSelector = React.memo(ImageSelector);
 export {imageSelector as ImageSelector};

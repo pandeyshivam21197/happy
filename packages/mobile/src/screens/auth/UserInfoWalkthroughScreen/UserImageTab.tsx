@@ -11,14 +11,17 @@ import {
 import {IUserTabProps} from './constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 import theme from '@happy/common/src/styles/theme';
-import {ImageSelector} from '@happy/mobile/src/components/molecules/ImageSelector';
+import {
+  IImage,
+  ImageSelector,
+} from '@happy/mobile/src/components/molecules/ImageSelector';
 
 const UserImageTab: FC<IUserTabProps> = props => {
   const {onNext} = props;
 
   const {t} = useTranslation(NamespacesKeys.userInfoWalkthroughScreen);
 
-  const [userImages, setUserImages] = useState([]);
+  const [userImages, setUserImages] = useState<IImage[]>([]);
 
   const showNextButton = !!userImages;
 
@@ -34,7 +37,9 @@ const UserImageTab: FC<IUserTabProps> = props => {
           {t('2PhotoBetterThan1')}
         </SubHeading>
       </View>
-      <ImageSelector />
+      <ImageSelector
+        onImageSelected={(images: IImage[]) => setUserImages(images)}
+      />
       <View style={[styles.shownContainer]}>
         <View style={styles.shownContainer}>
           <Icon style={styles.eyeIcon} name={icons.eye} size={20} />
