@@ -65,13 +65,17 @@ const UserOppositeGenderTab: FC<IUserTabProps> = props => {
 
   return (
     <View style={styles.content}>
-      <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
-        {t('whoWouldYouLikeToDate')}
-      </Title>
-      <Paragraph>{t('chooseMoreThanOneAnswer')}</Paragraph>
-      {oppositeGender.map(gender => {
-        return renderOppositeGender(gender);
-      })}
+      <View>
+        <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
+          {t('whoWouldYouLikeToDate')}
+        </Title>
+        <Paragraph style={styles.chooseMoreAnswer}>
+          {t('chooseMoreThanOneAnswer')}
+        </Paragraph>
+        {oppositeGender.map(gender => {
+          return renderOppositeGender(gender);
+        })}
+      </View>
       <View style={[styles.shownContainer]}>
         <View style={[styles.shownContainer, styles.flex]}>
           <Icon style={styles.eyeIcon} name={icons.eye} size={20} />
@@ -111,6 +115,7 @@ const getStyles = (showNextButton: boolean) =>
     content: {
       flex: 1,
       padding: 24,
+      justifyContent: 'space-between',
     },
     flex: {
       flex: 1,
@@ -129,6 +134,10 @@ const getStyles = (showNextButton: boolean) =>
       borderRadius: 4,
       borderWidth: 2,
       borderColor: theme.palette.neutral.black,
+    },
+    chooseMoreAnswer: {
+      marginTop: 32,
+      marginBottom: 4,
     },
   });
 

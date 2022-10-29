@@ -81,6 +81,7 @@ const getStyles = (showNextButton: boolean) =>
     content: {
       flex: 1,
       padding: 24,
+      justifyContent: 'space-between',
     },
     wontChangeLater: {
       marginTop: 12,

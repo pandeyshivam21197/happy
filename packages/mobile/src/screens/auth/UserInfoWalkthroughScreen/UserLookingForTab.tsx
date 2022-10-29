@@ -61,13 +61,17 @@ const UserLookingForTab: FC<IUserTabProps> = props => {
 
   return (
     <View style={styles.content}>
-      <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
-        {t('hopingToFind')}
-      </Title>
-      <Paragraph>{t('honestyHelpsYourAndEveryone')}</Paragraph>
-      {connections.map(connection => {
-        return renderConnections(connection);
-      })}
+      <View>
+        <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
+          {t('hopingToFind')}
+        </Title>
+        <Paragraph style={styles.helpYourAnswer}>
+          {t('honestyHelpsYourAndEveryone')}
+        </Paragraph>
+        {connections.map(connection => {
+          return renderConnections(connection);
+        })}
+      </View>
       <View style={[styles.shownContainer]}>
         <View style={[styles.shownContainer, styles.flex]}>
           <Icon style={styles.eyeIcon} name={icons.eye} size={20} />
@@ -107,6 +111,7 @@ const getStyles = (showNextButton: boolean) =>
     content: {
       flex: 1,
       padding: 24,
+      justifyContent: 'space-between',
     },
     flex: {
       flex: 1,
@@ -125,6 +130,10 @@ const getStyles = (showNextButton: boolean) =>
       borderRadius: 12,
       borderWidth: 2,
       borderColor: theme.palette.neutral.black,
+    },
+    helpYourAnswer: {
+      marginTop: 32,
+      marginBottom: 4,
     },
   });
 

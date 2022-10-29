@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   flatList: {
-    marginVertical: 20,
+    marginBottom: 20,
   },
   crossIcon: {
     position: 'absolute',

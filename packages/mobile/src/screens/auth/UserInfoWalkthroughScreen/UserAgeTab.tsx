@@ -95,13 +95,14 @@ const getStyles = (showNextButton: boolean) =>
     content: {
       flex: 1,
       padding: 24,
+      justifyContent: 'space-between',
     },
     flex: {
       flex: 1,
     },
     dobInput: {
       borderRadius: 4,
-      marginVertical: 24,
+      marginVertical: 32,
     },
   });
 

@@ -59,13 +59,17 @@ const UserGenderTab: FC<IUserTabProps> = props => {
 
   return (
     <View style={styles.content}>
-      <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
-        {t('whatsYourGender')}
-      </Title>
-      <Paragraph>{t('pickWhichDescribeYou')}</Paragraph>
-      {genders.map(gender => {
-        return renderGender(gender);
-      })}
+      <View>
+        <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
+          {t('whatsYourGender')}
+        </Title>
+        <Paragraph style={styles.pickDescribe}>
+          {t('pickWhichDescribeYou')}
+        </Paragraph>
+        {genders.map(gender => {
+          return renderGender(gender);
+        })}
+      </View>
       <View style={[styles.shownContainer]}>
         <View style={[styles.shownContainer, styles.flex]}>
           <Icon style={styles.eyeIcon} name={icons.eye} size={20} />
@@ -105,6 +109,7 @@ const getStyles = (showNextButton: boolean) =>
     content: {
       flex: 1,
       padding: 24,
+      justifyContent: 'space-between',
     },
     flex: {
       flex: 1,
@@ -123,6 +128,10 @@ const getStyles = (showNextButton: boolean) =>
       borderRadius: 12,
       borderWidth: 2,
       borderColor: theme.palette.neutral.black,
+    },
+    pickDescribe: {
+      marginTop: 32,
+      marginBottom: 4,
     },
   });
 

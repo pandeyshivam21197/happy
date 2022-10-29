@@ -12,7 +12,7 @@ interface IBaseOption {
 }
 
 const defaultBaseOption = {
-  vertical: false,
+  vertical: true,
   width: DimensionUtils.width,
   height: DimensionUtils.height,
 };
@@ -74,6 +74,7 @@ const Carousel = React.forwardRef(function carousel(props: IProps, ref) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: DimensionUtils.height,
   },
 });
 

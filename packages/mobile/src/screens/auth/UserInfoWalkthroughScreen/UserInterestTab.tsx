@@ -1,12 +1,5 @@
 import React, {FC, useState} from 'react';
-import {
-  FlatList,
-  SectionList,
-  SectionListData,
-  SectionListRenderItem,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {
   Button,
@@ -132,7 +125,9 @@ const UserInterestTab: FC<IUserTabProps> = props => {
         <Title customFont={{fontSize: 32, lineHeight: 36}} fontWeight="bold">
           {t('yourInterest')}
         </Title>
-        <Paragraph>{t('pick5ThingsYouLove')}</Paragraph>
+        <Paragraph style={styles.pick5Things}>
+          {t('pick5ThingsYouLove')}
+        </Paragraph>
       </View>
       <View style={styles.sectionList}>
         <FlatList
@@ -169,6 +164,7 @@ const getStyles = (showNextButton: boolean) =>
     content: {
       flex: 1,
       padding: 24,
+      justifyContent: 'space-between',
     },
     shownContainer: {
       flexDirection: 'row',
@@ -185,9 +181,8 @@ const getStyles = (showNextButton: boolean) =>
       flex: 1,
     },
     sectionList: {
-      marginTop: 16,
-      marginBottom: 24,
       height: DimensionUtils.height / 1.7,
+      marginBottom: 16,
     },
     interestContainer: {
       padding: 8,
@@ -222,6 +217,9 @@ const getStyles = (showNextButton: boolean) =>
     },
     selectedIcon: {
       backgroundColor: theme.palette.neutral.gossip,
+    },
+    pick5Things: {
+      marginTop: 12,
     },
   });
 

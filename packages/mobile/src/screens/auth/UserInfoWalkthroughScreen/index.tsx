@@ -8,6 +8,7 @@ import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 import {CarouselRenderItemInfo} from 'react-native-reanimated-carousel/lib/typescript/types';
 import {IUserTabInfo, userInfoTabOrder} from './constants';
 import {ICarouselInstance} from 'react-native-reanimated-carousel';
+import {DimensionUtils} from '@happy/common/src/utils/DimensionUtils';
 
 type Props = NavigationScreenProps<
   AuthNavigatorParamList,
@@ -51,7 +52,7 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
     }
   };
 
-  console.log(userInfoData, 'userInfoData$$$$$');
+  console.log(userInfoData, 'userInfoData$$$$$', DimensionUtils.height);
 
   return (
     <ScreenContainer
@@ -60,6 +61,11 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
       goBack={onGoBack}>
       <Carousel
         data={userInfoTabOrder}
+        baseOption={{
+          vertical: false,
+          width: DimensionUtils.width,
+          height: DimensionUtils.height - 150, // 150 height by heding on each tab
+        }}
         renderItem={renderUserInfoTab}
         enableSnap={false}
         ref={carouselRef}
