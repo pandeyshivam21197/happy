@@ -52,8 +52,6 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
     }
   };
 
-  console.log(userInfoData, 'userInfoData$$$$$', DimensionUtils.height);
-
   return (
     <ScreenContainer
       enableKeyboardDismiss={false}
