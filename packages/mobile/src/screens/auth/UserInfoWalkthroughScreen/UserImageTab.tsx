@@ -23,7 +23,18 @@ const UserImageTab: FC<IUserTabProps> = props => {
 
   const [userImages, setUserImages] = useState<IImage[]>([]);
 
-  const showNextButton = !!userImages;
+  const totalSelectedImages = userImages.reduce(
+    (prev: number, next: IImage) => {
+      if (next.image) {
+        return (prev as number) + 1;
+      }
+
+      return prev;
+    },
+    0,
+  );
+
+  const showNextButton = totalSelectedImages > 2;
 
   const styles = getStyles(showNextButton);
 

@@ -52,7 +52,7 @@ const UserAgeTab: FC<IUserTabProps> = props => {
         </View>
         <Icon
           {...(showNextButton
-            ? {onPress: () => onNext({userAge: userDOB.getTime()})}
+            ? {onPress: () => onNext({userAge: userDOB.toUTCString()})}
             : {})}
           style={styles.nextIcon}
           name={icons.rightArrow}

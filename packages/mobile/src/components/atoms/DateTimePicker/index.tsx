@@ -57,16 +57,16 @@ export const DateTimePicker: FC<IProps> = props => {
               justifyContent: 'space-between',
             }}>
             <Button
-              buttonText="Done"
+              buttonText="Cancel"
               buttonType="transparent"
-              onPress={() => onChange(pickerValue)}
+              onPress={onClose}
               fontWeight="semiBold"
               textType="subHeading"
             />
             <Button
-              buttonText="Cancel"
+              buttonText="Done"
               buttonType="transparent"
-              onPress={onClose}
+              onPress={() => onChange(pickerValue)}
               fontWeight="semiBold"
               textType="subHeading"
             />

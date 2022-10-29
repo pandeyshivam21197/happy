@@ -220,6 +220,7 @@ const getStyles = (showNextButton: boolean) =>
     },
     pick5Things: {
       marginTop: 12,
+      marginBottom: 4,
     },
   });
 
