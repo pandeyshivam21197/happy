@@ -24,6 +24,9 @@ export interface INeutralColor {
   blackBackground: string;
   white: string;
   black: string;
+  gray: string;
+  manteeBorder: string;
+  gossip: string;
 }
 
 export interface IPalette {

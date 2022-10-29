@@ -91,7 +91,7 @@ const UserInterestTab: FC<IUserTabProps> = props => {
         key={item.id}
         style={[
           styles.interestContainer,
-          isSelected ? {backgroundColor: 'red'} : {},
+          isSelected ? styles.selectedIcon : {},
         ]}
         onPress={() => setUserInterests(parentId, id)}
         buttonType="transparent">
@@ -219,6 +219,9 @@ const getStyles = (showNextButton: boolean) =>
     interestList: {
       flexDirection: 'row',
       flexWrap: 'wrap',
+    },
+    selectedIcon: {
+      backgroundColor: theme.palette.neutral.gossip,
     },
   });
 

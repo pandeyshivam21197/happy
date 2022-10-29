@@ -72,7 +72,7 @@ const getStyles = (showNextButton: boolean) =>
     },
     content: {
       flex: 1,
-      padding: 24,
+      padding: 16,
     },
     wontChangeLater: {
       marginTop: 12,

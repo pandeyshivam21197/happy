@@ -62,6 +62,8 @@ export const icons = {
   earthSolid: "earth-solid",
   fishSolid: "fish-solid",
   beerSolid: "beer-solid",
+  addSolid: "add-solid",
+  crossSolid: "cross-solid",
 };
 
 export const Icon = createIconSetFromIcoMoon(icoMoonConfig);

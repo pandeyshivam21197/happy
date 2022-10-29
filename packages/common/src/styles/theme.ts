@@ -29,6 +29,9 @@ const theme: ITheme = {
       blackBackground: "#FAFAFA",
       white: "#FFFFFF",
       black: "#000000",
+      gray: "#8C8C8C",
+      manteeBorder: "rgba(142, 142, 147, 0.2)",
+      gossip: "#DCF7C5",
     },
   },
   typography: {

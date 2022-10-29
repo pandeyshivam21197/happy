@@ -3,6 +3,7 @@ import React, {FC, useEffect, useState} from 'react';
 import {Image} from 'react-native-image-crop-picker';
 import {StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
 import {FileSelecterModal} from '@happy/mobile/src/components/molecules/FileSlecterModal';
+import theme from '@happy/common/src/styles/theme';
 
 interface IImageSelector {
   onImageSelected: (images: IImage[]) => void;
@@ -27,6 +28,16 @@ const ImageSelector: FC<IImageSelector> = props => {
     onImageSelected(selectedImages);
   }, [selectedImages]);
 
+  const removeSelectedImage = (index: number) => {
+    setSelectedImages(prevState => {
+      const newSelectedImages = [...prevState];
+
+      newSelectedImages[index].image = null;
+
+      return newSelectedImages;
+    });
+  };
+
   const renderImageBox = ({item, index}: {item: IImage; index: number}) => {
     const {image} = item;
 
@@ -34,11 +45,19 @@ const ImageSelector: FC<IImageSelector> = props => {
 
     if (hasImage) {
       return (
-        <RNImage
-          source={{uri: image.path}}
-          resizeMode="cover"
-          style={styles.imageContainer}
-        />
+        <View>
+          <RNImage
+            source={{uri: image.path}}
+            resizeMode="cover"
+            style={styles.imageContainer}
+          />
+          <Icon
+            style={styles.crossIcon}
+            onPress={() => removeSelectedImage(index)}
+            name={icons.crossSolid}
+            size={20}
+          />
+        </View>
       );
     }
 
@@ -49,7 +68,7 @@ const ImageSelector: FC<IImageSelector> = props => {
           setClickedImageIndex(index);
         }}>
         <View style={styles.imageContainer}>
-          <Icon name={icons.rightArrow} size={20} />
+          <Icon name={icons.addSolid} size={20} />
         </View>
       </TouchableOpacity>
     );
@@ -88,6 +107,10 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 100,
     height: 100,
+    backgroundColor: theme.palette.neutral.manteeBorder,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   separator: {
     width: 24,
@@ -98,7 +121,12 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   flatList: {
-    marginTop: 20,
+    marginVertical: 20,
+  },
+  crossIcon: {
+    position: 'absolute',
+    right: -10,
+    top: -10,
   },
 });
 
