@@ -15,6 +15,9 @@ import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 import theme from '@happy/common/src/styles/theme';
 import {IUserInterestData, IUserIntrestSection} from './interfaces';
 import {DimensionUtils} from '@happy/common/src/utils/DimensionUtils';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
+import {NavigationService} from '@happy/mobile/src/services/navigationService';
 
 const UserInterestTab: FC<IUserTabProps> = props => {
   const {onNext} = props;
@@ -147,7 +150,11 @@ const UserInterestTab: FC<IUserTabProps> = props => {
         </View>
         <Icon
           {...(showNextButton
-            ? {onPress: () => onNext({userSelectedInterests})}
+            ? {
+                onPress: () => {
+                  onNext({userSelectedInterests});
+                },
+              }
             : {})}
           style={styles.nextIcon}
           name={icons.rightArrow}

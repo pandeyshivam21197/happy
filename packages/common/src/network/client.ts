@@ -1,18 +1,18 @@
-import axios from 'axios';
+import axios from "axios";
 
 class ApiClient {
   apiclient = null;
 
   constructor(config) {
     let axiosInstance = axios.create({
-      baseURL: 'https://61af8cf23e2aba0017c4940f.mockapi.io/api/v1/',
+      baseURL: "https://61af8cf23e2aba0017c4940f.mockapi.io/api/v1/",
       timeout: 600000,
     });
 
     this.apiclient = axiosInstance;
   }
 
-  request = async config => {
+  request = async (config) => {
     try {
       const res = await this.apiclient.request(config);
       return res;
@@ -23,7 +23,7 @@ class ApiClient {
 
   get = (url, params = {}) => {
     return this.request({
-      method: 'GET',
+      method: "GET",
       url,
       params,
     });
@@ -32,4 +32,4 @@ class ApiClient {
 
 const apiClient = new ApiClient({});
 
-export {apiClient as ApiClient};
+export { apiClient as ApiClient };

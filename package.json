@@ -7,8 +7,6 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/@react-native-async-storage/async-storage",
-      "**/react",
       "**/react-dom",
       "**/react-native",
       "**/react-native/**",
@@ -19,7 +17,8 @@
       "**/react-native-pager-view",
       "**/@react-native-community/**",
       "**/react-native-otp-input",
-      "**/react-native-country-picker-modal"
+      "**/react-native-country-picker-modal",
+      "**/react-native-mmkv"
     ]
   },
   "scripts": {
