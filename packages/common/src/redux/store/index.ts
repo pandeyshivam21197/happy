@@ -10,7 +10,7 @@ import { StorageService } from "@happy/common/src/services/storage/StorageServic
 const persistConfig = {
   key: "root",
   storage: StorageService.getReduxStorage(),
-  whitelist: ["appthReducer"],
+  whitelist: [],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -18,7 +18,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store: EnhancedStore = configureStore({
   reducer: persistedReducer,
   middleware: [thunk],
-  devTools: __DEV__,
+  devTools: true,
 });
 
 const persistor = persistStore(store);

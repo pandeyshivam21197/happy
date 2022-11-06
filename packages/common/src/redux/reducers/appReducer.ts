@@ -1,19 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface CounterState {
+interface appState {
   isLoggedIn: boolean;
 }
 
-const initialState: CounterState = {
+const initialState = {
   isLoggedIn: false,
-};
+} as appState;
 
 export const appSlice = createSlice({
   name: "appSlice",
   initialState,
   reducers: {
     setIsLoggedIn: (state, action: PayloadAction<boolean>) => {
+      console.log(state, "state", action, "action####");
+
       state.isLoggedIn = action.payload;
     },
   },

@@ -18,6 +18,8 @@ import {DimensionUtils} from '@happy/common/src/utils/DimensionUtils';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
 import {NavigationService} from '@happy/mobile/src/services/navigationService';
+import {setIsLoggedIn} from '@happy/common/src/redux/reducers/appReducer';
+import {useAppDispatch} from '@happy/common/src/redux/store';
 
 const UserInterestTab: FC<IUserTabProps> = props => {
   const {onNext} = props;
@@ -122,6 +124,8 @@ const UserInterestTab: FC<IUserTabProps> = props => {
     );
   };
 
+  const dispatch = useAppDispatch();
+
   return (
     <View style={styles.content}>
       <View>
@@ -153,6 +157,7 @@ const UserInterestTab: FC<IUserTabProps> = props => {
             ? {
                 onPress: () => {
                   onNext({userSelectedInterests});
+                  dispatch(setIsLoggedIn(true));
                 },
               }
             : {})}
