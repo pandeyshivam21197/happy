@@ -86,7 +86,6 @@ export const ScreenContainer: FC<IProps> = ({
           style={styles.container}
           onPress={() => {
             Keyboard.dismiss();
-            console.log('coming here$$$$$');
           }}>
           <>
             {showHeader && HeaderContent}

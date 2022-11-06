@@ -12,7 +12,7 @@ interface IBaseOption {
 }
 
 const defaultBaseOption = {
-  vertical: true,
+  vertical: false,
   width: DimensionUtils.width,
   height: DimensionUtils.height,
 };
@@ -24,7 +24,7 @@ interface IProps {
   onSnapToItem?: (index: number) => void;
   data: any[];
   renderItem: CarouselRenderItem<any>;
-  animationType: "spring" | "timing";
+  animationType?: "spring" | "timing";
   panGestureHandlerProps?: PanGestureHandlerProps;
 }
 
@@ -63,6 +63,8 @@ const Carousel = React.forwardRef(function carousel(props: IProps, ref) {
       style={styles.container}
       enabled={enableSnap}
       data={data}
+      // mode={"horizontal-stack"}
+      modeConfig={{ snapDirection: "right" }}
       renderItem={renderItem}
       onSnapToItem={onSnapToItem}
       scrollAnimationDuration={200}

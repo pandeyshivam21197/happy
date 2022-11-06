@@ -9,9 +9,8 @@ import {NavigationService} from '@happy/mobile/src/services/navigationService';
 export default function RootNavigator() {
   const {
     appReducer: {isLoggedIn},
+    appReducer,
   } = useAppSelector(state => state);
-
-  console.log(isLoggedIn, 'isLoggedIn##');
 
   return (
     <NavigationContainer ref={NavigationService.navigation}>
