@@ -9,7 +9,7 @@ import {
   View,
   Icon,
 } from "@happy/common/src/components";
-import { StyleSheet } from "react-native";
+import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import { FontWeightType } from "common/src/styles/interfaces";
 
 interface IProps {
@@ -20,6 +20,7 @@ interface IProps {
   iconName: string;
   iconSize?: number;
   inverted?: boolean;
+  style?: StyleProp<ViewStyle>;
 }
 
 const Text = {
@@ -39,6 +40,7 @@ const TextWithIcon: FC<IProps> = (props) => {
     iconSize = 20,
     isAnimated,
     inverted = false,
+    style = {},
   } = props;
 
   const TextContainer = Text[textType as TextTypes];
@@ -46,7 +48,7 @@ const TextWithIcon: FC<IProps> = (props) => {
   const styles = getStyles(inverted);
 
   return (
-    <View isAnimated={isAnimated} style={styles.container}>
+    <View isAnimated={isAnimated} style={[styles.container, style]}>
       <TextContainer fontWeight={fontWeight}>{text}</TextContainer>
       <Icon name={iconName} size={iconSize} />
     </View>

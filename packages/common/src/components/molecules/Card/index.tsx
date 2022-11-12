@@ -4,6 +4,7 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from "react-native-reanimated";
+import { ScrollView } from "react-native-gesture-handler";
 import { Image, View, TextWithIcon } from "@happy/common/src/components/index";
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
 
@@ -88,6 +89,7 @@ const getStyles = (index: number) =>
       shadowOpacity: 0.44,
       shadowRadius: 10.32,
       elevation: 16,
+      padding: 16,
     },
   });
 

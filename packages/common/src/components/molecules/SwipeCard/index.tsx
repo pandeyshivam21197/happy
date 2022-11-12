@@ -10,8 +10,10 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-  Layout,
+  runOnJS,
 } from "react-native-reanimated";
+import chroma from "chroma-js";
+import theme from "@happy/common/src/styles/theme";
 
 interface IProps<T> {
   style?: StyleProp<ViewStyle>;
@@ -33,19 +35,17 @@ interface IState {
 
 export const SwipeCard: React.FC<IProps<any>> = (props) => {
   const {
-    children,
     style,
-    onTouchBegin,
-    onTouchEnd,
     data,
     renderItem,
-    activeOffsetX = DimensionUtils.width / 5,
+    activeOffsetX = DimensionUtils.width / 8,
   } = props;
 
   const x = useSharedValue(0);
 
   const positionX = useSharedValue(0);
   const positionY = useSharedValue(0);
+  const bgColor = useSharedValue<string>("#ffff");
 
   const state = useSharedValue<IState>({
     currentIndex: 0,
@@ -126,11 +126,26 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
     []
   );
 
+  const getBgColor = () => {
+    const rightSwipe = positionX.value > 0;
+
+    const scale = chroma
+      .scale([
+        "#ffff",
+        rightSwipe ? "rgba(51, 255, 170, 0.25)" : "rgba(199, 0, 57 , 0.25)",
+      ])
+      .mode("lch")
+      .domain([0, rightSwipe ? activeOffsetX : -activeOffsetX]);
+
+    bgColor.value = scale(positionX.value).hex("auto");
+  };
+
   const renderLayout = React.useCallback(
     (item: any, i: number) => {
       const animatedStyle = useAnimatedStyle(() => {
-        // const isSwiped = state.value.swipedIndexes.includes(i);
         const isCurrentCard = state.value.currentIndex === i;
+
+        runOnJS(getBgColor)();
 
         return {
           ...(isCurrentCard
@@ -143,6 +158,8 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
               }
             : {}),
           opacity: i < state.value.currentIndex ? 0 : 1,
+          backgroundColor: theme.palette.neutral.white,
+          ...(isCurrentCard ? { backgroundColor: bgColor.value } : {}),
         };
       }, [state]);
 
@@ -158,21 +175,15 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
   );
 
   return (
-    <Animated.View
-      style={[styles.container, styles.contentHorizontal, style]}
-      //   onTouchStart={onTouchBegin}
-      //   onTouchEnd={onTouchEnd}
-    >
+    <Animated.View style={[styles.container, styles.contentHorizontal, style]}>
       <PanGestureHandler
         activeOffsetX={[-activeOffsetX, activeOffsetX]}
         enabled={true}
         onGestureEvent={panGestureEventHandler}
       >
         <Animated.View
-          key={"mode"}
-          layout={Layout.springify()}
           style={[
-            styles.container,
+            styles.cardList,
             {
               width: "100%",
               height: "100%",
@@ -200,8 +211,9 @@ const getStyle = (index: number) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // overflow: "hidden",
-    backgroundColor: "blue",
+  },
+  cardList: {
+    flex: 1,
   },
   contentHorizontal: {
     flexDirection: "row",
