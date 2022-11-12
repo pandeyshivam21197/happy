@@ -16,37 +16,37 @@ const fruits = [fruit_0, fruit_2, fruit_1];
 
 interface IProps {
   index: number;
-  animationValue: Animated.SharedValue<number>;
+  itemId: number;
 }
 
-const Card: React.FC<IProps> = ({ index, animationValue }) => {
-  const blockStyle = useAnimatedStyle(() => {
-    const translateX = interpolate(
-      animationValue.value,
-      [-1, 0, 1],
-      [0, 60, 60]
-    );
+const Card: React.FC<IProps> = ({ index, itemId }) => {
+  // const blockStyle = useAnimatedStyle(() => {
+  //   const translateX = interpolate(
+  //     animationValue.value,
+  //     [-1, 0, 1],
+  //     [0, 60, 60]
+  //   );
 
-    const translateY = interpolate(
-      animationValue.value,
-      [-1, 0, 1],
-      [0, -40, -40]
-    );
+  //   const translateY = interpolate(
+  //     animationValue.value,
+  //     [-1, 0, 1],
+  //     [0, -40, -40]
+  //   );
 
-    const rotateZ = interpolate(animationValue.value, [-1, 0, 1], [0, 0, -25]);
+  //   const rotateZ = interpolate(animationValue.value, [-1, 0, 1], [0, 0, -25]);
 
-    return {
-      transform: [{ translateX }, { translateY }, { rotateZ: `${rotateZ}deg` }],
-    };
-  }, [index]);
+  //   return {
+  //     transform: [{ translateX }, { translateY }, { rotateZ: `${rotateZ}deg` }],
+  //   };
+  // }, [index]);
 
   const styles = getStyles(index);
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextWithIcon
         fontWeight="bold"
-        text={"User Name, 24"}
+        text={`User Name, 24 ${index}`}
         textType="heading"
         iconName={icons.heart}
       />
@@ -57,10 +57,10 @@ const Card: React.FC<IProps> = ({ index, animationValue }) => {
         iconName={icons.heart}
       />
       <Image
-        source={fruits[index % 3]}
+        source={fruits[itemId - 1]}
         style={[
           {
-            width: 200,
+            width: "100%",
             borderRadius: 16,
             height: 400,
             justifyContent: "center",

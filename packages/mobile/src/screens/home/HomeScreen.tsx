@@ -1,8 +1,9 @@
 import React, {FC} from 'react';
 import {Title, ScreenContainer, Card} from '@happy/common/src/components';
 import {Carousel} from '@happy/common/src/components/molecules/Carousel';
-import Animated from 'react-native-reanimated';
+import Animated, {useValue} from 'react-native-reanimated';
 import {DimensionUtils} from '@happy/common/src/utils/DimensionUtils';
+import {SwipeCard} from '@happy/common/src/components/molecules/SwipeCard';
 
 const HomeScreen: FC<any> = (props): React.ReactElement => {
   const renderCard = ({
@@ -12,14 +13,14 @@ const HomeScreen: FC<any> = (props): React.ReactElement => {
     index: number;
     animationValue: Animated.SharedValue<number>;
   }) => {
-    return <Card animationValue={animationValue} key={index} index={index} />;
+    return <Card key={index} index={index} />;
   };
 
   return (
     <ScreenContainer>
       <>
         <Title fontWeight="bold">Home Screen</Title>
-        <Carousel
+        {/* <Carousel
           data={[1, 2, 3]}
           renderItem={renderCard}
           panGestureHandlerProps={{
@@ -28,6 +29,10 @@ const HomeScreen: FC<any> = (props): React.ReactElement => {
               DimensionUtils.width / 4,
             ],
           }}
+        /> */}
+        <SwipeCard
+          data={[1, 2, 3]}
+          renderItem={(item, i) => <Card itemId={item} index={item} />}
         />
       </>
     </ScreenContainer>

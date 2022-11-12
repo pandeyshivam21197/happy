@@ -30,7 +30,7 @@
     "mobile:ios": "yarn workspace @happy/mobile run ios",
     "mobile:android": "yarn workspace @happy/mobile run android",
     "mobile:link": "yarn workspace @happy/mobile run project:link",
-  "ios:pods": "cd packages && cd mobile && cd ios && arch -x86_64 pod install",
+    "ios:pods": "cd packages && cd mobile && cd ios && arch -x86_64 pod install",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix"
   },
@@ -41,5 +41,8 @@
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4"
+  },
+  "resolutions": {
+    "@types/react": "^17"
   }
 }
