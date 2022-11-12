@@ -130,7 +130,6 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
     (item: any, i: number) => {
       const animatedStyle = useAnimatedStyle(() => {
         // const isSwiped = state.value.swipedIndexes.includes(i);
-        const isLastCard = state.value.currentIndex - 1 === i;
         const isCurrentCard = state.value.currentIndex === i;
 
         return {
@@ -143,7 +142,7 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
                 ],
               }
             : {}),
-          opacity: isLastCard ? 0 : 1,
+          opacity: i < state.value.currentIndex ? 0 : 1,
         };
       }, [state]);
 
