@@ -8,17 +8,9 @@ import {
 import Animated, {
   useAnimatedGestureHandler,
   useAnimatedStyle,
-  useDerivedValue,
   useSharedValue,
   withSpring,
-  Transition,
-  withTiming,
-  runOnJS,
-  useAnimatedReaction,
-  SlideInRight,
   Layout,
-  SlideOutRight,
-  runOnUI,
 } from "react-native-reanimated";
 
 interface IProps<T> {
