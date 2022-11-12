@@ -47,7 +47,19 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+
+  #if !TARGET_OS_TV
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+  #endif // !TARGET_OS_TV
+
   return YES;
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+#if !TARGET_OS_TV
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
+#endif // !TARGET_OS_TV
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
