@@ -1,8 +1,14 @@
 //for naming color - https://www.color-name.com/hex/1F2142
+//https://simplecss.eu/rgbatohex.html
+//https://chir.ag/projects/name-that-color/#33FFAA
 
 import ITheme from "@happy/common/src/styles/interfaces";
 
-const Colors = {};
+const Colors = {
+  springGreen: "rgba(51, 255, 170, 0.25)",
+  white: "#ffff",
+  monza: "rgba(199, 0, 57 , 0.25)",
+};
 
 const theme: ITheme = {
   palette: {
@@ -33,7 +39,18 @@ const theme: ITheme = {
       manteeBorder: "rgba(142, 142, 147, 0.2)",
       gossip: "#DCF7C5",
     },
-    component: {},
+    component: {
+      //atoms
+
+      //molecules
+      swipeCardBg: Colors.white,
+      swipeCardLeftBg: Colors.monza,
+      swipeCardRightBg: Colors.springGreen,
+
+      //organisma
+
+      //template
+    },
   },
   typography: {
     fontFamily: {

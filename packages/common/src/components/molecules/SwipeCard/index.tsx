@@ -39,7 +39,7 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
 
   const positionX = useSharedValue(0);
   const positionY = useSharedValue(0);
-  const bgColor = useSharedValue<string>("#ffff");
+  const bgColor = useSharedValue<string>(theme.palette.component.swipeCardBg);
 
   const panRef = useRef(undefined);
   const gestureHandlerRef = useRef(undefined);
@@ -132,8 +132,10 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
 
     const scale = chroma
       .scale([
-        "#ffff",
-        rightSwipe ? "rgba(51, 255, 170, 0.25)" : "rgba(199, 0, 57 , 0.25)",
+        theme.palette.component.swipeCardBg,
+        rightSwipe
+          ? theme.palette.component.swipeCardRightBg
+          : theme.palette.component.swipeCardLeftBg,
       ])
       .mode("lch")
       .domain([0, rightSwipe ? activeOffsetX : -activeOffsetX]);

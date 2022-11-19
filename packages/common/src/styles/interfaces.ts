@@ -28,7 +28,11 @@ export interface INeutralColor {
   gossip: string;
 }
 
-export interface IComponentColor {}
+export interface IComponentColor {
+  swipeCardBg: string;
+  swipeCardLeftBg: string;
+  swipeCardRightBg: string;
+}
 
 export interface IPalette {
   statusBar: string;
