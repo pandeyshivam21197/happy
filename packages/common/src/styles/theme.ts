@@ -2,10 +2,12 @@
 
 import ITheme from "@happy/common/src/styles/interfaces";
 
+const Colors = {};
+
 const theme: ITheme = {
   palette: {
     statusBar: "#dde7f7",
-    screenBackground: "#dde7f7",
+    screenBackground: "#fffff",
     primary: {
       primary01: "#23AFD7", //primary blue
       primary02: "#00A591", //primary green
@@ -25,14 +27,13 @@ const theme: ITheme = {
       border01: "#D9D9D9",
     },
     neutral: {
-      // add new colors here
-      blackBackground: "#FAFAFA",
       white: "#FFFFFF",
       black: "#000000",
       gray: "#8C8C8C",
       manteeBorder: "rgba(142, 142, 147, 0.2)",
       gossip: "#DCF7C5",
     },
+    component: {},
   },
   typography: {
     fontFamily: {

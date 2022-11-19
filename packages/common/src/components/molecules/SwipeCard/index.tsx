@@ -1,12 +1,12 @@
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import {
-  PanGestureHandler,
-  PanGestureHandlerGestureEvent,
+  Gesture,
+  GestureDetector,
+  ScrollView,
 } from "react-native-gesture-handler";
 import Animated, {
-  useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
@@ -24,10 +24,6 @@ interface IProps<T> {
   activeOffsetX?: number;
 }
 
-type GestureContext = {
-  startX: number;
-};
-
 interface IState {
   currentIndex: number;
   swipedIndexes: number[];
@@ -41,18 +37,19 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
     activeOffsetX = DimensionUtils.width / 8,
   } = props;
 
-  const x = useSharedValue(0);
-
   const positionX = useSharedValue(0);
   const positionY = useSharedValue(0);
   const bgColor = useSharedValue<string>("#ffff");
+
+  const panRef = useRef(undefined);
+  const gestureHandlerRef = useRef(undefined);
 
   const state = useSharedValue<IState>({
     currentIndex: 0,
     swipedIndexes: [],
   });
 
-  const { currentIndex, swipedIndexes } = state.value;
+  const { currentIndex } = state.value;
 
   const [cards, setCards] = useState(data);
 
@@ -60,69 +57,73 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
     setCards(data);
   }, [data]);
 
-  const panGestureEventHandler = useAnimatedGestureHandler<
-    PanGestureHandlerGestureEvent,
-    GestureContext
-  >(
-    {
-      onStart: (e, ctx) => {
-        ctx.startX = x.value;
-        positionX.value = e.translationX;
-        positionY.value = e.translationY;
-      },
-      onActive: (e, ctx) => {
-        positionX.value = e.translationX;
-        positionY.value = e.translationY;
-      },
-      onEnd: (e) => {
-        //did not swipe the threshold
-        if (Math.abs(positionX.value) < activeOffsetX) {
-          positionX.value = withSpring(0, { damping: 15 });
+  const nativeGesture = useMemo(
+    () => Gesture.Native().withRef(gestureHandlerRef),
+    []
+  );
 
-          return;
-        }
+  const panPressGesture = useMemo(
+    () =>
+      Gesture.Pan()
+        .onStart((e) => {
+          positionX.value = e.translationX;
+          positionY.value = e.translationY;
+        })
+        .onUpdate((e) => {
+          positionX.value = e.translationX;
+          positionY.value = e.translationY;
+        })
+        .onEnd(() => {
+          //did not swipe the threshold
+          if (Math.abs(positionX.value) < activeOffsetX) {
+            positionX.value = withSpring(0, { damping: 15 });
 
-        // swiped right
-        if (positionX.value > 0) {
-          positionX.value = withSpring(
-            DimensionUtils.width + 40,
-            {
-              mass: 0.2,
-            },
-            () => {
-              positionX.value = 0;
+            return;
+          }
 
-              state.value = {
-                swipedIndexes: [
-                  ...state.value.swipedIndexes,
-                  state.value.currentIndex,
-                ],
-                currentIndex: state.value.currentIndex + 1,
-              };
-            }
-          );
-        } else {
-          //swipe left
-          positionX.value = withSpring(
-            -DimensionUtils.width - 40,
-            {
-              mass: 0.2,
-            },
-            () => {
-              positionX.value = 0;
+          // swiped right
+          if (positionX.value > 0) {
+            positionX.value = withSpring(
+              DimensionUtils.width + 40,
+              {
+                mass: 0.2,
+              },
+              () => {
+                positionX.value = 0;
 
-              state.value = {
-                swipedIndexes: [
-                  ...state.value.swipedIndexes,
-                  state.value.currentIndex,
-                ],
-                currentIndex: state.value.currentIndex + 1,
-              };
-            }
-          );
-        }
-      },
-    },
+                state.value = {
+                  swipedIndexes: [
+                    ...state.value.swipedIndexes,
+                    state.value.currentIndex,
+                  ],
+                  currentIndex: state.value.currentIndex + 1,
+                };
+              }
+            );
+          } else {
+            //swipe left
+            positionX.value = withSpring(
+              -DimensionUtils.width - 40,
+              {
+                mass: 0.2,
+              },
+              () => {
+                positionX.value = 0;
+
+                state.value = {
+                  swipedIndexes: [
+                    ...state.value.swipedIndexes,
+                    state.value.currentIndex,
+                  ],
+                  currentIndex: state.value.currentIndex + 1,
+                };
+              }
+            );
+          }
+        })
+        .withRef(panRef)
+        .simultaneousWithExternalGesture(nativeGesture),
+
     []
   );
 
@@ -167,7 +168,9 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
 
       return (
         <Animated.View style={[style.card, animatedStyle]} key={i}>
-          {renderItem(item, i)}
+          <ScrollView bounces={false} scrollEventThrottle={1}>
+            {renderItem(item, i)}
+          </ScrollView>
         </Animated.View>
       );
     },
@@ -175,26 +178,12 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
   );
 
   return (
-    <Animated.View style={[styles.container, styles.contentHorizontal, style]}>
-      <PanGestureHandler
-        activeOffsetX={[-activeOffsetX, activeOffsetX]}
-        enabled={true}
-        onGestureEvent={panGestureEventHandler}
-      >
-        <Animated.View
-          style={[
-            styles.cardList,
-            {
-              width: "100%",
-              height: "100%",
-            },
-            style,
-            styles.itemsHorizontal,
-          ]}
-        >
+    <Animated.View style={[styles.container, style]}>
+      <GestureDetector gesture={panPressGesture}>
+        <Animated.View style={[styles.contentContainer, style]}>
           {cards.map(renderLayout)}
         </Animated.View>
-      </PanGestureHandler>
+      </GestureDetector>
     </Animated.View>
   );
 };
@@ -204,24 +193,20 @@ const getStyle = (index: number) => {
     card: {
       position: "absolute",
       zIndex: 100 - index,
+      flex: 1,
     },
   });
 };
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: "row",
     flex: 1,
   },
-  cardList: {
+  contentContainer: {
     flex: 1,
-  },
-  contentHorizontal: {
     flexDirection: "row",
-  },
-  itemsHorizontal: {
-    flexDirection: "row",
-  },
-  swipedCard: {
-    transform: [{ translateX: DimensionUtils.width + 40 }],
+    width: "100%",
+    height: "100%",
   },
 });

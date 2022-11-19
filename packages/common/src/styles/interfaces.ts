@@ -21,13 +21,14 @@ export interface IBorderColor {
 }
 
 export interface INeutralColor {
-  blackBackground: string;
   white: string;
   black: string;
   gray: string;
   manteeBorder: string;
   gossip: string;
 }
+
+export interface IComponentColor {}
 
 export interface IPalette {
   statusBar: string;
@@ -37,6 +38,7 @@ export interface IPalette {
   textColors: ITextColor;
   borderColors: IBorderColor;
   neutral: INeutralColor;
+  component: IComponentColor;
 }
 
 export interface IFontFamily {

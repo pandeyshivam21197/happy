@@ -1,10 +1,5 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
-import Animated, {
-  interpolate,
-  useAnimatedStyle,
-} from "react-native-reanimated";
-import { ScrollView } from "react-native-gesture-handler";
 import { Image, View, TextWithIcon } from "@happy/common/src/components/index";
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
 
@@ -21,26 +16,6 @@ interface IProps {
 }
 
 const Card: React.FC<IProps> = ({ index, itemId }) => {
-  // const blockStyle = useAnimatedStyle(() => {
-  //   const translateX = interpolate(
-  //     animationValue.value,
-  //     [-1, 0, 1],
-  //     [0, 60, 60]
-  //   );
-
-  //   const translateY = interpolate(
-  //     animationValue.value,
-  //     [-1, 0, 1],
-  //     [0, -40, -40]
-  //   );
-
-  //   const rotateZ = interpolate(animationValue.value, [-1, 0, 1], [0, 0, -25]);
-
-  //   return {
-  //     transform: [{ translateX }, { translateY }, { rotateZ: `${rotateZ}deg` }],
-  //   };
-  // }, [index]);
-
   const styles = getStyles(index);
 
   return (
@@ -56,6 +31,36 @@ const Card: React.FC<IProps> = ({ index, itemId }) => {
         text={"User Name, 24"}
         textType="paragraph"
         iconName={icons.heart}
+      />
+      <Image
+        source={fruits[itemId - 1]}
+        style={[
+          {
+            width: "100%",
+            borderRadius: 16,
+            height: 400,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "red",
+          },
+          // blockStyle,
+        ]}
+        resizeMode={"contain"}
+      />
+      <Image
+        source={fruits[itemId - 1]}
+        style={[
+          {
+            width: "100%",
+            borderRadius: 16,
+            height: 400,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "red",
+          },
+          // blockStyle,
+        ]}
+        resizeMode={"contain"}
       />
       <Image
         source={fruits[itemId - 1]}
