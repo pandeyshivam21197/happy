@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@types/chroma-js": "^2.1.4",
+    "@types/react": "^18.0.25",
     "@types/react-i18next": "^8.1.0",
     "@types/react-native-vector-icons": "^6.4.10",
     "@types/react-redux": "^7.1.24",

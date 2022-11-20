@@ -14,6 +14,7 @@ import Animated, {
 } from "react-native-reanimated";
 import chroma from "chroma-js";
 import theme from "@happy/common/src/styles/theme";
+import { View } from "../../atoms/View";
 
 interface IProps<T> {
   style?: StyleProp<ViewStyle>;
@@ -171,7 +172,14 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
       return (
         <Animated.View style={[style.card, animatedStyle]} key={i}>
           <ScrollView bounces={false} scrollEventThrottle={1}>
-            {renderItem(item, i)}
+            <View
+              onStartShouldSetResponder={() => true}
+              onStartShouldSetResponderCapture={() => true}
+              onMoveShouldSetResponderCapture={() => true}
+              onMoveShouldSetResponder={() => true}
+            >
+              {renderItem(item, i)}
+            </View>
           </ScrollView>
         </Animated.View>
       );
