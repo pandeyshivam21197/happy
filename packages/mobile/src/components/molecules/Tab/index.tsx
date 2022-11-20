@@ -1,6 +1,6 @@
-import React, { FC } from "react";
-import { useWindowDimensions } from "react-native";
-import { TabView, SceneMap } from "react-native-tab-view";
+import React, {FC} from 'react';
+import {useWindowDimensions} from 'react-native';
+import {TabView, SceneMap} from 'react-native-tab-view';
 
 interface ITabConfig {
   title: string;
@@ -26,22 +26,22 @@ const getRoutesAndScenes = (tabConfig: [ITabConfig]) => {
   let scenes: ITabScene | {} = {};
   const routes: ITabRoute[] = [];
 
-  tabConfig.forEach((tabData) => {
-    const { title, key, tabToRender } = tabData;
+  tabConfig.forEach(tabData => {
+    const {title, key, tabToRender} = tabData;
 
-    scenes = { ...scenes, [key]: tabToRender };
-    routes.push({ key: key, title });
+    scenes = {...scenes, [key]: tabToRender};
+    routes.push({key: key, title});
   });
 
-  return { scenes, tabRoutes: routes };
+  return {scenes, tabRoutes: routes};
 };
 
-export const Tab: FC<ITabProps> = (props) => {
-  const { tabConfig } = props;
+export const Tab: FC<ITabProps> = props => {
+  const {tabConfig} = props;
 
   const layout = useWindowDimensions();
 
-  const { scenes, tabRoutes } = getRoutesAndScenes(tabConfig);
+  const {scenes, tabRoutes} = getRoutesAndScenes(tabConfig);
 
   const renderScene = SceneMap(scenes);
 
@@ -54,10 +54,10 @@ export const Tab: FC<ITabProps> = (props) => {
 
   return (
     <TabView
-      navigationState={{ index, routes }}
+      navigationState={{index, routes}}
       renderScene={renderScene}
       onIndexChange={setIndex}
-      initialLayout={{ width: layout.width }}
+      initialLayout={{width: layout.width}}
     />
   );
 };

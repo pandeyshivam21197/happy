@@ -1,4 +1,4 @@
-export { Tab } from "@happy/common/src/components/molecules/Tab";
+export { Tab } from "@happy/mobile/src/components/molecules/Tab";
 export { Title } from "@happy/common/src/components/atoms/Text/title";
 export { Heading } from "@happy/common/src/components/atoms/Text/heading";
 export { SubHeading } from "@happy/common/src/components/atoms/Text/subHeading";

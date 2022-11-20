@@ -63,7 +63,6 @@ const Carousel = React.forwardRef(function carousel(props: IProps, ref) {
       style={styles.container}
       enabled={enableSnap}
       data={data}
-      mode={"horizontal-stack"}
       modeConfig={{ snapDirection: "right" }}
       renderItem={renderItem}
       onSnapToItem={onSnapToItem}

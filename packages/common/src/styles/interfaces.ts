@@ -26,6 +26,7 @@ export interface INeutralColor {
   gray: string;
   manteeBorder: string;
   gossip: string;
+  screenBackground: string;
 }
 
 export interface IComponentColor {

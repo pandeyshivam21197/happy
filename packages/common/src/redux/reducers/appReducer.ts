@@ -14,8 +14,6 @@ export const appSlice = createSlice({
   initialState,
   reducers: {
     setIsLoggedIn: (state, action: PayloadAction<boolean>) => {
-      console.log(state, "state", action, "action####");
-
       state.isLoggedIn = action.payload;
     },
   },

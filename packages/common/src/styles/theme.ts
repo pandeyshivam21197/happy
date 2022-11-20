@@ -33,6 +33,7 @@ const theme: ITheme = {
       border01: "#D9D9D9",
     },
     neutral: {
+      screenBackground: "#dde7f7",
       white: "#FFFFFF",
       black: "#000000",
       gray: "#8C8C8C",

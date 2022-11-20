@@ -14,7 +14,7 @@ export default function RootNavigator() {
 
   return (
     <NavigationContainer ref={NavigationService.navigation}>
-      {true ? (
+      {isLoggedIn ? (
         <StatusAndKeyBoardLayout>
           <AppStackNavigator />
         </StatusAndKeyBoardLayout>

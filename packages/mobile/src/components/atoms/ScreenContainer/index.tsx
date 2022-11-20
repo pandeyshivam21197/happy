@@ -11,7 +11,6 @@ import React, {FC} from 'react';
 import {ResponsiveSize} from '@happy/mobile/src/utils/responsiveUtils';
 import {Header} from '@happy/mobile/src/components';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import theme from '@happy/common/src/styles/theme';
 
 interface IProps {
   scrollable?: boolean;
@@ -107,7 +106,7 @@ export const ScreenContainer: FC<IProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.palette.screenBackground,
+    backgroundColor: '#dde7f7',
   },
   scrollContent: {
     paddingBottom: ResponsiveSize(24),

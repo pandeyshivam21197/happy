@@ -1,4 +1,4 @@
-import React, { useState, FC, Children } from "react";
+import React, { useState, FC } from "react";
 import {
   TouchableOpacity,
   ActivityIndicator,
@@ -7,7 +7,6 @@ import {
   StyleProp,
   ViewStyle,
 } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
 import {
   ButtonTypes,
   FontWeightType,
@@ -61,7 +60,6 @@ export const Button: FC<IButtonProps> = (props) => {
 
   const isLinearGradient = typeof background === "string" ? false : true;
 
-  const Container = isLinearGradient ? LinearGradient : View;
   const containerProps = isLinearGradient
     ? { colors: background as string[], useAngle: true }
     : {};
@@ -78,7 +76,7 @@ export const Button: FC<IButtonProps> = (props) => {
 
   return (
     <TouchableOpacity onPress={onButtonPress} disabled={loading}>
-      <Container
+      <View
         style={children ? style : [styles.container, style]}
         {...containerProps}
       >
@@ -91,7 +89,7 @@ export const Button: FC<IButtonProps> = (props) => {
             </TextContainer>
           )
         )}
-      </Container>
+      </View>
     </TouchableOpacity>
   );
 };

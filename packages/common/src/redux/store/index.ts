@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
+import logger from "redux-logger";
 import { persistStore, persistReducer } from "redux-persist";
 import rootReducer from "@happy/common/src/redux/reducers";
 import { StorageService } from "@happy/common/src/services/storage/StorageService";
@@ -10,15 +11,14 @@ import { StorageService } from "@happy/common/src/services/storage/StorageServic
 const persistConfig = {
   key: "root",
   storage: StorageService.getReduxStorage(),
-  whitelist: [],
+  whitelist: ["appReducer"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store: EnhancedStore = configureStore({
   reducer: persistedReducer,
-  middleware: [thunk],
-  devTools: true,
+  middleware: [thunk, ...(__DEV__ ? [logger] : [])],
 });
 
 const persistor = persistStore(store);
