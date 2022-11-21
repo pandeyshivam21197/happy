@@ -171,7 +171,7 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
 
       return (
         <Animated.View style={[style.card, animatedStyle]} key={i}>
-          <ScrollView bounces={false} scrollEventThrottle={1}>
+          <ScrollView scrollEventThrottle={1}>
             <View
               onStartShouldSetResponder={() => true}
               onStartShouldSetResponderCapture={() => true}
