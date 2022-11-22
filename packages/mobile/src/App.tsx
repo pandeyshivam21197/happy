@@ -8,7 +8,7 @@
 
 import React from 'react';
 import {I18nextProvider} from 'react-i18next';
-import {Provider} from 'react-redux';
+import {Provider} from '@happy/common/node_modules/react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {StatusBar, StyleSheet} from 'react-native';
 import RootNavigator from '@happy/mobile/src/navigation';
