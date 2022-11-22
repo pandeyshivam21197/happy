@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {ResponsiveSize} from '@happy/mobile/src/utils/responsiveUtils';
 import {toTitleCase} from '@happy/common/src/utils/stringUtils';
-import {Icon, icons, SubHeading} from '@happy/common/src/components';
+import {Heading, Icon, icons, SubHeading} from '@happy/common/src/components';
 import theme from '@happy/common/src/styles/theme';
 
 interface IProps {
@@ -52,9 +52,9 @@ export const Header: FC<IProps> = ({
         <View style={styles.emptyContainer} />
       )}
       <View style={styles.titleContainer}>
-        <SubHeading numberOfLines={1} fontWeight="semiBold">
+        <Heading numberOfLines={1} fontWeight="bold">
           {title}
-        </SubHeading>
+        </Heading>
       </View>
       {rightText ? (
         <TouchableOpacity
