@@ -30,7 +30,7 @@ interface IState {
   swipedIndexes: number[];
 }
 
-export const SwipeCard: React.FC<IProps<any>> = (props) => {
+const SwipeComponent: React.FC<IProps<any>> = (props) => {
   const {
     style,
     data,
@@ -210,3 +210,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 });
+
+const swipeComponent = React.memo(SwipeComponent);
+export { swipeComponent as SwipeComponent };
