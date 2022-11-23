@@ -55,8 +55,6 @@ const Card: React.FC<IProps> = ({ index, itemId }) => {
 const getStyles = (index: number) =>
   StyleSheet.create({
     container: {
-      width: DimensionUtils.width,
-      height: "100%",
       shadowColor: "#000",
       shadowOffset: {
         width: 0,

@@ -194,6 +194,7 @@ const getStyle = (index: number) => {
       zIndex: 100 - index,
       flex: 1,
       height: "100%",
+      width: DimensionUtils.width,
     },
   });
 };
