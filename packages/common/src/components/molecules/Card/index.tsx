@@ -1,6 +1,5 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
-import { FlashList } from "@shopify/flash-list";
+import { FlatList, StyleSheet } from "react-native";
 import { Image, View } from "@happy/common/src/components/index";
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
 
@@ -33,26 +32,23 @@ const Card: React.FC<IProps> = ({ index, itemId }) => {
         ]}
         resizeMode={"contain"}
       />
-      <FlashList
-        data={[1, 2]}
-        renderItem={({ item }) => (
-          <Image
-            source={fruits[itemId - 1]}
-            style={[
-              {
-                width: "100%",
-                borderRadius: 16,
-                height: 400,
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: "red",
-              },
-            ]}
-            resizeMode={"contain"}
-          />
-        )}
-        estimatedItemSize={50}
-      />
+      {[1, 2].map((item) => (
+        <Image
+          key={item}
+          source={fruits[itemId - 1]}
+          style={[
+            {
+              width: "100%",
+              borderRadius: 16,
+              height: 400,
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "red",
+            },
+          ]}
+          resizeMode={"contain"}
+        />
+      ))}
     </View>
   );
 };
@@ -61,7 +57,7 @@ const getStyles = (index: number) =>
   StyleSheet.create({
     container: {
       width: DimensionUtils.width,
-      height: DimensionUtils.height,
+      height: "100%",
       // shadowColor: "#000",
       // shadowOffset: {
       //   width: 0,

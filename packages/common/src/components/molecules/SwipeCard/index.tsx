@@ -15,6 +15,7 @@ import Animated, {
 import chroma from "chroma-js";
 import theme from "@happy/common/src/styles/theme";
 import { View } from "../../atoms/View";
+import { Image } from "../../atoms/Image";
 
 interface IProps<T> {
   style?: StyleProp<ViewStyle>;
@@ -29,6 +30,12 @@ interface IState {
   currentIndex: number;
   swipedIndexes: number[];
 }
+
+import fruit_0 from "../Card/fruit-0.png";
+import fruit_1 from "../Card/fruit-1.png";
+import fruit_2 from "../Card/fruit-2.png";
+
+const fruits = [fruit_0, fruit_2, fruit_1];
 
 export const SwipeCard: React.FC<IProps<any>> = (props) => {
   const {
@@ -204,6 +211,7 @@ const getStyle = (index: number) => {
       position: "absolute",
       zIndex: 100 - index,
       flex: 1,
+      height: "100%",
     },
   });
 };
@@ -215,8 +223,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
+    position: "relative",
     flexDirection: "row",
-    width: "100%",
-    height: "100%",
   },
 });
