@@ -1,5 +1,5 @@
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import {
   Gesture,
@@ -15,7 +15,6 @@ import Animated, {
 import chroma from "chroma-js";
 import theme from "@happy/common/src/styles/theme";
 import { View } from "../../atoms/View";
-import { Image } from "../../atoms/Image";
 
 interface IProps<T> {
   style?: StyleProp<ViewStyle>;
@@ -31,12 +30,6 @@ interface IState {
   swipedIndexes: number[];
 }
 
-import fruit_0 from "../Card/fruit-0.png";
-import fruit_1 from "../Card/fruit-1.png";
-import fruit_2 from "../Card/fruit-2.png";
-
-const fruits = [fruit_0, fruit_2, fruit_1];
-
 export const SwipeCard: React.FC<IProps<any>> = (props) => {
   const {
     style,
@@ -48,9 +41,6 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
   const positionX = useSharedValue(0);
   const positionY = useSharedValue(0);
   const bgColor = useSharedValue<string>(theme.palette.component.swipeCardBg);
-
-  const panRef = useRef(undefined);
-  const gestureHandlerRef = useRef(undefined);
 
   const state = useSharedValue<IState>({
     currentIndex: 0,
@@ -64,11 +54,6 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
   useEffect(() => {
     setCards(data);
   }, [data]);
-
-  const nativeGesture = useMemo(
-    () => Gesture.Native().withRef(gestureHandlerRef),
-    []
-  );
 
   const panPressGesture = useMemo(
     () =>
@@ -128,10 +113,7 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
               }
             );
           }
-        })
-        .withRef(panRef)
-        .simultaneousWithExternalGesture(nativeGesture),
-
+        }),
     []
   );
 
@@ -178,7 +160,7 @@ export const SwipeCard: React.FC<IProps<any>> = (props) => {
 
       return (
         <Animated.View style={[style.card, animatedStyle]} key={i}>
-          <ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View
               onStartShouldSetResponder={() => true}
               onStartShouldSetResponderCapture={() => true}
