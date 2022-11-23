@@ -19,7 +19,8 @@
       "**/@react-native-community/**",
       "**/react-native-otp-input",
       "**/react-native-country-picker-modal",
-      "**/react-native-mmkv"
+      "**/react-native-mmkv",
+      "**/flash-list"
     ]
   },
   "scripts": {

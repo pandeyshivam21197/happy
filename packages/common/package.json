@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
+    "@shopify/flash-list": "^1.4.0",
     "axios": "^0.26.1",
     "chroma-js": "^2.4.2",
     "i18next": "^21.6.16",
     "moment": "^2.29.4",
     "react-i18next": "^11.16.6",
+    "react-native-fast-image": "^8.6.3",
     "react-native-gesture-handler": "^2.8.0",
     "react-native-mmkv": "^2.5.1",
     "react-native-pager-view": "^5.4.15",
