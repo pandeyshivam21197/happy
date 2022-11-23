@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { Image, View } from "@happy/common/src/components/index";
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
 
@@ -43,7 +43,6 @@ const Card: React.FC<IProps> = ({ index, itemId }) => {
               height: 400,
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: "red",
             },
           ]}
           resizeMode={"contain"}
@@ -58,13 +57,13 @@ const getStyles = (index: number) =>
     container: {
       width: DimensionUtils.width,
       height: "100%",
-      // shadowColor: "#000",
-      // shadowOffset: {
-      //   width: 0,
-      //   height: 8,
-      // },
-      // shadowOpacity: 0.44,
-      // shadowRadius: 10.32,
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 8,
+      },
+      shadowOpacity: 0.44,
+      shadowRadius: 10.32,
       elevation: 16,
       padding: 16,
     },
