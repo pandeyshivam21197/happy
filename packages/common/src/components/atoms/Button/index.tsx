@@ -12,13 +12,11 @@ import {
   FontWeightType,
 } from "@happy/common/src/styles/interfaces";
 import theme from "@happy/common/src/styles/theme";
-import {
-  Paragraph,
-  Label,
-  Title,
-  Heading,
-  SubHeading,
-} from "@happy/common/src/components";
+import { Heading } from "@happy/common/src/components/atoms/Text/heading";
+import { Paragraph } from "@happy/common/src/components/atoms/Text/paragraph";
+import { Label } from "@happy/common/src/components/atoms/Text/label";
+import { Title } from "@happy/common/src/components/atoms/Text/title";
+import { SubHeading } from "@happy/common/src/components/atoms/Text/subHeading";
 
 type ButtonTextTypes =
   | "paragraph"

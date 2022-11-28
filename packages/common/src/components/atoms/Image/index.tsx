@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import FastImage from "react-native-fast-image";
 import Animated from "react-native-reanimated";
-import { ShadowCard } from "../ShadowCard";
+import { ShadowCard } from "@happy/common/src/components/atoms/ShadowCard";
 
 interface IProps {
   isAnimated?: boolean;

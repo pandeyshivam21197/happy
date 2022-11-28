@@ -15,9 +15,6 @@ import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 import theme from '@happy/common/src/styles/theme';
 import {IUserInterestData, IUserIntrestSection} from './interfaces';
 import {DimensionUtils} from '@happy/common/src/utils/DimensionUtils';
-import {useNavigation} from '@react-navigation/native';
-import {NavigationKeys} from '@happy/mobile/src/navigation/constants';
-import {NavigationService} from '@happy/mobile/src/services/navigationService';
 import {setIsLoggedIn} from '@happy/common/src/redux/reducers/appReducer';
 import {useAppDispatch} from '@happy/common/src/redux/store';
 

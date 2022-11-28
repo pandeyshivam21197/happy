@@ -1,14 +1,12 @@
 import React, { FC } from "react";
 import { TextTypes } from "@happy/common/src/components/atoms/Text/text";
-import {
-  Heading,
-  Label,
-  SubHeading,
-  Title,
-  Paragraph,
-  View,
-  Icon,
-} from "@happy/common/src/components";
+import { Heading } from "@happy/common/src/components/atoms/Text/heading";
+import { Label } from "@happy/common/src/components/atoms/Text/label";
+import { SubHeading } from "@happy/common/src/components/atoms/Text/subHeading";
+import { Title } from "@happy/common/src/components/atoms/Text/title";
+import { Paragraph } from "@happy/common/src/components/atoms/Text/paragraph";
+import { View } from "@happy/common/src/components/atoms/View";
+import { Icon } from "@happy/common/src/components/atoms/Icon";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import { FontWeightType } from "common/src/styles/interfaces";
 
