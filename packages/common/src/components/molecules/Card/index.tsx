@@ -1,6 +1,7 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
-import { Image, View } from "@happy/common/src/components/index";
+import { Image } from "@happy/common/src/components/atoms/Image";
+import { View } from "@happy/common/src/components/atoms/View";
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
 
 import fruit_0 from "./fruit-0.png";

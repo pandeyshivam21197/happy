@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React, {FC} from 'react';
 import {ResponsiveSize} from '@happy/mobile/src/utils/responsiveUtils';
-import {Header} from '@happy/mobile/src/components';
+import {Header} from '@happy/mobile/src/components/atoms/Header';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 interface IProps {

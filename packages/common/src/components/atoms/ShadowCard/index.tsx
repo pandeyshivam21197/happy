@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { StyleSheet, ViewProps } from "react-native";
+import { StyleSheet } from "react-native";
 import theme from "@happy/common/src/styles/theme";
 import { isAndroid } from "@happy/common/src/utils/PlatformUtils";
-import { View } from "@happy/common/src/components";
+import { View } from "@happy/common/src/components/atoms/View";
 
 export const ShadowCard: FC<any> = ({ children, style }) => {
   return <View style={[styles.shadow, style]}>{children}</View>;

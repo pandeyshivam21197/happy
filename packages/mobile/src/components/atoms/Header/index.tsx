@@ -8,7 +8,10 @@ import {
 } from 'react-native';
 import {ResponsiveSize} from '@happy/mobile/src/utils/responsiveUtils';
 import {toTitleCase} from '@happy/common/src/utils/stringUtils';
-import {Heading, Icon, icons, SubHeading} from '@happy/common/src/components';
+import {Heading} from '@happy/common/src/components/atoms/Text/heading';
+import {Icon} from '@happy/common/src/components/atoms/Icon';
+import {icons} from '@happy/common/src/components/atoms/Icon';
+import {SubHeading} from '@happy/common/src/components/atoms/Text/subHeading';
 import theme from '@happy/common/src/styles/theme';
 
 interface IProps {
