@@ -9,8 +9,8 @@ const initialState = {
   isLoggedIn: false,
 } as appState;
 
-export const appSlice = createSlice({
-  name: "APP_REDUCER",
+export const userSlice = createSlice({
+  name: "USER_REDUCER",
   initialState,
   reducers: {
     setIsLoggedIn: (state, action: PayloadAction<boolean>) => {
@@ -19,6 +19,6 @@ export const appSlice = createSlice({
   },
 });
 
-export const { setIsLoggedIn } = appSlice.actions;
+export const { setIsLoggedIn } = userSlice.actions;
 
-export default appSlice.reducer;
+export default userSlice.reducer;

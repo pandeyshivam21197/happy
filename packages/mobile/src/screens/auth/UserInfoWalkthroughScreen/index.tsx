@@ -42,6 +42,8 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
     return <Tab onNext={snapToNextTab} />;
   };
 
+  console.log(userInfoData, 'userInfoData');
+
   const onGoBack = () => {
     if (carouselIndex > 0) {
       if (carouselRef) {

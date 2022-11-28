@@ -3,10 +3,12 @@ import type { PayloadAction, Reducer } from "@reduxjs/toolkit";
 import appReducer, {
   setIsLoggedIn,
 } from "@happy/common/src/redux/reducers/appReducer";
+import userReducer from "@happy/common/src/redux/reducers/userReducer";
 import { RootState } from "../store";
 
 const combineReducer: Reducer = combineReducers({
   appReducer,
+  userReducer,
 });
 
 const rootReducer = (
