@@ -15,8 +15,6 @@ import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 import theme from '@happy/common/src/styles/theme';
 import {IUserInterestData, IUserIntrestSection} from './interfaces';
 import {DimensionUtils} from '@happy/common/src/utils/DimensionUtils';
-import {setIsLoggedIn} from '@happy/common/src/redux/reducers/appReducer';
-import {useAppDispatch} from '@happy/common/src/redux/store';
 
 const UserInterestTab: FC<IUserTabProps> = props => {
   const {onNext} = props;
@@ -121,8 +119,6 @@ const UserInterestTab: FC<IUserTabProps> = props => {
     );
   };
 
-  const dispatch = useAppDispatch();
-
   return (
     <View style={styles.content}>
       <View>
@@ -154,7 +150,6 @@ const UserInterestTab: FC<IUserTabProps> = props => {
             ? {
                 onPress: () => {
                   onNext({userSelectedInterests});
-                  dispatch(setIsLoggedIn(true));
                 },
               }
             : {})}

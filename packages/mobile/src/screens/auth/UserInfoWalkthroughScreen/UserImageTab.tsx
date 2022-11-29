@@ -57,7 +57,14 @@ const UserImageTab: FC<IUserTabProps> = props => {
           <Paragraph>{t('shownOnProfile')}</Paragraph>
         </View>
         <Icon
-          {...(showNextButton ? {onPress: () => onNext({userImages})} : {})}
+          {...(showNextButton
+            ? {
+                onPress: () =>
+                  onNext({
+                    userImages: userImages.map(userImage => userImage.image),
+                  }),
+              }
+            : {})}
           style={styles.nextIcon}
           name={icons.rightArrow}
           color={theme.palette.neutral.black}

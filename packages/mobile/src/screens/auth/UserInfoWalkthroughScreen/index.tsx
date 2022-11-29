@@ -6,9 +6,15 @@ import {AuthNavigatorParamList} from '../../../navigation/guestNavigator/AuthSta
 import {NavigationKeys} from '../../../navigation/constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 import {CarouselRenderItemInfo} from 'react-native-reanimated-carousel/lib/typescript/types';
-import {IUserTabInfo, userInfoTabOrder} from './constants';
+import {IUserTabInfo, userInfoTabOrder, UserInfoTabs} from './constants';
 import {ICarouselInstance} from 'react-native-reanimated-carousel';
 import {DimensionUtils} from '@happy/common/src/utils/DimensionUtils';
+import {setIsLoggedIn} from '@happy/common/src/redux/reducers/appReducer';
+import {useAppDispatch} from '@happy/common/src/redux/store';
+import {
+  IUserDetails,
+  setUserDetails,
+} from '@happy/common/src/redux/reducers/userReducer';
 
 type Props = NavigationScreenProps<
   AuthNavigatorParamList,
@@ -18,8 +24,10 @@ type Props = NavigationScreenProps<
 const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
   const {t} = useTranslation(NamespacesKeys.privacyPolicyScreen);
 
-  const [userInfoData, setUserInfoData] = useState({});
+  const [userInfoData, setUserInfoData] = useState<IUserDetails | {}>({});
   const [carouselIndex, setCarouselIndex] = useState(0);
+
+  const dispatch = useAppDispatch();
 
   let carouselRef = React.createRef<ICarouselInstance>();
 
@@ -34,6 +42,13 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
         ...tabData,
       }));
 
+      if (tabName === UserInfoTabs.userInteresetTab) {
+        dispatch(setUserDetails(userInfoData as IUserDetails));
+        dispatch(setIsLoggedIn(true));
+
+        return;
+      }
+
       if (carouselRef) {
         carouselRef?.current?.next();
       }
@@ -41,8 +56,6 @@ const UserInfoWalkthroughScreen: FC<Props> = ({navigation}) => {
 
     return <Tab onNext={snapToNextTab} />;
   };
-
-  console.log(userInfoData, 'userInfoData');
 
   const onGoBack = () => {
     if (carouselIndex > 0) {

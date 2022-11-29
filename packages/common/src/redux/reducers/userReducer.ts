@@ -1,24 +1,46 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { ImageSourcePropType } from "react-native";
 
-interface appState {
-  isLoggedIn: boolean;
+type GenderTypes = "Women" | "Men";
+
+interface ISelectedInterests {
+  [key: string]: number[];
+}
+
+interface IOppositeGender {
+  gender: GenderTypes;
+  selected: boolean;
+}
+
+export interface IUserDetails {
+  connection: { key: string; value: string };
+  gender: GenderTypes;
+  oppositeGender: IOppositeGender[];
+  userAge: Date;
+  userImages: ImageSourcePropType[];
+  userName: string;
+  userSelectedInterests: ISelectedInterests;
+}
+
+interface userState {
+  userDetails: IUserDetails;
 }
 
 const initialState = {
-  isLoggedIn: false,
-} as appState;
+  userDetails: {},
+} as userState;
 
 export const userSlice = createSlice({
   name: "USER_REDUCER",
   initialState,
   reducers: {
-    setIsLoggedIn: (state, action: PayloadAction<boolean>) => {
-      state.isLoggedIn = action.payload;
+    setUserDetails: (state, action: PayloadAction<IUserDetails>) => {
+      state.userDetails = action.payload;
     },
   },
 });
 
-export const { setIsLoggedIn } = userSlice.actions;
+export const { setUserDetails } = userSlice.actions;
 
 export default userSlice.reducer;

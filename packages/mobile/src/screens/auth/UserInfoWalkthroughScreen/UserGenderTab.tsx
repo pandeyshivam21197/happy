@@ -78,7 +78,9 @@ const UserGenderTab: FC<IUserTabProps> = props => {
           </Paragraph>
         </View>
         <Icon
-          {...(showNextButton ? {onPress: () => onNext({gender})} : {})}
+          {...(showNextButton
+            ? {onPress: () => onNext({gender: gender.gender})}
+            : {})}
           style={styles.nextIcon}
           name={icons.rightArrow}
           color={theme.palette.neutral.black}
