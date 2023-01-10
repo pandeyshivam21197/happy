@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { ImageSourcePropType } from "react-native";
+import { Image } from "react-native-image-crop-picker";
 
 type GenderTypes = "Women" | "Men";
 
@@ -18,7 +18,7 @@ export interface IUserDetails {
   gender: GenderTypes;
   oppositeGender: IOppositeGender[];
   userAge: Date;
-  userImages: ImageSourcePropType[];
+  userImages: Image[];
   userName: string;
   userSelectedInterests: ISelectedInterests;
 }
