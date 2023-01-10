@@ -61,7 +61,9 @@ const UserImageTab: FC<IUserTabProps> = props => {
             ? {
                 onPress: () =>
                   onNext({
-                    userImages: userImages.map(userImage => userImage.image),
+                    userImages: userImages
+                      .map(userImage => userImage.image)
+                      .filter(image => !!image),
                   }),
               }
             : {})}

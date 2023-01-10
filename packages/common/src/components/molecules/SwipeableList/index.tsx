@@ -1,6 +1,6 @@
 import { DimensionUtils } from "@happy/common/src/utils/DimensionUtils";
 import React, { useEffect, useMemo, useState } from "react";
-import { StyleProp, StyleSheet, ViewStyle } from "react-native";
+import { FlatList, StyleProp, StyleSheet, ViewStyle } from "react-native";
 import {
   Gesture,
   GestureDetector,
@@ -30,7 +30,7 @@ interface IState {
   swipedIndexes: number[];
 }
 
-const SwipeComponent: React.FC<IProps<any>> = (props) => {
+const SwipeableList: React.FC<IProps<any>> = (props) => {
   const {
     style,
     data,
@@ -211,5 +211,5 @@ const styles = StyleSheet.create({
   },
 });
 
-const swipeComponent = React.memo(SwipeComponent);
-export { swipeComponent as SwipeComponent };
+const swipeableList = React.memo(SwipeableList);
+export { swipeableList as SwipeableList };

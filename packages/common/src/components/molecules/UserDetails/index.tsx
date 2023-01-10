@@ -28,8 +28,6 @@ const UserDetails = (props: IProps) => {
   const { profileImage, otherImages, basicDetails } =
     getUserDetailsSection(userDetails);
 
-  console.log(profileImage, "profileImage", otherImages);
-
   return (
     <View>
       {profileImage && (
