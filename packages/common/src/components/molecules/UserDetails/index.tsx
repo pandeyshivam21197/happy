@@ -10,9 +10,10 @@ interface IProps {
   userDetails: IUserDetails;
 }
 
-const renderUserImages = ({ item }: { item: IImage }) => {
+const renderUserImages = (item: IImage) => {
   return (
     <Image
+      key={item.sourceURL}
       source={{ uri: item.sourceURL }}
       style={{
         width: DimensionUtils.width,
@@ -41,7 +42,7 @@ const UserDetails = (props: IProps) => {
           }}
         />
       )}
-      <FlatList data={otherImages} renderItem={renderUserImages} />
+      {otherImages.map((image) => renderUserImages(image))}
     </View>
   );
 };
