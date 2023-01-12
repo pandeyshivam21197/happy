@@ -15,10 +15,8 @@ const renderUserImages = (item: IImage) => {
     <Image
       key={item.sourceURL}
       source={{ uri: item.sourceURL }}
-      style={{
-        width: DimensionUtils.width,
-        height: DimensionUtils.height * 0.3,
-      }}
+      style={styles.otherImage}
+      resizeMode="cover"
     />
   );
 };
@@ -34,12 +32,8 @@ const UserDetails = (props: IProps) => {
       {profileImage && (
         <Image
           source={{ uri: profileImage.sourceURL }}
-          style={{
-            width: DimensionUtils.width,
-            height: DimensionUtils.height * 0.7,
-            borderTopLeftRadius: 10,
-            borderTopRightRadius: 10,
-          }}
+          style={styles.profileImage}
+          resizeMode="cover"
         />
       )}
       {otherImages.map((image) => renderUserImages(image))}
@@ -47,7 +41,19 @@ const UserDetails = (props: IProps) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  profileImage: {
+    width: DimensionUtils.width,
+    height: DimensionUtils.height * 0.7,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  otherImage: {
+    marginTop: 2,
+    width: DimensionUtils.width,
+    height: DimensionUtils.height * 0.3,
+  },
+});
 
 const userDetails = React.memo(UserDetails);
 export { userDetails as UserDetails };

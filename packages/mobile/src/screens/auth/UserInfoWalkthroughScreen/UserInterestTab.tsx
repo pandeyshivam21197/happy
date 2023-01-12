@@ -2,19 +2,17 @@ import React, {FC, useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {
-  Button,
-  Heading,
   Icon,
   icons,
+  InterestSectionList,
   Paragraph,
-  SubHeading,
   Title,
 } from '@happy/common/src/components';
 import {IUserTabProps, userInterests} from './constants';
 import {NamespacesKeys} from '@happy/common/src/services/locale/constants';
 import theme from '@happy/common/src/styles/theme';
-import {IUserInterestData, IUserIntrestSection} from './interfaces';
 import {DimensionUtils} from '@happy/common/src/utils/DimensionUtils';
+import {IUserInterestData} from '@happy/common/src/components/molecules/InterestSectionList/inteface';
 
 const UserInterestTab: FC<IUserTabProps> = props => {
   const {onNext} = props;
@@ -28,7 +26,10 @@ const UserInterestTab: FC<IUserTabProps> = props => {
 
   const styles = getStyles(showNextButton);
 
-  const setUserInterests = (parentId: number, childId: number) => {
+  const setUserInterests = (
+    parentId: number,
+    selectedInterest: IUserInterestData,
+  ) => {
     if (
       !showNextButton &&
       (!userSelectedInterests[parentId] ||
@@ -38,7 +39,7 @@ const UserInterestTab: FC<IUserTabProps> = props => {
 
       setUserSelectedInterests({
         ...userSelectedInterests,
-        [parentId]: [childId],
+        [parentId]: [selectedInterest],
       });
 
       return;
@@ -46,9 +47,12 @@ const UserInterestTab: FC<IUserTabProps> = props => {
 
     const selectedElements = [
       ...new Set(userSelectedInterests[parentId]),
-    ] as Array<number>;
+    ] as Array<IUserInterestData>;
 
-    const foundIndex = selectedElements.findIndex((e: number) => e === childId);
+    const foundIndex = selectedElements.findIndex(
+      (selectedInterest: IUserInterestData) =>
+        selectedInterest.id === selectedInterest.id,
+    );
 
     const wasSelected = foundIndex >= 0;
 
@@ -64,59 +68,9 @@ const UserInterestTab: FC<IUserTabProps> = props => {
       setSelectedInterestCount(prev => prev + 1);
       setUserSelectedInterests({
         ...userSelectedInterests,
-        [parentId]: [...selectedElements, childId],
+        [parentId]: [...selectedElements, selectedInterest],
       });
     }
-  };
-
-  const renderItem = (
-    prop: {item: IUserInterestData; index: number},
-    parentId: number,
-  ) => {
-    const {item} = prop;
-    const {icon, interest, id} = item;
-
-    const isSelected =
-      userSelectedInterests[parentId]?.findIndex((e: number) => e === id) >= 0;
-
-    return (
-      <Button
-        key={item.id}
-        style={[
-          styles.interestContainer,
-          isSelected ? styles.selectedIcon : {},
-        ]}
-        onPress={() => setUserInterests(parentId, id)}
-        buttonType="transparent">
-        <View style={styles.interestButton}>
-          <Icon name={icon} size={20} style={styles.interestIcon} />
-          <SubHeading>{interest}</SubHeading>
-        </View>
-      </Button>
-    );
-  };
-
-  const renderSectionHeader = (title: string): React.ReactElement => {
-    return (
-      <Heading style={styles.sectionListHeader} fontWeight="bold">
-        {title}
-      </Heading>
-    );
-  };
-
-  const renderListItem = ({item}: {item: IUserIntrestSection}) => {
-    const {title, data, id} = item;
-
-    return (
-      <>
-        {renderSectionHeader(title)}
-        <View style={styles.interestList} key={id}>
-          {data.map((userInterest, index) => {
-            return renderItem({item: userInterest, index}, id);
-          })}
-        </View>
-      </>
-    );
   };
 
   return (
@@ -130,12 +84,10 @@ const UserInterestTab: FC<IUserTabProps> = props => {
         </Paragraph>
       </View>
       <View style={styles.sectionList}>
-        <FlatList
-          data={userInterests}
-          keyExtractor={(item, index) => `${item.title} + ${index}`}
-          renderItem={renderListItem}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.userInterests}
+        <InterestSectionList
+          sectionData={userInterests}
+          userSelectedInterests={userSelectedInterests}
+          setUserInterests={setUserInterests}
         />
       </View>
       <View style={[styles.shownContainer]}>
@@ -188,39 +140,11 @@ const getStyles = (showNextButton: boolean) =>
       height: DimensionUtils.height / 1.7,
       marginBottom: 16,
     },
-    interestContainer: {
-      padding: 8,
-      backgroundColor: theme.palette.neutral.white,
-      borderRadius: 8,
-      marginLeft: 8,
-      marginTop: 8,
-    },
-    sectionListHeader: {
-      marginVertical: 16,
-    },
     separator: {
       height: 12,
     },
     interestRowContainer: {
       justifyContent: 'flex-start',
-    },
-    userInterests: {
-      paddingBottom: 16,
-    },
-    interestButton: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    },
-    interestIcon: {
-      marginRight: 8,
-    },
-    interestList: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-    },
-    selectedIcon: {
-      backgroundColor: theme.palette.neutral.gossip,
     },
     pick5Things: {
       marginTop: 12,

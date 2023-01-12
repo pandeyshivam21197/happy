@@ -17,6 +17,8 @@ export const getUserDetailsSection = (
 ): IUserDetailsSection => {
   const { gender, connection, userSelectedInterests, userImages } = userDetails;
 
+  console.log(userDetails, "userDetails");
+
   return {
     profileImage: userImages[0],
     basicDetails: [
@@ -24,7 +26,7 @@ export const getUserDetailsSection = (
         title: "My Basics",
         data: [
           { key: "gender", value: gender },
-          { key: "connection", value: connection },
+          { key: "connection", value: connection?.value },
         ],
       },
       {

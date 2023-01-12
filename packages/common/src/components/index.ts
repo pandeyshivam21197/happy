@@ -11,6 +11,5 @@ export { ScreenContainer } from "@happy/mobile/src/components/atoms/ScreenContai
 export { Button } from "@happy/common/src/components/atoms/Button";
 export { TextInput } from "@happy/common/src/components/atoms/TextInput";
 
-export { Carousel } from "@happy/common/src/components/molecules/Carousel";
-export { Card } from "@happy/common/src/components/molecules/Card";
 export { TextWithIcon } from "@happy/common/src/components/molecules/TextWithIcon";
+export { InterestSectionList } from "@happy/common/src/components/molecules/InterestSectionList";
